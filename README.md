@@ -17,7 +17,7 @@
 
 > In fact, **posepointer** will be able to track multiple people on a modern web browser running on a mid-ranged mobile device. This means that you will be able to very easily add hands-free, install-less, gesture-controlled interfaces to your projects that work on most mobile devices out there **_FAST_**!
 
-Because of the many possible and varied applications, **posepointer** is being developed with a plugin system in mind. **Posepointer with no configuration/plugins only handles calculating these points.** This decision was made to encourage a rich plugin ecosystem 👨‍👩‍👧‍👦 
+Because of the many possible and varied applications, **posepointer** is being developed with a plugin system in mind. **Posepointer with no configuration/plugins only handles calculating these points.** This decision was made to encourage a rich plugin ecosystem 👨‍👩‍👧‍👦
 
 > **THIS PROJECT IS NOT READY.**
 
@@ -60,20 +60,17 @@ The following polyfills are providing support for older browsers:
 
 The only hard dependency required for building the project is [NodeJS >= 8.11.2](https://nodejs.org/en/download/). If you want to author tests you'll also need [Java >= 1.6](https://java.com/), though **please note that you neither need Java nor do you need to create tests** ([see our Tests section below](#testing))!
 
-The following commands are available from the project root. Note that you can replace `npm run ...` with just `yarn ...` if you have [Yarn installed](https://yarnpkg.com/en/).
+The following scripts are available from the project root. Note that you can replace `npm run ...` with just `yarn ...` if you have [Yarn installed](https://yarnpkg.com/en/).
 
 ``` bash
-# install dependencies
+# Install dependencies
 npm install
 
-# run unit tests
-npm run unit
+# Start the dev server
+npm dev
 
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+# Build to /dist
+npm build
 ```
 
 ### Testing
