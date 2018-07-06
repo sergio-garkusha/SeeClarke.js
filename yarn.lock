@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@tensorflow-models/posenet@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@tensorflow-models/posenet/-/posenet-0.1.2.tgz#621849eaddc53a6a1fd5a34ccf6a22329addc6ee"
+
 "@webassemblyjs/ast@1.5.13":
   version "1.5.13"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.5.13.tgz#81155a570bd5803a30ec31436bc2c9c0ede38f25"
