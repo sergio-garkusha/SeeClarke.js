@@ -5,8 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // Directories
 const dirNode = 'node_modules'
-const dirApp = path.join(__dirname, 'app')
+const dirDemo = path.join(__dirname, 'demo')
 const dirAssets = path.join(__dirname, 'assets')
+const dirSrc = path.join(__dirname, 'src')
 
 // Settings
 const IS_DEV = (process.env.NODE_ENV === 'dev')
@@ -19,16 +20,17 @@ module.exports = {
   // Entry scripts
   entry: {
     // Include lodash
-    vendor: ['lodash'],
+    // vendor: ['lodash'],
     // Bundle it with index.js
-    bundle: path.join(dirApp, 'index')
+    bundle: path.join(dirDemo, 'index')
   },
 
   // Path resolvers
   resolve: {
     modules: [
       dirNode,
-      dirApp,
+      dirSrc,
+      dirDemo,
       dirAssets
     ]
   },
