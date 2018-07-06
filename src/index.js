@@ -27,7 +27,10 @@ module.exports = class PosePointer {
     this.setDefaults(opts)
     this.mapDefaults()
 
-    if (this.options.autostart) this.initModel()
+    if (this.options.autostart) {
+      this.setupFeed()
+      this.initPoseNet()
+    }
   }
 
   /**
@@ -40,7 +43,11 @@ module.exports = class PosePointer {
     // Setup defaults
     this.options = {
       autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : true,
-      feed: typeof opts.feed !== 'undefined' ? opts.feed : util.createDefaultVideoFeed()
+      facingMode: opts.facingMode || 'user',
+      feed: opts.feed || util.createDefaultVideoFeed(),
+      posenet: {
+        multiplier: opts.posenet && opts.posenet.multiplier ? opts.posenet.multiplier : 0.75
+      }
     }
   }
 
@@ -52,17 +59,32 @@ module.exports = class PosePointer {
   }
 
   /**
-   * Initializes our model
+   * Sets up the webcam and stream
    */
-  async initModel () {
+  async setupFeed () {
     // Error out when webcams are not supported
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
-    const isMobile = util.isMobile()
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !util.isWebGLSupported()) throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
 
     // Set webcam dimensions
     this.feed.width = 600
     this.feed.height = 500
 
-    this.posenet = await posenet.load()
+    // Start the stream based on the device
+    const isMobile = util.isMobile()
+    this.feed.srcObject = await navigator.mediaDevices.getUserMedia({
+      // We only care about the camera
+      audio: false,
+      video: {facingMode: this.options.facingMode},
+      width: isMobile ? undefined : this.feed.width,
+      height: isMobile ? undefined : this.feed.height
+    })
+    this.feed.play()
+  }
+
+  /**
+   * Initializes posenet
+   */
+  async initPoseNet () {
+    this.posenet = await posenet.load(this.options.posenet.multiplier)
   }
 }

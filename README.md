@@ -47,7 +47,7 @@ The following is a list of features that are currently breaking browser support:
 | Browser | Breaking Features |
 |---------|-------------------|
 | IE11 | getUserMedia
-| Opera Mini | getUsermedia
+| Opera Mini | getUsermedia, WebGL
 
 ### Polyfills
 The following polyfills are providing support for older browsers:
