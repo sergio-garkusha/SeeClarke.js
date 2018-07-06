@@ -1,9 +1,57 @@
-// Apply a natural box layout model to all elements
-// but allowing components to change
-// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-html {
-    box-sizing: border-box;
+$colorMain: #444466;
+$marginMain: 20px;
+$marginSmall: $marginMain / 2;
+$marginBig: $marginMain * 2.5;
+$paddingMain: 20px;
+$paddingSmall: $paddingMain / 2;
+$fontSizeMain: 1.2em;
+$fontSizeSmall: 0.75em;
+
+// Basic styles
+*, *:before, *:after { box-sizing: inherit }
+
+body {
+  font-size: $fontSizeMain;
+  line-height: 1.5em;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  padding: 20px;
+  color: $colorMain;
 }
-*, *:before, *:after {
-    box-sizing: inherit;
+
+h1 {
+  margin: 0;
+  margin-bottom: $marginBig;
+}
+
+label {
+  margin: 0;
+  margin-bottom: $marginSmall;
+}
+
+p {
+  margin: 0;
+  margin-bottom: $marginBig;
+}
+
+pre {
+  background: #fafafa;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.15);
+  padding: $paddingMain;
+  overflow: auto;
+}
+
+section {
+  width: 600px;
+  max-width: 100%;
+  padding: $paddingMain;
+  margin: $marginMain * 2 auto;
+}
+
+select {
+  width: 100%;
+  font-size: $fontSizeSmall;
+  padding: $paddingSmall;
+  margin: $marginMain 0;
+  color: $colorMain;
 }
