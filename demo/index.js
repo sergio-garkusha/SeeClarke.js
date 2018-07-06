@@ -14,4 +14,4 @@ require('../assets/styles/index.scss')
  * const PosePointer = require('../src/index.js')
  * const posepointer = new PosePointer(options)
  */
-const PosePointer = new (require('../src/index.js'))
+window.posepointer = new (require('../src/index.js'))

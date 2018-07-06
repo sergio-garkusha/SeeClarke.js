@@ -19,8 +19,8 @@ const appHtmlTitle = 'posepointer.js boilerplates'
 module.exports = {
   // Entry scripts
   entry: {
-    // Include lodash
-    // vendor: ['lodash'],
+    // Needed for async/await
+    vendor: ['babel-polyfill'],
     // Bundle it with index.js
     bundle: path.join(dirDemo, 'index')
   },
