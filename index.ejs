@@ -1,14 +1,22 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-    <div class="content">
-        <h1>Webpack Boilerplate</h1>
-        <h3>Replace this page with your own code</h3>
+  <section>
+    <h1>posepointer.js</h1>
+    <p>
+      <label for="demo-selector">Demo Selector:</label>
+      <select id="demo-selector" name="demo-selector">
+        <option value="oneliner">One Liner: autostart, emit events, display face-tracked mouse for multiple people, displays debug info</option>
+      </select>
+    <div>
+      <label>Code:</label>
+      <pre>new require('posepointer')</pre>
+      <label>or:</label>
+      <pre>&lt;script src="./posepointer.js"&gt;&lt;/script&gt;</pre>
     </div>
+  </section>
 </body>
-</html>
