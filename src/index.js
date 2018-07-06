@@ -15,6 +15,8 @@
  *    posepointer.update(NEW_OPTIONS)
  */
 const posenet = require('@tensorflow-models/posenet')
+const util = require('./util')
+require('./polyfills')
 
 module.exports = class PosePointer {
   /**
@@ -29,12 +31,13 @@ module.exports = class PosePointer {
 
   /**
    * Sets the default options, and overwrites this.originalOpts
-   * @param {OBJ} opts Our initializer options, @see /wiki/Options.md
+   * @param {Object} opts Our initializer options, @see /wiki/Options.md
    */
   setDefaults (opts) {
     this.initOptions = opts
     this.options = {
-      autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : true
+      autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : true,
+      feed: typeof opts.feed !== 'undefined' ? opts.feed : util.createDefaultVideoFeed()
     }
   }
 
@@ -42,6 +45,9 @@ module.exports = class PosePointer {
    * Initializes our model
    */
   async initModel () {
+    // Error out when webcams are not supported
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
+
     this.posenet = await posenet.load()
   }
 }
