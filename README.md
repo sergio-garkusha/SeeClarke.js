@@ -39,21 +39,22 @@ Because of the many possible and varied applications, **posepointer** is being d
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png" alt="iOS Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>iOS Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/samsung-internet/samsung-internet_48x48.png" alt="Samsung" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Samsung |
 | --------- | --------- | --------- | --------- | --------- | --------- |
-| Edge | last 3 versions| last 3 versions| last 2 versions| last 2 versions| last 2 versions
+| Edge | last 5+ | last 5+ | last 3+ | last 2+ | last 2+
 
 ### Browser Busters
 The following is a list of features that are currently breaking browser support:
 
 | Browser | Breaking Features |
 |---------|-------------------|
-|  |  |
+| IE11 | getUserMedia
+| Opera Mini | getUsermedia
 
 ### Polyfills
 The following polyfills are providing support for older browsers:
 
 | Polyfill | Affected Browsers | Fix | Notes |
 |----------|-------------------|-----|-------|
-|  |  |  |
+| getUserMedia | Chrome <= 49 <br> iOS <= 10.3  | /src/polyfills.js | We're basically only supporting the API change from `navigator.getUserMedia` to `navigator.mediaDevices.getUserMedia`
 ---
 
 ## Building

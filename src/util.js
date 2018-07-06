@@ -14,5 +14,12 @@ module.exports = {
     document.body.appendChild($video)
 
     return $video
-  }
+  },
+
+  /**
+   * Helpers for checking if we're on mobile
+   */
+  isMobile () { return this.isAndroid() || this.isiOS() },
+  isAndroid () { return /Android/i.test(navigator.userAgent) },
+  isiOS () { return /iPhone|iPad|iPod/i.test(navigator.userAgent) }
 }

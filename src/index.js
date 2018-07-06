@@ -25,6 +25,7 @@ module.exports = class PosePointer {
    */
   constructor (opts = {}) {
     this.setDefaults(opts)
+    this.mapDefaults()
 
     if (this.options.autostart) this.initModel()
   }
@@ -35,10 +36,19 @@ module.exports = class PosePointer {
    */
   setDefaults (opts) {
     this.initOptions = opts
+
+    // Setup defaults
     this.options = {
       autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : true,
       feed: typeof opts.feed !== 'undefined' ? opts.feed : util.createDefaultVideoFeed()
     }
+  }
+
+  /**
+   * Maps properties to the defaults (or in other words sets property aliases)
+   */
+  mapDefaults () {
+    this.feed = this.options.feed
   }
 
   /**
@@ -47,6 +57,11 @@ module.exports = class PosePointer {
   async initModel () {
     // Error out when webcams are not supported
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
+    const isMobile = util.isMobile()
+
+    // Set webcam dimensions
+    this.feed.width = 600
+    this.feed.height = 500
 
     this.posenet = await posenet.load()
   }
