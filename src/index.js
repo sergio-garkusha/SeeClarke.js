@@ -24,10 +24,10 @@ class Posepointer {
    * @TODO # CONSTRUCTOR
    * ## IMPORTANT METHOD
    *
-   * [] Sanitizes options and sets sane defaults (@IDEA maybe we can create
+   * [-] Sanitizes options and sets sane defaults (@IDEA maybe we can create
    *    "quickstart strings", where you can pass a string for a set of common
    *    options instead, like ['desktop', 'ios11', 'Raspberry Pi'])
-   * [] If autostart is true, then tracking is initialized if Posepointer
+   * [-] If autostart is true, then tracking is initialized if Posepointer
    *    itself hasn't initialized PoseNet yet, otherwise tracking resumes
    *
    * @param {Object} [opts={}] Constructor options, @see /wiki/Options.md
@@ -35,7 +35,7 @@ class Posepointer {
   constructor (opts = {}) {
     /**
      * @TODO Whether we're tracking or not
-     * [] If manually set to false, this will break any active tracking loops
+     * [-] If manually set to false, this will break any active tracking loops
      *    with unknown side effects. Use this.stop() instead!
      *
      * @type {Boolean}
@@ -57,8 +57,8 @@ class Posepointer {
    * @TODO # PUBLIC METHOD
    *
    * Tracks poses on the current video feed frame:
-   * [] Automatically adjusts algorithm to match "single" or "multiple mode"
-   * [] If debug is on, displays the points and skeletons overlays on the webcam
+   * [-] Automatically adjusts algorithm to match "single" or "multiple mode"
+   * [-] If debug is on, displays the points and skeletons overlays on the webcam
    */
   async trackPoses () {
     const context = this.canvas.getContext('2d')
@@ -96,10 +96,10 @@ class Posepointer {
    * @TODO # PUBLIC METHOD
    *
    * Start tracking poses:
-   * [] If this.options.autostart is false, then you can manually start it
+   * [-] If this.options.autostart is false, then you can manually start it
    *    later with this
-   * [] If the process has started this will restart that process
-   * [] A check is made internally so that only one process is ever running
+   * [-] If the process has started this will restart that process
+   * [-] A check is made internally so that only one process is ever running
    */
   start () {
     if (!this._isTracking) {
@@ -113,7 +113,7 @@ class Posepointer {
    * @TODO # PUBLIC METHOD
    *
    * Stop tracking poses:
-   * [] A process can be stopped to free up memory for other expensive processes
+   * [-] A process can be stopped to free up memory for other expensive processes
    *    or to save on power when idling with this
    */
   stop () {
@@ -125,5 +125,13 @@ class Posepointer {
   }
 }
 
+/**
+ * That's it! You should have enough of an understanding to start picking off
+ * issues on GitHub: https://github.com/LabOfOz/posepointer.js/issues
+ *
+ * Here are some more methods:
+ */
 require('./mixins')(Posepointer)
+
+// Remember: to kick things off you'll want to instantiate this with `new`
 module.exports = Posepointer

@@ -3,10 +3,12 @@ const util = require('./util')
 
 module.exports = function (Posepointer) {
   /**
-   * # PRIVATE METHOD
+   * @TODO # PRIVATE METHOD
    *
-   * Sets defaults to the missing constructor options
-   * @FIXME This could use some refactoring
+   * Sets defaults to the missing constructor options:
+   * [-] Creates a default debug container
+   * [-] Creates a default video and canvas
+   * [-] Sets defaults
    *
    * @param {Object} opts The options passed into the constructor
    */
@@ -28,6 +30,7 @@ module.exports = function (Posepointer) {
     this.initOptions = opts
 
     // Setup defaults
+    // @FIXME This could use some refactoring, probably with Object.assign
     this.options = {
       autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : true,
       canvas: opts.canvas || util.createDefaultCanvas(opts.target),
@@ -48,9 +51,10 @@ module.exports = function (Posepointer) {
   }
 
   /**
-   * # PRIVATE METHOD
+   * @TODO # PRIVATE METHOD
    *
-   * Applies aliases to common options
+   * Applies aliases to common options. Feel free to add your own in here
+   * [] Creates a shorthand to options
    */
   Posepointer.setAliases = function () {
     this.video = this.options.video
@@ -59,13 +63,13 @@ module.exports = function (Posepointer) {
   }
 
   /**
-   * # PRIVATE METHOD
+   * @TODO # PRIVATE METHOD
    *
-   * Sets up the webcam and stream: @TODO
-   * [] This will create its own video/canvas elements, allowing you to have
+   * Sets up the webcam and stream:
+   * [-] This creates its own video/canvas elements, allowing you to have
    *    multiple instances going (for example, to use front/back cameras
    *    simultaneously)
-   * [] Recreates the video feed to reassign srcObject
+   * [-] Recreates the video feed to reassign srcObject once it's been stopped
    */
   Posepointer.setupFeed = async function () {
     // Set webcam dimensions
@@ -85,9 +89,9 @@ module.exports = function (Posepointer) {
   }
 
   /**
-   * # PRIVATE METHOD
+   * @TODO # PRIVATE METHOD
    *
-   * Initializes PoseNet and starts the tracking loop: @TODO
+   * Initializes PoseNet and starts the tracking loop:
    * [] This loads a model from Google's servers based on the chosen PoseNet
    *    modifier
    * [] The webcam feed won't actually be visible until this method is resolved
@@ -99,9 +103,9 @@ module.exports = function (Posepointer) {
   }
 
   /**
-   * # PRIVATE METHOD
+   * @TODO # PRIVATE METHOD
    *
-   * Recursive method for tracking poses on each animationFrame: @TODO
+   * Recursive method for tracking poses on each animationFrame:
    * [] This method is recursive, once called it continues until after
    *    posepointer.stop() is called or until this._isTracking is false
    *

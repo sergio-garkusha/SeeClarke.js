@@ -3,14 +3,14 @@
  *
  * A collection of utility methods which may be helpful in your app outside
  * the context of Posepointer:
- * [] To import this utility, use `let SomeVariable = require('posepointer/src/util.js')`
+ * [-] To import this utility, use `let SomeVariable = require('posepointer/src/util.js')`
  */
 const PoseNet = require('@tensorflow-models/posenet')
 
 module.exports = {
   /**
    * @TODO Creates a default (flipped) video and adds it to the DOM:
-   * [] The video is absolutely positioned within the $wrap
+   * [-] The video is absolutely positioned within the $wrap
    *
    * @param {HTMLElement} $wrap A container to embed the video into
    *
@@ -31,7 +31,7 @@ module.exports = {
 
   /**
    * @TODO Creates a default (flipped) canvas and adds it to the DOM
-   * [] The canvas is added to the $wrap (along with the video) relatively
+   * [-] The canvas is added to the $wrap (along with the video) relatively
    *
    * @param {Element} $wrap The wrapping element to inject the canvas into
    *
@@ -51,9 +51,9 @@ module.exports = {
 
   /**
    * @TODO Helpers for checking if we're on mobile
-   * [] Checks if we're on mobile
-   * [] Checks if we're on android
-   * [] Checks if we're on iOS
+   * [-] Checks if we're on mobile
+   * [-] Checks if we're on android
+   * [-] Checks if we're on iOS
    */
   isMobile () { return this.isAndroid() || this.isiOS() },
   isAndroid () { return /Android/i.test(navigator.userAgent) },
@@ -63,8 +63,9 @@ module.exports = {
    * @TODO Checks if WebGL is supported. Depending on your deployment needs,
    * you can first check if WebGL is supported with this method, and then either
    * display a message or start the tracker.
-   * [] This will automatically fail if canvas is not supported!
-   * [] Checks for webgl and experimental-webgl
+   *
+   * [-] This will automatically fail if canvas is not supported!
+   * [-] Checks for webgl and experimental-webgl
    *
    * @see https://stackoverflow.com/a/22953053
    *
@@ -84,7 +85,10 @@ module.exports = {
   },
 
   /**
-   * Draw each tracked keypoint
+   * @TODO Draw each tracked keypoint
+   * [-] Draws keypoints only when they are "visible"
+   * [] You can optionally set the keypoint styles
+   *
    * @see https://github.com/tensorflow/tfjs-models/tree/master/posenet
    *
    * @param {ARR} keypoints The list of all keypoints
@@ -103,8 +107,10 @@ module.exports = {
   },
 
   /**
-   * Draw each tracked skeleton
+   * @TODO Draw each tracked skeleton
    * @see https://github.com/tensorflow/tfjs-models/tree/master/posenet
+   *
+   * [-] Draws all visible segments captured with PoseNet.getAdjacentKeyPoints
    *
    * @param {ARR} adjacentPoints The list of all keypoints and their relationships
    * @param {OBJ} context The canvas context to draw into
@@ -116,13 +122,18 @@ module.exports = {
   },
 
   /**
-   * Converts a position to a tuple
-   * @param {OBJ} position {y, x}
+   * @TODO Converts a position to a tuple
+   * [-] Essentially converts an {x, y} object into a [y, x] array
+   *
+   * @param {OBJ} position {x, y}
    */
-  toTuple ({y, x}) { return [y, x] },
+  toTuple ({x, y}) { return [y, x] },
 
   /**
-   * Draws a skeleton segment
+   * @TODO Draws the skeleton segment
+   * [-] A segment is a straight line between two tuples
+   * [] You can optionally set the styles
+   *
    * @param {OBJ} fromTuple [ay, ax] The starting point
    * @param {OBJ} toTuple [by, bx] The ending point
    * @param {HEX} color The color to draw in
