@@ -75,8 +75,10 @@ class Posepointer {
    * [] A check is made internally so that only one process is ever running
    */
   start () {
-    this.constructor.setupFeed.call(this)
-    this.constructor.initPoseNet.call(this)
+    if (!this._isTracking) {
+      this.constructor.setupFeed.call(this)
+      this.constructor.initPoseNet.call(this)
+    }
   }
 
   /**
@@ -87,7 +89,8 @@ class Posepointer {
    *    or to save on power when idling with this
    */
   stop () {
-    console.log('this.stop()')
+    this._isTracking = false
+    this.video.srcObject.getTracks().forEach(track => track.stop())
   }
 }
 
