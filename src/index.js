@@ -20,13 +20,35 @@ require('./polyfills')
 
 module.exports = class PosePointer {
   /**
-   * Our main constructor
-   * @param {OBJ} opts Our initializer options, @see /wiki/Options.md
+   * # CONSTRUCTOR
+   * ## IMPORTANT METHOD: @TODO
+   *
+   * [] Sanitizes options and sets sane defaults (@IDEA maybe we can create
+   *    "quickstart strings", where you can pass a string for a set of common
+   *    options instead, like ['desktop', 'ios11', 'Raspberry Pi'])
+   * [] If autostart is true, then tracking is initialized if PosePointer
+   *    itself hasn't initialized PoseNet yet, otherwise tracking resumes
+   *
+   * @param {Object} [opts={}] Constructor options, @see /wiki/Options.md
    */
   constructor (opts = {}) {
-    this.constructor.setDefaults.call(this, opts)
-    this.constructor.mapDefaults.call(this)
+    /**
+     * Whether we're tracking or not: @TODO
+     * [] If manually set to false, this will break any active tracking loops
+     *    with unknown side effects
+     *
+     * @type {Boolean}
+     */
+    this._isTracking = false
 
+    // Error out when webcams are not supported
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !util.isWebGLSupported()) throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
+
+    // "Sanitize" constructor input
+    this.constructor.setDefaults.call(this, opts)
+    this.constructor.setAliases.call(this)
+
+    // Possibly autostart
     if (this.options.autostart) {
       this.constructor.setupFeed.call(this)
       this.constructor.initPoseNet.call(this)
@@ -34,8 +56,12 @@ module.exports = class PosePointer {
   }
 
   /**
-   * Sets the default options, and overwrites this.originalOpts
-   * @param {Object} opts Our initializer options, @see /wiki/Options.md
+   * # PRIVATE METHOD
+   *
+   * Sets defaults to the missing constructor options
+   * @FIXME This could use some refactoring
+   *
+   * @param {Object} opts The options passed into the constructor
    */
   static setDefaults (opts) {
     this.initOptions = opts
@@ -57,20 +83,25 @@ module.exports = class PosePointer {
   }
 
   /**
-   * Maps properties to the defaults (or in other words sets property aliases)
+   * # PRIVATE METHOD
+   *
+   * Applies aliases to common options
    */
-  static mapDefaults () {
+  static setAliases () {
     this.video = this.options.video
     this.canvas = this.options.canvas
   }
 
   /**
-   * Sets up the webcam and stream
+   * # PRIVATE METHOD
+   *
+   * Sets up the webcam and stream: @TODO
+   * [] This will create its own video/canvas elements, allowing you to have
+   *    multiple instances going (for example, to use front/back cameras
+   *    simultaneously)
+   * [] Recreates the video feed to reassign srcObject
    */
   static async setupFeed () {
-    // Error out when webcams are not supported
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !util.isWebGLSupported()) throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
-
     // Set webcam dimensions
     this.canvas.width = this.video.width = 600
     this.canvas.height = this.video.height = 500
@@ -88,21 +119,68 @@ module.exports = class PosePointer {
   }
 
   /**
-   * Initializes PoseNet and starts the tracker
+   * # PRIVATE METHOD
+   *
+   * Initializes PoseNet and starts the tracking loop: @TODO
+   * [] This loads a model from Google's servers based on the chosen PoseNet
+   *    modifier
    */
   static async initPoseNet () {
     this.posenet = await posenet.load(this.options.posenet.multiplier)
-    this.trackPoses()
+    this._isTracking = true
+    this.constructor.trackPosesLoop(this)
   }
 
   /**
-   * !!! Tracks poses !!!
+   * # PRIVATE METHOD
    *
-   * This method is recursive, once called it continues until posepointer.stop() is called
+   * Recursive method for tracking poses on each animationFrame: @TODO
+   * [] This method is recursive, once called it continues until after
+   *    posepointer.stop() is called or until this._isTracking is false
+   *
+   * @param {PosePointer} context The this context, since we're in the
+   *    constructor scope now
+   */
+  static async trackPosesLoop (context) {
+    context.trackPoses()
+    context._isTracking && requestAnimationFrame(() => this.trackPosesLoop(context))
+  }
+
+  /**
+   * # PRIVATE METHOD
+   * ## IMPORTANT METHOD
+   *
+   * Tracks poses on the current video feed frame: @TODO
+   * [] Automatically adjusts algorithm to match "single" or "multiple mode"
+   * [] If debug is on, displays the points and skeletons overlays on the webcam
    */
   async trackPoses () {
     let poses = []
     let minPoseConfidence = this.options.posenet.minPoseConfidence
     let minPartConfidence = this.options.posenet.minPartConfidence
+  }
+
+  /**
+   * # PUBLIC METHOD
+   *
+   * Start tracking poses: @TODO
+   * [] If this.options.autostart is false, then you can manually start it
+   *    later with this
+   * [] If the process has started this will restart that process
+   * [] A check is made internally so that only one process is ever running
+   */
+  start () {
+    console.log('START')
+  }
+
+  /**
+   * # PUBLIC METHOD
+   *
+   * Stop tracking poses: @TODO
+   * [] A process can be stopped to free up memory for other expensive processes
+   *    or to save on power when idling with this
+   */
+  stop () {
+
   }
 }
