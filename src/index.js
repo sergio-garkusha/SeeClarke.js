@@ -17,6 +17,7 @@
  * - Describes what this method does (passes unit/e2e)
  */
 require('./polyfills')
+const PoseNet = require('@tensorflow-models/posenet')
 const util = require('./util')
 
 class Posepointer {
@@ -85,7 +86,7 @@ class Posepointer {
           const adjacentKeypoints = PoseNet.getAdjacentKeyPoints(keypoints, this.options.posenet.minPartConfidence, context)
 
           context.clearRect(0, 0, this.canvas.width, this.canvas.height)
-          util.drawSkeleton(keypoints, adjacentKeypoints, this.options.posenet.minPartConfidence, context)
+          util.drawSkeleton(adjacentKeypoints, context)
           util.drawKeypoints(keypoints, this.options.posenet.minPartConfidence, context)
         }
       })
