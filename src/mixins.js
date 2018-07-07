@@ -90,6 +90,7 @@ module.exports = function (Posepointer) {
    * Initializes PoseNet and starts the tracking loop: @TODO
    * [] This loads a model from Google's servers based on the chosen PoseNet
    *    modifier
+   * [] The webcam feed won't actually be visible until this method is resolved
    */
   Posepointer.initPoseNet = async function () {
     if (!this.posenet) this.posenet = await PoseNet.load(this.options.posenet.multiplier)

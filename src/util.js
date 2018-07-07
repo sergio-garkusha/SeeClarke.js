@@ -1,13 +1,19 @@
+/**
+ * @TODO # util.js
+ *
+ * A collection of utility methods which may be helpful in your app outside
+ * the context of Posepointer:
+ * [] To import this utility, use `let SomeVariable = require('posepointer/src/util.js')`
+ */
 const PoseNet = require('@tensorflow-models/posenet')
 
-/**
- * Util.js
- * Useful utility methods
- */
 module.exports = {
   /**
-   * Creates a default (flipped) video and adds it to the DOM
+   * @TODO Creates a default (flipped) video and adds it to the DOM:
+   * [] The video is absolutely positioned within the $wrap
+   *
    * @param {HTMLElement} $wrap A container to embed the video into
+   *
    * @return {HTMLVideoElement} A hidden video used for inference with PoseNet
    */
   createDefaultVideo ($wrap) {
@@ -24,9 +30,11 @@ module.exports = {
   },
 
   /**
-   * Creates a default (flipped) canvas and adds it to the DOM
+   * @TODO Creates a default (flipped) canvas and adds it to the DOM
+   * [] The canvas is added to the $wrap (along with the video) relatively
    *
    * @param {Element} $wrap The wrapping element to inject the canvas into
+   *
    * @return {HTMLCanvasElement} A hidden canvas used for debugging with PoseNet
    */
   createDefaultCanvas ($wrap) {
@@ -42,15 +50,25 @@ module.exports = {
   },
 
   /**
-   * Helpers for checking if we're on mobile
+   * @TODO Helpers for checking if we're on mobile
+   * [] Checks if we're on mobile
+   * [] Checks if we're on android
+   * [] Checks if we're on iOS
    */
   isMobile () { return this.isAndroid() || this.isiOS() },
   isAndroid () { return /Android/i.test(navigator.userAgent) },
   isiOS () { return /iPhone|iPad|iPod/i.test(navigator.userAgent) },
 
   /**
-   * Checks if WebGL is supported
+   * @TODO Checks if WebGL is supported. Depending on your deployment needs,
+   * you can first check if WebGL is supported with this method, and then either
+   * display a message or start the tracker.
+   * [] This will automatically fail if canvas is not supported!
+   * [] Checks for webgl and experimental-webgl
+   *
    * @see https://stackoverflow.com/a/22953053
+   *
+   * @return {Boolean} Is WebGL supported?
    */
   isWebGLSupported () {
     try {
@@ -88,13 +106,10 @@ module.exports = {
    * Draw each tracked skeleton
    * @see https://github.com/tensorflow/tfjs-models/tree/master/posenet
    *
-   * @param {ARR} keypoints The list of all keypoints
-   * @param {NUM} minConfidnece The minimum keypoint score needed to track
+   * @param {ARR} adjacentPoints The list of all keypoints and their relationships
    * @param {OBJ} context The canvas context to draw into
    */
-  drawSkeleton (keypoints, minConfidence, context) {
-    const adjacentPoints = PoseNet.getAdjacentKeyPoints(keypoints, minConfidence, context)
-
+  drawSkeleton (adjacentPoints, context) {
     adjacentPoints.forEach(keypoints => {
       this.drawSegment(this.toTuple(keypoints[0].position), this.toTuple(keypoints[1].position), context)
     })

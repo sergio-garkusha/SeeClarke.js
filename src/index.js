@@ -1,26 +1,28 @@
 /**
- * index.js
- * - Main entrypoint for Posepointer
+ * # index.js
  *
- * - Usage example 1:
- *    new (require('posepointer'))(OPTIONS)
+ * This file contains all the "onboarding methods"; a glance at these methods
+ * should give you a general understanding for how the app works!
  *
- * - Usage example 2:
- *    <script src="./posepointer.js"></script>
+ * @IDEA: Build an Atom/VSCode plugin to help automate these comments into a
+ * document/project manage board to allow for easier collaboration!
  *
- * - Usage example 3:
- *    import Posepointer from 'posepointer'
- *    const posepointer = new Posepointer(OPTIONS)
+ * @NOTE: Please don't worry too much about commenting your code or formatting
+ * your code in any way. I format the comments during my code review process
+ * anyways.
  *
- *    posepointer.update(NEW_OPTIONS)
+ * @NOTE: When I docblockr-comment, the bullets mean:
+ * [] Describes what this method *will do* (to do's)
+ * [-] Describes what this method *should be doing* (needs unit/e2e testing)
+ * - Describes what this method does (passes unit/e2e)
  */
 require('./polyfills')
 const util = require('./util')
 
 class Posepointer {
   /**
-   * # CONSTRUCTOR
-   * ## IMPORTANT METHOD: @TODO
+   * @TODO # CONSTRUCTOR
+   * ## IMPORTANT METHOD
    *
    * [] Sanitizes options and sets sane defaults (@IDEA maybe we can create
    *    "quickstart strings", where you can pass a string for a set of common
@@ -32,7 +34,7 @@ class Posepointer {
    */
   constructor (opts = {}) {
     /**
-     * Whether we're tracking or not: @TODO
+     * @TODO Whether we're tracking or not
      * [] If manually set to false, this will break any active tracking loops
      *    with unknown side effects. Use this.stop() instead!
      *
@@ -52,9 +54,9 @@ class Posepointer {
   }
 
   /**
-   * # PUBLIC METHOD
+   * @TODO # PUBLIC METHOD
    *
-   * Tracks poses on the current video feed frame: @TODO
+   * Tracks poses on the current video feed frame:
    * [] Automatically adjusts algorithm to match "single" or "multiple mode"
    * [] If debug is on, displays the points and skeletons overlays on the webcam
    */
@@ -80,8 +82,10 @@ class Posepointer {
     if (this.debug) {
       poses.forEach(({score, keypoints}) => {
         if (score >= this.options.posenet.minPoseConfidence) {
+          const adjacentKeypoints = PoseNet.getAdjacentKeyPoints(keypoints, this.options.posenet.minPartConfidence, context)
+
           context.clearRect(0, 0, this.canvas.width, this.canvas.height)
-          util.drawSkeleton(keypoints, this.options.posenet.minPartConfidence, context)
+          util.drawSkeleton(keypoints, adjacentKeypoints, this.options.posenet.minPartConfidence, context)
           util.drawKeypoints(keypoints, this.options.posenet.minPartConfidence, context)
         }
       })
@@ -89,9 +93,9 @@ class Posepointer {
   }
 
   /**
-   * # PUBLIC METHOD
+   * @TODO # PUBLIC METHOD
    *
-   * Start tracking poses: @TODO
+   * Start tracking poses:
    * [] If this.options.autostart is false, then you can manually start it
    *    later with this
    * [] If the process has started this will restart that process
@@ -106,9 +110,9 @@ class Posepointer {
   }
 
   /**
-   * # PUBLIC METHOD
+   * @TODO # PUBLIC METHOD
    *
-   * Stop tracking poses: @TODO
+   * Stop tracking poses:
    * [] A process can be stopped to free up memory for other expensive processes
    *    or to save on power when idling with this
    */
