@@ -41,7 +41,7 @@ pre {
 }
 
 section {
-  width: 600px;
+  width: 600 + $paddingMain * 2;
   max-width: 100%;
   padding: $paddingMain;
   margin: $marginMain * 2 auto;

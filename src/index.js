@@ -99,7 +99,7 @@ class Posepointer {
    */
   start () {
     if (!this._isTracking) {
-      this.options.target.style.display = 'inherit'
+      if (this.debug) this.options.target.style.display = 'inherit'
       this.constructor.setupFeed.call(this)
       this.constructor.initPoseNet.call(this)
     }
