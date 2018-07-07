@@ -25,11 +25,14 @@ class Posepointer {
    * @TODO # CONSTRUCTOR
    * ## IMPORTANT METHOD
    *
-   * [-] Sanitizes options and sets sane defaults (@IDEA maybe we can create
-   *    "quickstart strings", where you can pass a string for a set of common
-   *    options instead, like ['desktop', 'ios11', 'Raspberry Pi'])
+   * [-] Fails if getUserMedia is not supported
+   * [-] Sanitizes options and sets sane defaults
    * [-] If autostart is true, then tracking is initialized if Posepointer
    *    itself hasn't initialized PoseNet yet, otherwise tracking resumes
+   *
+   * @IDEA maybe we can create "quickstart strings", where you can pass a string
+   * for a set of common options instead, like:
+   * ['desktop', 'ios11', 'Raspberry Pi'])
    *
    * @param {Object} [opts={}] Constructor options, @see /wiki/Options.md
    */
@@ -43,15 +46,27 @@ class Posepointer {
      */
     this._isTracking = false
 
+    /**
+     * @TODO Whether the browser is supported or not
+     * [-] An error is thrown when it's not
+     *
+     * @type {Boolean}
+     */
+    this._isSupported = false
+
     // Error out when webcams are not supported
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !util.isWebGLSupported()) throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !util.isWebGLSupported()) {
+      throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
+    } else {
+      this._isSupported = true
 
-    // "Sanitize" constructor input
-    this.constructor.setDefaults.call(this, opts)
-    this.constructor.setAliases.call(this)
+      // "Sanitize" constructor input
+      this.constructor.setDefaults.call(this, opts)
+      this.constructor.setAliases.call(this)
 
-    // Possibly autostart
-    this.options.autostart && this.start()
+      // Possibly autostart
+      this.options.autostart && this.start()
+    }
   }
 
   /**
