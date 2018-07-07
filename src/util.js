@@ -1,3 +1,5 @@
+const PoseNet = require('@tensorflow-models/posenet')
+
 /**
  * Util.js
  * Useful utility methods
@@ -9,10 +11,18 @@ module.exports = {
    * @return {HTMLVideoElement} A hidden video used for inference with PoseNet
    */
   createDefaultVideo () {
+    const $wrap = document.createElement('div')
     const $video = document.createElement('video')
+
+    $wrap.classList.add('posepointer-debug-wrap')
     $video.setAttribute('playsinline', true)
+
+    $wrap.style.position = 'relative'
     $video.style.transform = 'scale(-1, 1)'
-    document.body.appendChild($video)
+    $video.style.position = 'absolute'
+
+    document.body.appendChild($wrap)
+    $wrap.appendChild($video)
 
     return $video
   },
@@ -20,12 +30,16 @@ module.exports = {
   /**
    * Creates a default (flipped) canvas and adds it to the DOM
    *
+   * @param {Element} video The $video element to get a parent wrapper for
    * @return {HTMLCanvasElement} A hidden canvas used for debugging with PoseNet
    */
-  createDefaultCanvas () {
+  createDefaultCanvas (video) {
     const $canvas = document.createElement('canvas')
     $canvas.style.transform = 'scale(-1, 1)'
-    document.body.appendChild($canvas)
+    $canvas.style.position = 'absolute'
+    $canvas.style.top = 0
+    $canvas.style.left = 0
+    video.parentElement.appendChild($canvas)
 
     return $canvas
   },
@@ -52,5 +66,64 @@ module.exports = {
       console.error('WebGL is not supported in this browser')
       return false
     }
+  },
+
+  /**
+   * Draw each tracked keypoint
+   * @see https://github.com/tensorflow/tfjs-models/tree/master/posenet
+   *
+   * @param {ARR} keypoints The list of all keypoints
+   * @param {NUM} minConfidence The minimum keypoint score needed to track
+   * @param {OBJ} context The canvas context to draw into
+   */
+  drawKeypoints (keypoints, minConfidence, context) {
+    keypoints.forEach(({position, score}) => {
+      if (score > minConfidence) {
+        context.beginPath()
+        context.arc(position.x, position.y, 15, 0, 2 * Math.PI)
+        context.fillStyle = '#00ff00'
+        context.fill()
+      }
+    })
+  },
+
+  /**
+   * Draw each tracked skeleton
+   * @see https://github.com/tensorflow/tfjs-models/tree/master/posenet
+   *
+   * @param {ARR} keypoints The list of all keypoints
+   * @param {NUM} minConfidnece The minimum keypoint score needed to track
+   * @param {OBJ} context The canvas context to draw into
+   */
+  drawSkeleton (keypoints, minConfidence, context) {
+    const adjacentPoints = PoseNet.getAdjacentKeyPoints(keypoints, minConfidence, context)
+
+    adjacentPoints.forEach(keypoints => {
+      this.drawSegment(this.toTuple(keypoints[0].position), this.toTuple(keypoints[1].position), context)
+    })
+  },
+
+  /**
+   * Converts a position to a tuple
+   * @param {OBJ} position {y, x}
+   */
+  toTuple ({y, x}) { return [y, x] },
+
+  /**
+   * Draws a skeleton segment
+   * @param {OBJ} fromTuple [ay, ax] The starting point
+   * @param {OBJ} toTuple [by, bx] The ending point
+   * @param {HEX} color The color to draw in
+   * @param {OBJ} context The canvas context to draw in
+   */
+  drawSegment ([ay, ax], [by, bx], context) {
+    const scale = 1
+
+    context.beginPath()
+    context.moveTo(ax * scale, ay * scale)
+    context.lineTo(bx * scale, by * scale)
+    context.lineWidth = 10
+    context.strokeStyle = '#0000ff'
+    context.stroke()
   }
 }

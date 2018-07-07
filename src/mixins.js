@@ -1,4 +1,4 @@
-const posenet = require('@tensorflow-models/posenet')
+const PoseNet = require('@tensorflow-models/posenet')
 const util = require('./util')
 
 module.exports = function (Posepointer) {
@@ -11,20 +11,24 @@ module.exports = function (Posepointer) {
    * @param {Object} opts The options passed into the constructor
    */
   Posepointer.setDefaults = function (opts) {
+    const video = opts.video || util.createDefaultVideo()
     this.initOptions = opts
 
     // Setup defaults
     this.options = {
       autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : true,
       facingMode: opts.facingMode || 'user',
-      video: opts.video || util.createDefaultVideo(),
-      canvas: opts.canvas || util.createDefaultCanvas(),
+      video,
+      canvas: opts.canvas || util.createDefaultCanvas(video),
+      debug: opts.debug || false,
       posenet: {
         multiplier: opts.posenet && opts.posenet.multiplier ? opts.posenet.multiplier : 0.75,
         maxUsers: opts.posenet && opts.posenet.maxUsers ? opts.posenet.maxUsers : 1,
         minPoseConfidence: opts.posenet && opts.posenet.minPoseConfidence ? opts.posenet.minPoseConfidence : 0.1,
         minPartConfidence: opts.posenet && opts.posenet.minPartConfidence ? opts.posenet.minPartConfidence : 0.5,
-        nmsRadius: opts.posenet && opts.posenet.nmsRadius ? opts.posenet.nmsRadius : 20
+        outputStride: opts.posenet && opts.posenet.outputStride ? opts.posenet.outputStride : 16,
+        nmsRadius: opts.posenet && opts.posenet.nmsRadius ? opts.posenet.nmsRadius : 20,
+        scoreThreshold: opts.posenet && opts.posenet.scoreThreshold ? opts.posenet.scoreThreshold : 0.5
       }
     }
   }
@@ -37,6 +41,7 @@ module.exports = function (Posepointer) {
   Posepointer.setAliases = function () {
     this.video = this.options.video
     this.canvas = this.options.canvas
+    this.debug = this.options.debug
   }
 
   /**
@@ -73,7 +78,7 @@ module.exports = function (Posepointer) {
    *    modifier
    */
   Posepointer.initPoseNet = async function () {
-    if (!this.posenet) this.posenet = await posenet.load(this.options.posenet.multiplier)
+    if (!this.posenet) this.posenet = await PoseNet.load(this.options.posenet.multiplier)
     this._isTracking = true
     this.constructor.trackPosesLoop(this)
   }

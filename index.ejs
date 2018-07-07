@@ -10,13 +10,15 @@
     <p>
       <label for="demo-selector">Demo Selector:</label>
       <select id="demo-selector" name="demo-selector">
-        <option value="oneliner">One Liner: autostart, emit events, display face-tracked mouse for multiple people, displays debug info</option>
+        <option value="oneliner">One Liner: autostart, emit events, display face-tracked mouse for one person, displays debug info</option>
       </select>
     <div>
-      <label>Code:</label>
+      <label>HTML:</label>
+      <pre>&lt;script src="./posepointer.js"&gt;&lt;/script&gt;
+&lt;script&gt;new Posepointer({autostart: true})&lt;/script&gt;</pre>
+      <br>
+      <label><small>or</small> Node:</label>
       <pre>new (require('posepointer'))({autostart: true})</pre>
-      <label>or:</label>
-      <pre>&lt;script src="./posepointer.js"&gt;&lt;/script&gt;</pre>
     </div>
   </section>
 </body>

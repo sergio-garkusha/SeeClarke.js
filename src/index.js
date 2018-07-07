@@ -14,8 +14,8 @@
  *
  *    posepointer.update(NEW_OPTIONS)
  */
-const util = require('./util')
 require('./polyfills')
+const util = require('./util')
 
 class Posepointer {
   /**
@@ -34,7 +34,7 @@ class Posepointer {
     /**
      * Whether we're tracking or not: @TODO
      * [] If manually set to false, this will break any active tracking loops
-     *    with unknown side effects
+     *    with unknown side effects. Use this.stop() instead!
      *
      * @type {Boolean}
      */
@@ -52,17 +52,39 @@ class Posepointer {
   }
 
   /**
-   * # PRIVATE METHOD
-   * ## IMPORTANT METHOD
+   * # PUBLIC METHOD
    *
    * Tracks poses on the current video feed frame: @TODO
    * [] Automatically adjusts algorithm to match "single" or "multiple mode"
    * [] If debug is on, displays the points and skeletons overlays on the webcam
    */
   async trackPoses () {
+    const context = this.canvas.getContext('2d')
     let poses = []
-    let minPoseConfidence = this.options.posenet.minPoseConfidence
-    let minPartConfidence = this.options.posenet.minPartConfidence
+
+    // Get single pose
+    if (this.options.posenet.maxUsers === 1) {
+      // @TODO comment this
+      let pose = await this.posenet.estimateSinglePose(this.video, this.options.posenet.imageScaleFactor, false, this.options.posenet.outputStride)
+      poses.push(pose)
+    // Get multiple poses
+    } else {
+      poses = await this.posenet.estimateMultiplePoses(
+        this.video, this.options.posenet.imageScaleFactor, false, this.options.posenet.outputStride,
+        this.options.posenet.maxUsers, this.settings.posenet.scoreThreshold, this.options.posenet.nmsRadius)
+    }
+
+    this.poses = poses
+
+    if (this.debug) {
+      poses.forEach(({score, keypoints}) => {
+        if (score >= this.options.posenet.minPoseConfidence) {
+          context.clearRect(0, 0, this.canvas.width, this.canvas.height)
+          util.drawSkeleton(keypoints, this.options.posenet.minPartConfidence, context)
+          util.drawKeypoints(keypoints, this.options.posenet.minPartConfidence, context)
+        }
+      })
+    }
   }
 
   /**
@@ -89,8 +111,10 @@ class Posepointer {
    *    or to save on power when idling with this
    */
   stop () {
-    this._isTracking = false
-    this.video.srcObject.getTracks().forEach(track => track.stop())
+    if (this._isTracking) {
+      this._isTracking = false
+      this.video.srcObject.getTracks().forEach(track => track.stop())
+    }
   }
 }
 
