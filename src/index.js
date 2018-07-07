@@ -49,10 +49,7 @@ module.exports = class PosePointer {
     this.constructor.setAliases.call(this)
 
     // Possibly autostart
-    if (this.options.autostart) {
-      this.constructor.setupFeed.call(this)
-      this.constructor.initPoseNet.call(this)
-    }
+    this.options.autostart && this.start()
   }
 
   /**
@@ -170,7 +167,8 @@ module.exports = class PosePointer {
    * [] A check is made internally so that only one process is ever running
    */
   start () {
-    console.log('START')
+    this.constructor.setupFeed.call(this)
+    this.constructor.initPoseNet.call(this)
   }
 
   /**
@@ -181,6 +179,6 @@ module.exports = class PosePointer {
    *    or to save on power when idling with this
    */
   stop () {
-
+    console.log('this.stop()')
   }
 }
