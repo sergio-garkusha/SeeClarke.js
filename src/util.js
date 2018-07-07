@@ -7,21 +7,17 @@ const PoseNet = require('@tensorflow-models/posenet')
 module.exports = {
   /**
    * Creates a default (flipped) video and adds it to the DOM
-   *
+   * @param {HTMLElement} $wrap A container to embed the video into
    * @return {HTMLVideoElement} A hidden video used for inference with PoseNet
    */
-  createDefaultVideo () {
-    const $wrap = document.createElement('div')
+  createDefaultVideo ($wrap) {
     const $video = document.createElement('video')
 
     $wrap.classList.add('posepointer-debug-wrap')
-    $video.setAttribute('playsinline', true)
 
-    $wrap.style.position = 'relative'
+    $video.setAttribute('playsinline', true)
     $video.style.transform = 'scale(-1, 1)'
     $video.style.position = 'absolute'
-
-    document.body.appendChild($wrap)
     $wrap.appendChild($video)
 
     return $video
@@ -30,16 +26,17 @@ module.exports = {
   /**
    * Creates a default (flipped) canvas and adds it to the DOM
    *
-   * @param {Element} video The $video element to get a parent wrapper for
+   * @param {Element} $wrap The wrapping element to inject the canvas into
    * @return {HTMLCanvasElement} A hidden canvas used for debugging with PoseNet
    */
-  createDefaultCanvas (video) {
+  createDefaultCanvas ($wrap) {
     const $canvas = document.createElement('canvas')
     $canvas.style.transform = 'scale(-1, 1)'
-    $canvas.style.position = 'absolute'
+    $canvas.style.position = 'relative'
     $canvas.style.top = 0
     $canvas.style.left = 0
-    video.parentElement.appendChild($canvas)
+
+    $wrap.appendChild($canvas)
 
     return $canvas
   },
@@ -123,7 +120,7 @@ module.exports = {
     context.moveTo(ax * scale, ay * scale)
     context.lineTo(bx * scale, by * scale)
     context.lineWidth = 10
-    context.strokeStyle = '#0000ff'
+    context.strokeStyle = '#ff00ff'
     context.stroke()
   }
 }

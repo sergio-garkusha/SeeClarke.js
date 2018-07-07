@@ -76,6 +76,7 @@ class Posepointer {
 
     this.poses = poses
 
+    // Only draw when debug is on
     if (this.debug) {
       poses.forEach(({score, keypoints}) => {
         if (score >= this.options.posenet.minPoseConfidence) {
@@ -98,6 +99,7 @@ class Posepointer {
    */
   start () {
     if (!this._isTracking) {
+      this.options.target.style.display = 'inherit'
       this.constructor.setupFeed.call(this)
       this.constructor.initPoseNet.call(this)
     }
@@ -112,6 +114,7 @@ class Posepointer {
    */
   stop () {
     if (this._isTracking) {
+      this.options.target.style.display = 'none'
       this._isTracking = false
       this.video.srcObject.getTracks().forEach(track => track.stop())
     }

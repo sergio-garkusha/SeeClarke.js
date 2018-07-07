@@ -11,16 +11,28 @@ module.exports = function (Posepointer) {
    * @param {Object} opts The options passed into the constructor
    */
   Posepointer.setDefaults = function (opts) {
-    const video = opts.video || util.createDefaultVideo()
+    // Fallback for default target
+    if (!opts.target) {
+      opts.target = document.getElementById('posepointer-debug')
+
+      if (!opts.target) {
+        opts.target = document.createElement('p')
+        opts.target.style.position = 'relative'
+        document.body.appendChild(opts.target)
+      }
+    }
+    opts.target.style.display = 'none'
+
+    // Setup the video element
+    const video = opts.video || util.createDefaultVideo(opts.target)
     this.initOptions = opts
 
     // Setup defaults
     this.options = {
       autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : true,
-      facingMode: opts.facingMode || 'user',
-      video,
-      canvas: opts.canvas || util.createDefaultCanvas(video),
+      canvas: opts.canvas || util.createDefaultCanvas(opts.target),
       debug: opts.debug || false,
+      facingMode: opts.facingMode || 'user',
       posenet: {
         multiplier: opts.posenet && opts.posenet.multiplier ? opts.posenet.multiplier : 0.75,
         maxUsers: opts.posenet && opts.posenet.maxUsers ? opts.posenet.maxUsers : 1,
@@ -29,7 +41,9 @@ module.exports = function (Posepointer) {
         outputStride: opts.posenet && opts.posenet.outputStride ? opts.posenet.outputStride : 16,
         nmsRadius: opts.posenet && opts.posenet.nmsRadius ? opts.posenet.nmsRadius : 20,
         scoreThreshold: opts.posenet && opts.posenet.scoreThreshold ? opts.posenet.scoreThreshold : 0.5
-      }
+      },
+      target: opts.target,
+      video
     }
   }
 

@@ -12,13 +12,13 @@
       <select id="demo-selector" name="demo-selector">
         <option value="oneliner">One Liner: autostart, emit events, display face-tracked mouse for one person, displays debug info</option>
       </select>
-    <div>
+    <p id="posepointer-debug" style="position: relative"></p>
+    <p>
       <label>HTML:</label>
       <pre>&lt;script src="./posepointer.js"&gt;&lt;/script&gt;
 &lt;script&gt;new Posepointer({autostart: true})&lt;/script&gt;</pre>
-      <br>
+    <p>
       <label><small>or</small> Node:</label>
       <pre>new (require('posepointer'))({autostart: true})</pre>
-    </div>
   </section>
 </body>
