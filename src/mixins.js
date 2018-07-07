@@ -98,7 +98,6 @@ module.exports = function (Posepointer) {
    */
   Posepointer.initPoseNet = async function () {
     if (!this.posenet) this.posenet = await PoseNet.load(this.options.posenet.multiplier)
-    this._isTracking = true
     this.constructor.trackPosesLoop(this)
   }
 

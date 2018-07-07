@@ -12,7 +12,7 @@
  * anyways.
  *
  * @NOTE: When I docblockr-comment, the bullets mean:
- * [] Describes what this method *will do* (to do's)
+ * [ ] Describes what this method *will do* (to do's)
  * [-] Describes what this method *should be doing* (needs unit/e2e testing)
  * - Describes what this method does (passes unit/e2e)
  */
@@ -22,25 +22,19 @@ const util = require('./util')
 
 class Posepointer {
   /**
-   * @TODO # CONSTRUCTOR
-   * ## IMPORTANT METHOD
-   *
-   * [-] Fails if getUserMedia is not supported
-   * [-] Sanitizes options and sets sane defaults
-   * [-] If autostart is true, then tracking is initialized if Posepointer
-   *    itself hasn't initialized PoseNet yet, otherwise tracking resumes
-   *
-   * @IDEA maybe we can create "quickstart strings", where you can pass a string
-   * for a set of common options instead, like:
-   * ['desktop', 'ios11', 'Raspberry Pi'])
+   * Our main constructor
+   * - Fails if getUserMedia is not supported
+   * - Sanitizes options and sets sane defaults
+   * - Autostarts if options.autostart or if PoseNet has already been initialized
    *
    * @param {Object} [opts={}] Constructor options, @see /wiki/Options.md
    */
   constructor (opts = {}) {
     /**
-     * @TODO Whether we're tracking or not
-     * [-] If manually set to false, this will break any active tracking loops
-     *    with unknown side effects. Use this.stop() instead!
+     * Whether we're tracking or not.
+     *
+     * @NOTE If manually set to false, this will break any active tracking loops
+     * with unknown side effects. Use this.stop() instead!
      *
      * @type {Boolean}
      */
@@ -120,6 +114,7 @@ class Posepointer {
   start () {
     if (!this._isTracking) {
       if (this.debug) this.options.target.style.display = 'inherit'
+      this._isTracking = true
       this.constructor.setupFeed.call(this)
       this.constructor.initPoseNet.call(this)
     }
