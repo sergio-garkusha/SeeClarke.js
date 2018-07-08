@@ -4,15 +4,8 @@
  * This file contains all the "onboarding methods"; a glance at these methods
  * should give you a general understanding for how the app works!
  *
- * @IDEA: Build an Atom/VSCode plugin to help automate these comments into a
- * document/project manage board to allow for easier collaboration!
- *
- * @NOTE: Please don't worry too much about commenting your code or formatting
- * your code in any way. I format the comments during my code review process
- * anyways.
- *
- * @NOTE: When I docblockr-comment, the bullets mean:
- * [ ] Describes what this method *will do* (to do's)
+ * @NOTE: My personal convention for bullet points in docblockr comments is:
+ * [] Describes what this method *will do* (to do's)
  * [-] Describes what this method *should be doing* (needs unit/e2e testing)
  * - Describes what this method does (passes unit/e2e)
  */
@@ -25,7 +18,7 @@ class Posepointer {
    * Our main constructor
    * - Fails if getUserMedia is not supported
    * - Sanitizes options and sets sane defaults
-   * - Autostarts if options.autostart or if PoseNet has already been initialized
+   * - Autostarts if options.autostart
    *
    * @param {Object} [opts={}] Constructor options, @see /wiki/Options.md
    */
@@ -41,10 +34,8 @@ class Posepointer {
     this._isTracking = false
 
     /**
-     * @TODO Whether the browser is supported or not
-     * [-] An error is thrown when it's not
-     *
-     * @type {Boolean}
+     * Whether the browser is supported or not
+     * - This is mostly a helper property for testing
      */
     this._isSupported = false
 
@@ -52,6 +43,7 @@ class Posepointer {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !util.isWebGLSupported()) {
       throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
     } else {
+      // The browser has full support
       this._isSupported = true
 
       // "Sanitize" constructor input
@@ -64,19 +56,15 @@ class Posepointer {
   }
 
   /**
-   * @TODO # PUBLIC METHOD
-   *
-   * Tracks poses on the current video feed frame:
+   * @TODO Tracks poses on the current video feed frame:
    * [-] Automatically adjusts algorithm to match "single" or "multiple mode"
-   * [-] If debug is on, displays the points and skeletons overlays on the webcam
+   * - If debug is on, displays the points and skeletons overlays on the webcam
    */
   async trackPoses () {
-    const context = this.canvas.getContext('2d')
     let poses = []
 
     // Get single pose
     if (this.options.posenet.maxUsers === 1) {
-      // @TODO comment this
       let pose = await this.posenet.estimateSinglePose(this.video, this.options.posenet.imageScaleFactor, false, this.options.posenet.outputStride)
       poses.push(pose)
     // Get multiple poses
@@ -86,20 +74,29 @@ class Posepointer {
         this.options.posenet.maxUsers, this.settings.posenet.scoreThreshold, this.options.posenet.nmsRadius)
     }
 
+    // Publicly set poses
     this.poses = poses
 
     // Only draw when debug is on
-    if (this.debug) {
-      poses.forEach(({score, keypoints}) => {
-        if (score >= this.options.posenet.minPoseConfidence) {
-          const adjacentKeypoints = PoseNet.getAdjacentKeyPoints(keypoints, this.options.posenet.minPartConfidence, context)
+    this.debug && this.debugPoses()
+  }
 
-          context.clearRect(0, 0, this.canvas.width, this.canvas.height)
-          util.drawSkeleton(adjacentKeypoints, context)
-          util.drawKeypoints(keypoints, this.options.posenet.minPartConfidence, context)
-        }
-      })
-    }
+  /**
+   * @TODO Loops through each pose and draws their keypoints/skeletons
+   * [-] Draws skeletons/keypoints
+   */
+  debugPoses () {
+    const context = this.canvas.getContext('2d')
+
+    this.poses.forEach(({score, keypoints}) => {
+      if (score >= this.options.posenet.minPoseConfidence) {
+        const adjacentKeypoints = PoseNet.getAdjacentKeyPoints(keypoints, this.options.posenet.minPartConfidence, context)
+
+        context.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        util.drawSkeleton(adjacentKeypoints, context)
+        util.drawKeypoints(keypoints, this.options.posenet.minPartConfidence, context)
+      }
+    })
   }
 
   /**
