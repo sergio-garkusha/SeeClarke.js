@@ -98,7 +98,6 @@ module.exports = function (Posepointer) {
    */
   Posepointer.initPoseNet = async function () {
     if (!this.posenet) this.posenet = await PoseNet.load(this.options.posenet.multiplier)
-    this.constructor.trackPosesLoop(this)
   }
 
   /**
@@ -111,8 +110,8 @@ module.exports = function (Posepointer) {
    * @param {PosePointer} context The this context, since we're in the
    *    constructor scope now
    */
-  Posepointer.trackPosesLoop = async function (context) {
-    context.trackPoses()
+  Posepointer.trackPosesLoop = function (context) {
+    context.posenet && context.trackPoses()
     context._isTracking && requestAnimationFrame(() => this.trackPosesLoop(context))
   }
 }

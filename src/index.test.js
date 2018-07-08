@@ -33,17 +33,14 @@ it('Autostarts if options.autostart', () => {
 /**
  * Posepointer.trackPoses
  */
-it('If debug is on, displays the points and skeletons overlays on the webcam', async done => {
+it('If debug is on, displays the points and skeletons overlays on the webcam', async () => {
   posepointer = await new Posepointer({autostart: false, debug: false})
   posepointer.debugPoses = jest.fn()
-  posepointer.start()
+  posepointer.trackPoses()
   expect(posepointer.debugPoses).not.toHaveBeenCalled()
 
   posepointer = await new Posepointer({autostart: false, debug: true})
   posepointer.debugPoses = jest.fn()
-  posepointer.start()
-  setTimeout(() => {
-    try { expect(posepointer.debugPoses).not.toHaveBeenCalled() } catch (e) { done() }
-    done()
-  }, 500)
+  posepointer.trackPoses()
+  expect(posepointer.debugPoses).toHaveBeenCalled()
 })

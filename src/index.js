@@ -63,15 +63,19 @@ class Posepointer {
   async trackPoses () {
     let poses = []
 
-    // Get single pose
-    if (this.options.posenet.maxUsers === 1) {
-      let pose = await this.posenet.estimateSinglePose(this.video, this.options.posenet.imageScaleFactor, false, this.options.posenet.outputStride)
-      poses.push(pose)
-    // Get multiple poses
-    } else {
-      poses = await this.posenet.estimateMultiplePoses(
-        this.video, this.options.posenet.imageScaleFactor, false, this.options.posenet.outputStride,
-        this.options.posenet.maxUsers, this.settings.posenet.scoreThreshold, this.options.posenet.nmsRadius)
+    // @NOTE This conditional is *ONLY* here for unit testing purposes
+    // @SEE ./index.test.js (Posepointer.trackposes)
+    if (this.posenet) {
+      // Get single pose
+      if (this.options.posenet.maxUsers === 1) {
+        let pose = await this.posenet.estimateSinglePose(this.video, this.options.posenet.imageScaleFactor, false, this.options.posenet.outputStride)
+        poses = [pose]
+        // Get multiple poses
+      } else {
+        poses = await this.posenet.estimateMultiplePoses(
+          this.video, this.options.posenet.imageScaleFactor, false, this.options.posenet.outputStride,
+          this.options.posenet.maxUsers, this.settings.posenet.scoreThreshold, this.options.posenet.nmsRadius)
+        }
     }
 
     // Publicly set poses
@@ -114,6 +118,7 @@ class Posepointer {
       this._isTracking = true
       this.constructor.setupFeed.call(this)
       this.constructor.initPoseNet.call(this)
+      this.constructor.trackPosesLoop(this)
     }
   }
 
