@@ -27,21 +27,34 @@
 
 <br>
 <div align="center">
-<h1>🕶️ seeclark.js 🕶️</h1>
-  <p style="font-size: 36px;">✨
-  <p>🐉<span style="font-size: 36px">🧚</span><span style="font-size: 56px">🧙<span style="font-size: 36px">🧞</span></span>👻‍
-  <p><a href="https://circleci.com/gh/LabOfOz/posepointer/master"><img src="https://img.shields.io/circleci/project/github/LabOfOz/posepointer/master.svg"></a>
+  <p><img src="wiki/readme-title.png" alt="seeclark.js" height=266>
+  <p><a href="https://circleci.com/gh/LabOfOz/posepointer/master"><img src="https://img.shields.io/circleci/project/github/LabOfOz/posepointer/master.svg" alt="build"></a>
 </div>
 
-**Add client-side, face-tracked pointers** to your on/offline: <a href="#sites">sites</a>, ~~apps, IoT's, headerless environments, smart watches, game consoles, AR/VR/MR environments, vehicles, smart homes, smart factories, space stations, dreams, and realities~~ **right now _in one line of code!_**
+**Add client-side, face-tracked pointers** to your on/offline: [HTML5 sites](#html5-sites), ~~apps, IoT's, headerless environments, smart watches, game consoles, AR/VR/MR environments, vehicles, smart homes, smart factories, space stations, dreams, and realities~~ **right now _in one line of code!_**
 
-## SITES
+## HTML5 SITES
 
+#### One Line Drop-in
 ```html
-<!-- One Line Drop-In: Adds scrolling to page, emits events -->
+<!-- One Line Drop-In: Adds page scrolling, emits events -->
+<!-- @TODO Add our library to unpkg. @SEE https://github.com/LabOfOz/seeclark/issues/12 -->
 <script src="//unpkg.com/seeclark/dist/seeclark.min.js?autostart"></script>
 ```
 
+#### Manual Start
+```html
+<script src="//unpkg.com/seeclark/dist/seeclark.min.js"></script>
+<script>
+  // In multilines
+  var config = {}
+  var seeclark = new SeeClark(config)
+  seeclark.start()
+
+  // or in one
+  (new SeeClark()).start()
+</script>
+```
 
 ```
 
@@ -220,9 +233,9 @@ _.-'       .-'    .'   .'    /
 <script src="//unpkg.com/seeclark/dist/seeclark.min.js?autostart"></script>
 ```
 
-@TODO **seeclark.js** can be used like a drop-in library that adds face-tracked cursors and pointers to any existing HTML5 project with: `<script src="//unpkg.com/seeclark/dist/seeclark.min.js?autostart"></script>`. It can track one to dozens of people at once on a mobile device from pretty far away. It's made possible by [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) and [Tensorflow.js](https://js.tensorflow.org/).
+[@TODO #12](https://github.com/LabOfOz/seeclark/issues/12) **seeclark.js** will be usable as a drop-in library that adds face-tracked cursors and pointers to any existing HTML5 project with, and is fully configurable via the querystring. It can track one to dozens of people at once on a mobile device from pretty far away. **seeclark.js** is made possible by [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) and [Tensorflow.js](https://js.tensorflow.org/).
 
-> 🧚 Notice the `?autostart` flag; you can pass any [@TODO config](link to configs) to the script's `src` querystring for [@TODO out-of-the-box configs](link to config presets). And because **seeclark.js** emits native events, it'll probably work with your framework running on their platforms just...like...✨...that!
+> 🧚 Notice the `?autostart` flag; you can pass any [config](wiki/Options) to the script's `src` querystring for [@TODO #12 out-of-the-box configs](https://github.com/LabOfOz/seeclark/issues/9). And because **seeclark.js** emits native events, it'll probably work with your framework running on their platforms just...like...✨...that!
 
 By default, dropping the above tag into any page will add the ability to:
 
@@ -231,9 +244,9 @@ By default, dropping the above tag into any page will add the ability to:
 
 #### Events
 
-This will also start emitting [@todo several events](link to events) which you can use to magically infuse your app! Indeed, you can use the cursor data or underlying vectors for a seriously-wide range of 2D, 3D, and real-world applications which we'll soon explore.
+This will also start [emitting several events](wiki/Events) which you can use to magically infuse your app! Indeed, you can use the cursor data or underlying vectors for a seriously-wide range of 2D, 3D, and real-world applications which we'll soon explore.
 
-> 🧙 @TODO **Some of the information you'll have access to on each tracked person, for every frame, includes:**
+> 🧙 [@TODO](wiki/Events) **Some of the information you'll have access to on each tracked person, for every frame, includes:**
 - [ ] Their head's:
   - [ ] (x, y, z) relative to the device
   - [ ] (pitch, yaw, rotation)
@@ -244,21 +257,25 @@ This will also start emitting [@todo several events](link to events) which you c
 
 #### Accessing Methods
 
-A global `window.SeeClark` class is made available for further [@TODO `new` instantiations](link to instantiation) (in case you want to track from both the front and back cameras), and the instance object created when autostarted can be accessed via the globally created `window.seeclark`. For most drop-in applications, you'll only care about the lowercased version.
+A global `window.SeeClark` class is made available for further [`new` instantiations](wiki/Instantiations) (in case you want to track from both the front and back cameras), and the instance object created when autostarted can be accessed via the globally created `window.seeclark`. For most drop-in applications, you'll only care about the lowercased version.
 
-> 🧚 For example, to create a new instance you would do `new SeeClark(config)`, and to stop the autostarted one you'd use `seeclark.stop()`. [@TODO See our discussion on this](link to this discussion).
+> 🧚 For example, to create a new instance you would do `new SeeClark(config)`, and to stop the autostarted one you'd use `seeclark.stop()`.
+
+#### Updating Config
+
+[@TODO](https://github.com/LabOfOz/seeclark/issues/13) You can update any of the initial configs at runtime with [`seeclark.update()`](wiki/Updating-Config). When some of the configs that require external resources are changed (for example, changing `this.options.posenet.multiplier`), the current PoseNet model will continue running until the new one is ready. This allows your users to automatically update settings without needing to wait or restart the browser.
 
 ---
 
 ### Manual Start
 
 ```html
-<script src="@todo"></script>
+<script src="//unpkg.com/seeclark/dist/seeclark.min.js"></script>
 ```
 
 If you want to manually configure and start **seeclark** (for example, to delay tracking until after the user clicks a button) you can do so by excluding the `?autostart` querystring parameter, like above.
 
-> 🧚 You can still include other query strings, but doing so just sets the `SeeClark.prototype.defaults`. [@TODO See defaults](link to discussion).
+> 🧚 You can still include other query strings, but doing so just sets the [`SeeClark.prototype.defaults`](wiki/Options]).
 
 The process is then to:
 
@@ -283,10 +300,14 @@ $('.turn-webcam-off').click(() => seeclark.toggle(false)) // tracking is still o
 
 ### Try the Bookmarklet
 
-You can preview **seeclark.js** on any site right now by [@TODO: dragging this link](create a bookmarklet generator) to your bookmarks bar or by creating a bookmarklet with the following code (then, visit any page and click the bookmarklet):
+You can preview **seeclark.js** on any site right now by [@TODO](https://github.com/LabOfOz/seeclark/issues/14) <a href="javascript:(function()%7Bfunction%20callback()%7B%7Dvar%20s%3Ddocument.createElement(%22script%22)%3Bs.src%3D%22%2F%2Funpkg.com%2Fseeclark%2Fdist%2Fseeclark.min.js%22%3Bif(s.addEventListener)%7Bs.addEventListener(%22load%22%2Ccallback%2Cfalse)%7Delse%20if(s.readyState)%7Bs.onreadystatechange%3Dcallback%7Ddocument.body.appendChild(s)%3B%7D)()">dragging this link to your bookmarks bar</a> or by [creating a bookmarklet](https://mrcoles.com/bookmarklet/) with the following code (then, visit any page and click the bookmarklet):
 
 ```
-@TODO
+(function () {
+  var $script = document.createElement('script')
+  $script.src = '//unpkg.com/seeclark/dist/seeclark.min.js'
+  document.body.appendChild($script)
+})()
 ```
 
 ---
