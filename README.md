@@ -158,7 +158,7 @@
             (' )(_,) . ), ) _) _,')  (, ) '. )  ,. (' )('  (_ , , .
          _^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_
       /                                o  *                           \
-     |    _________________________________________________________    |
+     |    _@TODO: https://github.com/LabOfOz/seeclark/issues/11 ___    |
      |   |                                                         |   |
      |   |  > npm i 🧙                                            |   |
      |   |  > cd 🧙; yarn                                         |   |
@@ -217,7 +217,6 @@ _.-'       .-'    .'   .'    /
 ### As a Drop-In
 
 ```html
-<!-- Here we use the default setup and autostart when the page loads -->
 <script src="//unpkg.com/seeclark/dist/seeclark.min.js?autostart"></script>
 ```
 
@@ -248,6 +247,8 @@ This will also start emitting [@todo several events](link to events) which you c
 A global `window.SeeClark` class is made available for further [@TODO `new` instantiations](link to instantiation) (in case you want to track from both the front and back cameras), and the instance object created when autostarted can be accessed via the globally created `window.seeclark`. For most drop-in applications, you'll only care about the lowercased version.
 
 > 🧚 For example, to create a new instance you would do `new SeeClark(config)`, and to stop the autostarted one you'd use `seeclark.stop()`. [@TODO See our discussion on this](link to this discussion).
+
+---
 
 ### Manual Start
 
