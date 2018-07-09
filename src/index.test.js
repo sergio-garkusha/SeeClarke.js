@@ -31,6 +31,11 @@
 
 const stubs = require('./jest-polyfills')
 const Posepointer = require('./index')
+const MOCK = {
+  posenet: {
+    pose: require('../mock/posenet/single-pose.json')
+  }
+}
 let posepointer = null
 
 /**
