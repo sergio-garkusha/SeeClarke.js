@@ -1,13 +1,15 @@
-# ✋ THIS ISN'T 100% READY YET ✋
+<div align="center">
+<h1>✋ THIS ISN'T 100% READY YET ✋</h1>
 
-I'm super close though! For now, follow me on <a href="https://twitter.com/labofoz">Twitter @Labofoz</a> or Star the repo on <a href="https://github.com/labofoz/seeclark">GitHub</a> 👨‍👩‍👧‍👦
+<p>I'm super close though!
+<br>For now, follow me on <a href="https://twitter.com/labofoz">Twitter @Labofoz</a> or Star the repo on <a href="https://github.com/labofoz/seeclark">GitHub</a>.
+<br> -- 🧙
 
 <br>
 <br>
-<hr>
 <br>
 <br>
-
+</div>
 
 
 ```
@@ -29,10 +31,8 @@ I'm super close though! For now, follow me on <a href="https://twitter.com/labof
   <p style="font-size: 36px;">✨
   <p>🐉<span style="font-size: 36px">🧚</span><span style="font-size: 56px">🧙<span style="font-size: 36px">🧞</span></span>👻‍
   <p><a href="https://circleci.com/gh/LabOfOz/posepointer/master"><img src="https://img.shields.io/circleci/project/github/LabOfOz/posepointer/master.svg"></a>
-  <p style="text-align: left;">**Add client-side, face-tracked pointers** to your on/offline: [sites](#sites), apps, IoT's, headerless environments, smart watches, game consoles, AR/VR/MR environments, vehicles, smart homes, smart factories, space stations, dreams, and realities **right now _in one line of code!_**
+  <p style="text-align: left;"><b>Add client-side, face-tracked pointers</b> to your on/offline: <a href="#sites">sites</a>, apps, IoT's, headerless environments, smart watches, game consoles, AR/VR/MR environments, vehicles, smart homes, smart factories, space stations, dreams, and realities <b>right now <i>in one line of code!</i></b>
 </div>
-
----
 
 ## SITES
 
