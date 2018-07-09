@@ -20,7 +20,15 @@
       <_I_>           [#__I__]_#___]   -=o=-
        |||            [_I__I#__]___]    ':'
       /_|_\         \\[__]#___][__#]//, \|/
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+    =========== IMPORTANT NOTES ============
+    - [ ] @TODO We're not testing canvas elements yet
+    - Take care to properly test async methods with awaits
+
+*/
+
 const stubs = require('./jest-polyfills')
 const Posepointer = require('./index')
 let posepointer = null
@@ -56,14 +64,25 @@ it('Autostarts if options.autostart', () => {
 /**
  * Posepointer.trackPoses
  */
-it('If debug is on, displays the points and skeletons overlays on the webcam', async () => {
-  posepointer = await new Posepointer({autostart: false, debug: false})
+it('If debug is on, displays the points and skeletons overlays on the webcam', () => {
+  posepointer = new Posepointer({autostart: false, debug: false})
+  // Mock debugPoses; we're testing individual draw methods in other tests
   posepointer.debugPoses = jest.fn()
   posepointer.trackPoses()
   expect(posepointer.debugPoses).not.toHaveBeenCalled()
 
-  posepointer = await new Posepointer({autostart: false, debug: true})
+  posepointer = new Posepointer({autostart: false, debug: true})
   posepointer.debugPoses = jest.fn()
-  posepointer.trackPoses()
+  posepointer.trackPoses([])
+  expect(posepointer.options.posenet.maxUsers).toEqual(1)
+  expect(posepointer.debugPoses).toHaveBeenCalled()
+})
+
+it('Automatically adjusts algorithm to match "single" or "multiple mode"', () => {
+  // "Single" mode has already been tested above
+  posepointer = new Posepointer({autostart: false, debug: true, posenet: {maxUsers: 10}})
+  posepointer.debugPoses = jest.fn()
+  posepointer.trackPoses([])
+  expect(posepointer.options.posenet.maxUsers).toEqual(10)
   expect(posepointer.debugPoses).toHaveBeenCalled()
 })

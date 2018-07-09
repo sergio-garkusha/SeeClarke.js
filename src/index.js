@@ -28,8 +28,6 @@ class Posepointer {
      *
      * @NOTE If manually set to false, this will break any active tracking loops
      * with unknown side effects. Use this.stop() instead!
-     *
-     * @type {Boolean}
      */
     this._isTracking = false
 
@@ -40,10 +38,12 @@ class Posepointer {
     this._isSupported = false
 
     // Error out when webcams are not supported
+    // @TODO Is there a better way handle this error?
+    // @SEE https://github.com/LabOfOz/SeeClark/issues/15
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !util.isWebGLSupported()) {
       throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
     } else {
-      // The browser has full support
+      // We know the browser has full support now
       this._isSupported = true
 
       // "Sanitize" constructor input
@@ -56,12 +56,13 @@ class Posepointer {
   }
 
   /**
-   * @TODO Tracks poses on the current video feed frame:
-   * [-] Automatically adjusts algorithm to match "single" or "multiple mode"
+   * Either assigns passed poses or estimates new poses
+   * - Automatically adjusts algorithm to match "single" or "multiple mode"
    * - If debug is on, displays the points and skeletons overlays on the webcam
+   *
+   * @param {Null|Array} poses Either null to estimate poses, or an array of poses to track
    */
-  async trackPoses () {
-    let poses = null
+  async trackPoses (poses = null) {
 
     // @NOTE This conditional is *ONLY* here for unit testing purposes
     // @SEE ./index.test.js (Posepointer.trackposes)
@@ -82,12 +83,13 @@ class Posepointer {
     this.poses = poses
 
     // Only draw when debug is on
-    this.debug && this.debugPoses()
+    this.debug && poses && this.debugPoses()
   }
 
   /**
    * @TODO Loops through each pose and draws their keypoints/skeletons
-   * [-] Draws skeletons/keypoints
+   * [-] Draws skeletons
+   * [-] Draws keypoints
    */
   debugPoses () {
     const context = this.canvas.getContext('2d')

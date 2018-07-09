@@ -27,7 +27,7 @@
 
 <br>
 <div align="center">
-  <p><img src="wiki/readme-title.png" alt="seeclark.js" height=266>
+  <p><img src="wiki/readme-title.png" alt="SeeClark.js" height=266>
   <p><a href="https://circleci.com/gh/LabOfOz/posepointer/master"><img src="https://img.shields.io/circleci/project/github/LabOfOz/posepointer/master.svg" alt="build"></a>
 </div>
 
