@@ -1,7 +1,7 @@
 const PoseNet = require('@tensorflow-models/posenet')
 const util = require('./util')
 
-module.exports = function (Posepointer) {
+module.exports = function (SeeClark) {
   /**
    * @TODO # PRIVATE METHOD
    *
@@ -12,10 +12,10 @@ module.exports = function (Posepointer) {
    *
    * @param {Object} opts The options passed into the constructor
    */
-  Posepointer.setDefaults = function (opts) {
+  SeeClark.setDefaults = function (opts) {
     // Fallback for default target
     if (!opts.target) {
-      opts.target = document.getElementById('posepointer-debug')
+      opts.target = document.getElementById('seeclark-debug')
 
       if (!opts.target) {
         opts.target = document.createElement('p')
@@ -56,7 +56,7 @@ module.exports = function (Posepointer) {
    * Applies aliases to common options. Feel free to add your own in here
    * [] Creates a shorthand to options
    */
-  Posepointer.setAliases = function () {
+  SeeClark.setAliases = function () {
     this.video = this.options.video
     this.canvas = this.options.canvas
     this.debug = this.options.debug
@@ -71,7 +71,7 @@ module.exports = function (Posepointer) {
    *    simultaneously)
    * [-] Recreates the video feed to reassign srcObject once it's been stopped
    */
-  Posepointer.setupFeed = async function () {
+  SeeClark.setupFeed = async function () {
     // Set webcam dimensions
     this.canvas.width = this.video.width = 600
     this.canvas.height = this.video.height = 500
@@ -96,7 +96,7 @@ module.exports = function (Posepointer) {
    *    modifier
    * [] The webcam feed won't actually be visible until this method is resolved
    */
-  Posepointer.initPoseNet = async function () {
+  SeeClark.initPoseNet = async function () {
     if (!this.posenet) this.posenet = await PoseNet.load(this.options.posenet.multiplier)
   }
 
@@ -105,12 +105,12 @@ module.exports = function (Posepointer) {
    *
    * Recursive method for tracking poses on each animationFrame:
    * [] This method is recursive, once called it continues until after
-   *    posepointer.stop() is called or until this._isTracking is false
+   *    seeclark.stop() is called or until this._isTracking is false
    *
-   * @param {PosePointer} context The this context, since we're in the
+   * @param {SeeClark} context The this context, since we're in the
    *    constructor scope now
    */
-  Posepointer.trackPosesLoop = function (context) {
+  SeeClark.trackPosesLoop = function (context) {
     context.posenet && context.trackPoses()
     context._isTracking && requestAnimationFrame(() => this.trackPosesLoop(context))
   }

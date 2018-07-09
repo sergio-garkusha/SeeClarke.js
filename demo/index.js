@@ -11,7 +11,7 @@ require('../assets/styles/index.scss')
  *
  * Please note: The alternative syntax would be:
  * let options = {}
- * const PosePointer = require('../src/index.js')
- * const posepointer = new PosePointer(options)
+ * const SeeClark = require('../src/SeeClark.js')
+ * const seeclark = new SeeClark(options)
  */
-window.posepointer = new (require('../src/index.js'))({autostart: false, debug: true})
+window.seeclark = new (require('../src/SeeClark.js'))({autostart: false, debug: true})

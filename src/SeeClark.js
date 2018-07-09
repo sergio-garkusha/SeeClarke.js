@@ -1,5 +1,5 @@
 /**
- * # index.js
+ * # SeeClark.js
  *
  * This file contains all the "onboarding methods"; a glance at these methods
  * should give you a general understanding for how the app works!
@@ -13,7 +13,7 @@ require('./polyfills')
 const PoseNet = require('@tensorflow-models/posenet')
 const util = require('./util')
 
-class Posepointer {
+class SeeClark {
   /**
    * Our main constructor
    * - Fails if getUserMedia is not supported
@@ -65,7 +65,7 @@ class Posepointer {
   async trackPoses (poses = null) {
 
     // @NOTE This conditional is *ONLY* here for unit testing purposes
-    // @SEE ./index.test.js (Posepointer.trackposes)
+    // @SEE ./index.test.js (SeeClark.trackposes)
     if (this.posenet) {
       // Get single pose
       if (this.options.posenet.maxUsers === 1) {
@@ -142,11 +142,11 @@ class Posepointer {
 
 /**
  * That's it! You should have enough of an understanding to start picking off
- * issues on GitHub: https://github.com/LabOfOz/posepointer.js/issues
+ * issues on GitHub: https://github.com/LabOfOz/seeclark.js/issues
  *
  * Here are some more methods:
  */
-require('./mixins')(Posepointer)
+require('./mixins')(SeeClark)
 
 // Remember: to kick things off you'll want to instantiate this with `new`
-module.exports = Posepointer
+module.exports = SeeClark
