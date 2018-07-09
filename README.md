@@ -31,10 +31,16 @@
   <p style="font-size: 36px;">✨
   <p>🐉<span style="font-size: 36px">🧚</span><span style="font-size: 56px">🧙<span style="font-size: 36px">🧞</span></span>👻‍
   <p><a href="https://circleci.com/gh/LabOfOz/posepointer/master"><img src="https://img.shields.io/circleci/project/github/LabOfOz/posepointer/master.svg"></a>
-  <p style="text-align: left;"><b>Add client-side, face-tracked pointers</b> to your on/offline: <a href="#sites">sites</a>, apps, IoT's, headerless environments, smart watches, game consoles, AR/VR/MR environments, vehicles, smart homes, smart factories, space stations, dreams, and realities <b>right now <i>in one line of code!</i></b>
 </div>
 
+**Add client-side, face-tracked pointers** to your on/offline: <a href="#sites">sites</a>, ~~apps, IoT's, headerless environments, smart watches, game consoles, AR/VR/MR environments, vehicles, smart homes, smart factories, space stations, dreams, and realities~~ **right now _in one line of code!_**
+
 ## SITES
+
+```html
+<!-- One Line Drop-In: Adds scrolling to page, emits events -->
+<script src="//unpkg.com/seeclark/dist/seeclark.min.js?autostart"></script>
+```
 
 
 ```
@@ -150,25 +156,29 @@
                  .' ) ( . )    ,  ( ,     )   ( . (.  ,) , '.   '
                ). , ( .   (  ) ( , ')  .' (  ,    )   )   (' (,  ')
             (' )(_,) . ), ) _) _,')  (, ) '. )  ,. (' )('  (_ , , .
-         _^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_
-      /                                o  *                             \
-     |    __________________________________________________________     |
-     |   |                                                          |    |
-     |   |  > git clone https://github.com/LabOfOz/seeclark.git     |    |
-     |   |  > cd seeclark; yarn;                                    |    |
-     |   |  > yarn summon --cloud                                   |    |
-     |   |                                                          |    |
-     |   |  🧙 listening on localhost:43110                        |    |
-     |   |                                                          |    |
-     |   |                                                          |    |
-     |   |                                                          |    |
-     |   |                                                          |    |
-     |   |                                                          |    |
-     |   |                                                          |    |
-     |   |                                                          |    |
-     |   |__________________________________________________________|    |
-     |                                                                   |
-      \_________________________________________________________________/
+         _^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_
+      /                                o  *                           \
+     |    _________________________________________________________    |
+     |   |                                                         |   |
+     |   |  > npm i 🧙                                            |   |
+     |   |  > cd 🧙; yarn                                         |   |
+     |   |  > yarn 🧙                                             |   |
+     |   |  ...                                                    |   |
+     |   |  ... configuring AI              [********]             |   |
+     |   |  ... ai ready                                           |   |
+     |   |  ...                                                    |   |
+     |   |  🧙 - Point head or arm at tile to highlight it        |   |
+     |   |     - Flip tile by "reaching" for it with head or arm   |   |
+     |   |     - Flip all tiles to continue                        |   |
+     |   |                                                         |   |
+     |   |  |---------------------------------------------------|  |   |
+     |   |  |            |            |            |            |  |   |
+     |   |  |------------|------------|------------|------------|  |   |
+     |   |  |            |            |            |            |  |   |
+     |   |  |------------|------------|------------|------------|  |   |
+     |   |_________________________________________________________|   |
+     |                                                                 |
+      \_______________________________________________________________/
                \___________________________________________/
               _______________________________________________
            _-'    .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.  --- `-_
@@ -207,11 +217,11 @@ _.-'       .-'    .'   .'    /
 ### As a Drop-In
 
 ```html
-<!-- Here we use the seeclark setup and autostart when the page loads -->
-<script src="@todo[link to unpkg.com or similar]?autostart"></script>
+<!-- Here we use the default setup and autostart when the page loads -->
+<script src="//unpkg.com/seeclark/dist/seeclark.min.js?autostart"></script>
 ```
 
-@TODO **seeclark.js** can be used like a drop-in library that adds face-tracked cursors and pointers to any existing HTML5 project with: `<script src="@TODO?autostart"></script>`. It can track one to dozens of people at once on a mobile device from pretty far away. It's made possible by [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) and [Tensorflow.js](https://js.tensorflow.org/).
+@TODO **seeclark.js** can be used like a drop-in library that adds face-tracked cursors and pointers to any existing HTML5 project with: `<script src="//unpkg.com/seeclark/dist/seeclark.min.js?autostart"></script>`. It can track one to dozens of people at once on a mobile device from pretty far away. It's made possible by [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) and [Tensorflow.js](https://js.tensorflow.org/).
 
 > 🧚 Notice the `?autostart` flag; you can pass any [@TODO config](link to configs) to the script's `src` querystring for [@TODO out-of-the-box configs](link to config presets). And because **seeclark.js** emits native events, it'll probably work with your framework running on their platforms just...like...✨...that!
 
