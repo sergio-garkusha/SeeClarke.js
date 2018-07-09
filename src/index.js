@@ -61,7 +61,7 @@ class Posepointer {
    * - If debug is on, displays the points and skeletons overlays on the webcam
    */
   async trackPoses () {
-    let poses = []
+    let poses = null
 
     // @NOTE This conditional is *ONLY* here for unit testing purposes
     // @SEE ./index.test.js (Posepointer.trackposes)

@@ -1,40 +1,284 @@
-<p align="center"><a href="https://posepointer.firebaseapp.com"><img src="https://media.giphy.com/media/1YfCgZlRFN9JqfrtRC/giphy.gif" alt="posepointer"></a></p>
+# ✋ THIS ISN'T 100% READY YET ✋
 
-<h1 align="center">🕶️ posepointer.js 🕶️</h1>
-<p align="center"><a href="https://circleci.com/gh/LabOfOz/posepointer/master"><img src="https://img.shields.io/circleci/project/github/LabOfOz/posepointer/master.svg"></a></p>
+I'm super close though! For now, follow me on <a href="https://twitter.com/labofoz">Twitter @Labofoz</a> or Star the repo on <a href="https://github.com/labofoz/seeclark">GitHub</a> 👨‍👩‍👧‍👦
 
-<p align="center">Add client-side, face and arm tracked mouse cursors to your projects in one line of JavaScript!</p>
+<br>
+<br>
+<hr>
+<br>
+<br>
 
-<p align="center"><a href="#browser-support">Browser Support</a> &middot; <a href="#building">Building</a> &middot; <a href="#troubleshooting">Troubleshooting</a> &middot; <a href="#links">Links</a> &middot; <a href="#privacy-policy">Privacy Policy</a> &middot; <a href="#license">License</a></p>
+
+
+```
+
+                 .-"""-.
+                #.   == \         Any sufficiently advanced
+               ###  _   _#        technology is indistinguishable
+               (_""(a)=(a)        from magic.
+                \     _\ |
+                 '.   = /         -- Arthur...
+                __/`---;_
+              /`   \___| `\
+
+```
+
+<br>
+<div align="center">
+<h1>🕶️ seeclark.js 🕶️</h1>
+  <p style="font-size: 36px;">✨
+  <p>🐉<span style="font-size: 36px">🧚</span><span style="font-size: 56px">🧙<span style="font-size: 36px">🧞</span></span>👻‍
+  <p><a href="https://circleci.com/gh/LabOfOz/posepointer/master"><img src="https://img.shields.io/circleci/project/github/LabOfOz/posepointer/master.svg"></a>
+  <p style="text-align: left;">**Add client-side, face-tracked pointers** to your on/offline: [sites](#sites), apps, IoT's, headerless environments, smart watches, game consoles, AR/VR/MR environments, vehicles, smart homes, smart factories, space stations, dreams, and realities **right now _in one line of code!_**
+</div>
 
 ---
 
-## About this Project
+## SITES
 
-> **THIS PROJECT IS NOT READY.**
-
-**posepointer.js** (once it's ready) will inject computer vision into your sites, apps, and IoT's in a single line of JavaScript! **posepointer** will do this through a [Tensorflow.js](https://js.tensorflow.org/) implementation of [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) by predicting where on the screen a user's head and arms are pointed towards.
-
-> In fact, **posepointer** will be able to track multiple people on a modern web browser running on a mid-ranged mobile device. This means that you will be able to very easily add hands-free, install-less, gesture-controlled interfaces to your projects that work on most mobile devices out there **_FAST_**!
-
-Because of the many possible and varied applications, **posepointer** is being developed with a plugin system in mind. **Posepointer with no configuration/plugins only handles calculating these points.** This decision was made to encourage a rich plugin ecosystem 👨‍👩‍👧‍👦
-
-> **THIS PROJECT IS NOT READY.**
-
-
-### Ideas
 
 ```
-// @TODO Create a link to our past examples and make square gifs
+
+
+
+
+
+
+
+
+
+
+
+                .--'.   \/  .'--..
+                      '( \.'
+                       M M
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                         _..__.          .__.._
+                                       .^"-.._ '-|\__/|-' _..-"^.
+                                              '-.'    '.-'
+                                                 `M--M'
+
+
+
+
+
+
+
+
+
+
+                          ACT FAST, HERO, FOR A
+
+
+
+
+
+
+
+
+
+
+
+                  (      (                         )      )
+                  )\ )   )\ )    (      (       ( /(   ( /(
+                 (()/(  (()/(    )\     )\ )    )\())  )\())
+                  /(_))  /(_))((((_)(  (()/(   ((_)\  ((_)\
+                 (_))_  (_))   )\ _ )\  /(_))_   ((_)  _((_)
+                  |   \ | _ \  (_)_\(_)(_)) __| / _ \ | \| |
+                  | |) ||   /   / _ \    | (_ || (_) || .` |
+                  |___/ |_|_\  /_/ \_\    \___| \___/ |_|\_|
+
+
+
+
+
+
+
+
+
+                                APPROACHES!
+
+
+
+
+
+
+
+
+                           ==(W{==========-      /===-
+                             ||  (.--.)         /===-_---~~~~~~~~~------____
+                             | \_,|**|,__      |===-~___                _,-'
+                -==\\        `\ ' `--'   ),    `//~\\   ~~~~`---.___.-~~
+            ______-==|        /`\_. .__/\ \    | |  \\           _-~`
+      __--~~~  ,-/-==\\      (   | .  |~~~~|   | |   `\        ,'
+   _-~       /'    |  \\     )__/==0==-\<>/   / /      \      /
+ .'        /       |   \\      /~\___/~~\/  /' /        \   /'
+/  ____  /         |    \`\.__/-~~   \  |_/'  /          \/'
+/-'~    ~~~~~---__  |     ~-/~         ( )   /'        _--~`
+                 \_|      /        _) | ;  ),   __--~~
+                   '~~--_/      _-~/- |/ \   '-~ \
+                  {\__--_/}    / \\_>-|)<__\      \
+                  /'   (_/  _-~  | |__>--<__|      |
+                 |   _/) )-~     | |__>--<__|      |
+                 / /~ ,_/       / /__>---<__/      |
+                o-o _//        /-~_>---<__-~      /
+                (^(~          /~_>---<__-      _-~
+               ,/|           /__>--<__/     _-~
+            ,//('(          |__>--<__|     /                  .----_
+           ( ( '))          |__>--<__|    |                 /' _---_~\
+        `-)) )) (           |__>--<__|    |               /'  /     ~\`\
+       ,/,'//( (             \__>--<__\    \            /'  //        ||
+     ,( ( ((, ))              ~-__>--<_~-_  ~--____---~' _/'/        /'
+   `~/  )` ) ,/|                 ~-_~>--<_/-__       __-~ _/
+ ._-~//( )/ )) `   (  .      )    ~~-'_/_/ /~~~~~~~__--~
+ ;'( ')/ ,)(       )           (           ~~~~~~~~~~
+  ') '( (/             .  '   .   '  .  '  .
+                 (    , )       (.   )  (   ',    )
+                 .' ) ( . )    ,  ( ,     )   ( . (.  ,) , '.   '
+               ). , ( .   (  ) ( , ')  .' (  ,    )   )   (' (,  ')
+            (' )(_,) . ), ) _) _,')  (, ) '. )  ,. (' )('  (_ , , .
+         _^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_
+      /                                o  *                             \
+     |    __________________________________________________________     |
+     |   |                                                          |    |
+     |   |  > git clone https://github.com/LabOfOz/seeclark.git     |    |
+     |   |  > cd seeclark; yarn;                                    |    |
+     |   |  > yarn summon --cloud                                   |    |
+     |   |                                                          |    |
+     |   |  🧙 listening on localhost:43110                        |    |
+     |   |                                                          |    |
+     |   |                                                          |    |
+     |   |                                                          |    |
+     |   |                                                          |    |
+     |   |                                                          |    |
+     |   |                                                          |    |
+     |   |                                                          |    |
+     |   |__________________________________________________________|    |
+     |                                                                   |
+      \_________________________________________________________________/
+               \___________________________________________/
+              _______________________________________________
+           _-'    .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.  --- `-_
+        _-'.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.  .-.-.`-_
+     _-'.-.-.-. .---.-.-.-.-.-.-.-.-.-.-___    ,'""""'.__`. .-.-.-.`-_
+  _-'.-.-.-.-. .-----.-.-.-.-.-.-.-.,"""   """"'      `----. .-.-.-.-.`-_
+_-'.-.-.-.-.-. .---.-. .------------.                  .-.---. .---.-.-.-.`-_
+:----------------------------------,'        _.         `._-------------------:
+`---._.---------------------------,'       ,'              `"""'.-------._.---'
+                                 ,'    .-""`.    ,-'            `.         (
+  |        )                    ,'    (        ,'                :         )\
+   (      (              (    ,'     ,'           __,            `.       (()/(
+   )\ )   )\ )          ,""""'     .' ;-.    ,  ,'  \             `"""".   ((_))
+  (()/(  (()/(       (,'           `-(   `._(_,'     )_                `.
+   /(_))  /(_))(     ,'         ,---. \ @ ;   \ @ _,'                   `.
+        (       ,-""'         ,'      ,--'-    `;'                       `.
+         )     ,'            ,'      (      `. ,'                          `.
+      ( /(      ;            ,'        \    _,','                            `.
+     )\())    ,'            ;          `--'  ,'                              `.
+    )(_)\    ,'             ;          __    (                    ,           `.
+             ;              `____...  `78b   `.                  ,'           ,'
+             ;    ...----'''' )  _.-  .d8P    `.                ,'    ,'    ,'
+_....----''' '.        _..--"_.-:.-' .'        `.             ,''.   ,' `--'
+              `"""""""" _.-'' .-'`-.:..___...--' `-._      ,-"'   `-'
+        _.--'       _.-'    .'   .' .'               `"""""
+  __.-''        _.-'     .-'   .'  /
+ '          _.-' .-'  .-'        .'
+        _.-'  .-'  .-' .'  .'   /
+    _.-'      .-'   .-'  .'   .'
+_.-'       .-'    .'   .'    /
+       _.-'    .-'   .'    .'
+    .-'            .'
+
 ```
 
-| | | |
-|----------|-------------------|-----|
-| Draw with your face | Virtual keyboard | Moarse Code |
-| "Look around" Street Views | VR Scenes | Scrolling web pages |
+### As a Drop-In
+
+```html
+<!-- Here we use the seeclark setup and autostart when the page loads -->
+<script src="@todo[link to unpkg.com or similar]?autostart"></script>
+```
+
+@TODO **seeclark.js** can be used like a drop-in library that adds face-tracked cursors and pointers to any existing HTML5 project with: `<script src="@TODO?autostart"></script>`. It can track one to dozens of people at once on a mobile device from pretty far away. It's made possible by [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) and [Tensorflow.js](https://js.tensorflow.org/).
+
+> 🧚 Notice the `?autostart` flag; you can pass any [@TODO config](link to configs) to the script's `src` querystring for [@TODO out-of-the-box configs](link to config presets). And because **seeclark.js** emits native events, it'll probably work with your framework running on their platforms just...like...✨...that!
+
+By default, dropping the above tag into any page will add the ability to:
+
+- Scroll pages up by lifting your chin up high
+- Scroll pages down by bowing your head down low
+
+#### Events
+
+This will also start emitting [@todo several events](link to events) which you can use to magically infuse your app! Indeed, you can use the cursor data or underlying vectors for a seriously-wide range of 2D, 3D, and real-world applications which we'll soon explore.
+
+> 🧙 @TODO **Some of the information you'll have access to on each tracked person, for every frame, includes:**
+- [ ] Their head's:
+  - [ ] (x, y, z) relative to the device
+  - [ ] (pitch, yaw, rotation)
+  - [ ] Many useful vectors
+  - [ ] The screen's (x, y) we think the head is pointed towards
+    - [ ] Or the environment's (x, y, z) data if it's supplied
+- [ ] Ditto for the left and right forearms
+
+#### Accessing Methods
+
+A global `window.SeeClark` class is made available for further [@TODO `new` instantiations](link to instantiation) (in case you want to track from both the front and back cameras), and the instance object created when autostarted can be accessed via the globally created `window.seeclark`. For most drop-in applications, you'll only care about the lowercased version.
+
+> 🧚 For example, to create a new instance you would do `new SeeClark(config)`, and to stop the autostarted one you'd use `seeclark.stop()`. [@TODO See our discussion on this](link to this discussion).
+
+### Manual Start
+
+```html
+<script src="@todo"></script>
+```
+
+If you want to manually configure and start **seeclark** (for example, to delay tracking until after the user clicks a button) you can do so by excluding the `?autostart` querystring parameter, like above.
+
+> 🧚 You can still include other query strings, but doing so just sets the `SeeClark.prototype.defaults`. [@TODO See defaults](link to discussion).
+
+The process is then to:
+
+```js
+// Instantiate a new SeeClark
+// 🧙 We're just going with the defaults here but for 3 users since we still
+// have that issue with the dragon!
+let seeclark = new SeeClark({posenet: {maxUsers: 3}})
+
+// Use the toggle() method to turn the webcam/tracker on/off
+$('.toggle-webcam').click(() => seeclark.toggle()) // tracking is on
+$('.toggle-webcam').click(() => seeclark.toggle()) // tracking is off
+$('.toggle-webcam').click(() => seeclark.toggle()) // tracking is on again
+$('.toggle-webcam').click(() => seeclark.toggle()) // tracking is off again
+
+// Pass true or false to explicitly turn the webcam on (true) or off (false)
+$('.turn-webcam-on').click(() => seeclark.toggle(true)) // tracking is on
+$('.turn-webcam-on').click(() => seeclark.toggle(true)) // tracking is still on
+$('.turn-webcam-off').click(() => seeclark.toggle(false)) // tracking is off
+$('.turn-webcam-off').click(() => seeclark.toggle(false)) // tracking is still off
+```
+
+### Try the Bookmarklet
+
+You can preview **seeclark.js** on any site right now by [@TODO: dragging this link](create a bookmarklet generator) to your bookmarks bar or by creating a bookmarklet with the following code (then, visit any page and click the bookmarklet):
+
+```
+@TODO
+```
 
 ---
-
 ## Browsers Support
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png" alt="iOS Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>iOS Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/samsung-internet/samsung-internet_48x48.png" alt="Samsung" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Samsung |
@@ -55,50 +299,3 @@ The following polyfills are providing support for older browsers:
 | Polyfill | Affected Browsers | Fix | Notes |
 |----------|-------------------|-----|-------|
 | getUserMedia | Chrome <= 49 <br> iOS <= 10.3  | /src/polyfills.js | We're basically only supporting the API change from `navigator.getUserMedia` to `navigator.mediaDevices.getUserMedia`
----
-
-## Building
-
-The only hard dependency required for building the project is [NodeJS >= 8.11.2](https://nodejs.org/en/download/). If you want to author tests you'll also need [Java >= 1.6](https://java.com/), though **please note that you neither need Java nor do you need to create tests** ([see our Tests section below](#testing))!
-
-The following scripts are available from the project root. Note that you can replace `npm run ...` with just `yarn ...` if you have [Yarn installed](https://yarnpkg.com/en/).
-
-``` bash
-# Install dependencies
-npm install
-
-# Start the dev server
-npm dev
-
-# Build to /dist
-npm build
-```
-
-### Testing
-
-> **Please note that when contributing to this project, you don't need to add tests** (we'll take care of that)
-
-Unit tests all live next to their source files, suffixed with `*.spec.js`. In fact, any file suffixed with `*.spec.js` will automatically get used when running one of the test commands (`npm run unit`, `npm run e2e`, or `npm run test`).
-
-The following key tests are made:
-```
-// @TODO list our most important e2e and unit tests here
-```
-
----
-
-## Links
-
-* Our main site: // @TODO
-* Personal Twitter <a href="https://twitter.com/labofoz">@LabOfOz</a>
-* Email: labofoz@gmail.com
-
----
-
-## Privacy Policy
-
-I don't know enough about WebRTC security yet to confidently guarantee how secure this library is out of the box (please contact me if you'd like to assist with this). Until then, please keep in mind the following:
-
-* A user must approve a browser pop-up asking for the webcam to be turned on. This typically only needs to be done once, though there are cases where it must be approved every time (like when deployed in a sandboxed or incognito environment). Please keep this in mind when deploying to headerless browser environments
-* It's probably good etiquitte to indicate to the user within your app that the webcam is still on
-* Malicious scripts may be able to see the webcam feed with the current out of the box setup
