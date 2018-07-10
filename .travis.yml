@@ -3,6 +3,6 @@ node_js:
   - "8"
 install:
   - npm install -g codecov jest
-  - npm install babel-preset-env
+  - npm install babel-preset-env jest-canvas-mock
 script:
   - jest --coverage --detectOpenHandles && codecov
