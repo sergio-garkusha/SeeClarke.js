@@ -3,6 +3,6 @@ node_js:
   - "8"
 install:
   - npm install -g codecov jest
-  - npm install babel-preset-env jest-canvas-mock @tensorflow-models/posenet
+  - npm install babel-preset-env jest-canvas-mock @tensorflow-models/posenet @tensorflow/tfjs
 script:
   - jest --coverage --detectOpenHandles && codecov
