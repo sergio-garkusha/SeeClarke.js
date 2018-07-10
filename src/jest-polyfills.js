@@ -1,6 +1,7 @@
 /**
  * A suite of polyfill togglers for testing with jest
  */
+const MOCK = require('../mock')
 
 /**
  * Suppress known warnings
@@ -33,5 +34,10 @@ module.exports = {
   WebGL: {
     support () {window.WebGLRenderingContext = true},
     unupport () {window.WebGLRenderingContext = false}
+  },
+
+  posenet: {
+    estimateSinglePose () { return MOCK.posenet.pose.single },
+    estimateMultiplePoses: () => MOCK.posenet.pose.multiple
   }
 }

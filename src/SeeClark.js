@@ -64,9 +64,7 @@ class SeeClark {
    */
   async trackPoses (poses = null) {
 
-    // @NOTE This conditional is *ONLY* here for unit testing purposes
-    // @SEE ./index.test.js (SeeClark.trackposes)
-    if (this.posenet) {
+    if (!poses) {
       // Get single pose
       if (this.options.posenet.maxUsers === 1) {
         let pose = await this.posenet.estimateSinglePose(this.video, this.options.posenet.imageScaleFactor, false, this.options.posenet.outputStride)
@@ -76,7 +74,7 @@ class SeeClark {
         poses = await this.posenet.estimateMultiplePoses(
           this.video, this.options.posenet.imageScaleFactor, false, this.options.posenet.outputStride,
           this.options.posenet.maxUsers, this.settings.posenet.scoreThreshold, this.options.posenet.nmsRadius)
-        }
+      }
     }
 
     // Publicly set poses

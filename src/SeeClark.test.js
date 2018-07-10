@@ -8,27 +8,21 @@
   testing though, so we'll absolutely want to test that considering inference
   depends on that!
 */
-
-const stubs = require('./jest-polyfills')
+const STUBS = require('./jest-polyfills')
 const SeeClark = require('./SeeClark')
-const MOCK = {
-  posenet: {
-    pose: require('../mock/posenet/single-pose.json')
-  }
-}
 let seeclark = null
 
 /**
  * constructor
  */
 it('Fails if getUserMedia is not supported', () => {
-  stubs.mediaDevices.unsupport()
+  STUBS.mediaDevices.unsupport()
   try {seeclark = new SeeClark()} catch (e) {}
   expect(seeclark).toBeFalsy()
 
   // Set mediaDevices and try again
-  stubs.mediaDevices.support()
-  stubs.WebGL.support()
+  STUBS.mediaDevices.support()
+  STUBS.WebGL.support()
   seeclark = new SeeClark()
   expect(seeclark).toBeTruthy()
 })
@@ -53,21 +47,20 @@ it('If debug is on, displays the points and skeletons overlays on the webcam', (
   seeclark = new SeeClark({autostart: false, debug: false})
   // Mock debugPoses; we're testing individual draw methods in other tests
   seeclark.debugPoses = jest.fn()
-  seeclark.trackPoses()
+  seeclark.trackPoses([])
   expect(seeclark.debugPoses).not.toHaveBeenCalled()
 
-  seeclark = new SeeClark({autostart: false, debug: true})
-  seeclark.debugPoses = jest.fn()
+  seeclark.debug = true
   seeclark.trackPoses([])
-  expect(seeclark.options.posenet.maxUsers).toEqual(1)
   expect(seeclark.debugPoses).toHaveBeenCalled()
 })
 
-it('Automatically adjusts algorithm to match "single" or "multiple mode"', () => {
-  // "Single" mode has already been tested above
-  seeclark = new SeeClark({autostart: false, debug: true, posenet: {maxUsers: 10}})
-  seeclark.debugPoses = jest.fn()
-  seeclark.trackPoses([])
-  expect(seeclark.options.posenet.maxUsers).toEqual(10)
-  expect(seeclark.debugPoses).toHaveBeenCalled()
-})
+// it('Automatically adjusts algorithm to match "single" or "multiple mode"', () => {
+//   seeclark = new SeeClark({autostart: false, debug: true, posenet: {maxUsers: 1}})
+//   seeclark.debugPoses = jest.fn()
+//   seeclark.posenet = {
+//   }
+//   expect(true).toBeTruthy()
+//   // seeclark.trackPoses()
+//   // expect(seeclark.debugPoses).toHaveBeenCalled()
+// })
