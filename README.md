@@ -28,7 +28,13 @@
 <br>
 <div align="center">
   <p><img src="wiki/readme-title.png" alt="SeeClark.js" height=266>
-  <p><a href="https://travis-ci.com/LabOfOz/SeeClark"><img src="https://travis-ci.com/LabOfOz/SeeClark.svg?branch=master" alt="build"></a>
+  <br>
+  <br>
+  <p><a href="https://travis-ci.com/LabOfOz/SeeClark"><img src="https://travis-ci.com/LabOfOz/SeeClark.svg?branch=master" alt="build"></a><a href="https://codecov.io/gh/LabOfOz/SeeClark">
+  <img src="https://codecov.io/gh/LabOfOz/SeeClark/branch/master/graph/badge.svg" />
+</a>
+<br>
+<br>
 </div>
 
 **Add client-side, face-tracked pointers** to your on/offline: [HTML5 sites](#html5-sites), ~~apps, IoT's, headerless environments, smart watches, game consoles, AR/VR/MR environments, vehicles, smart homes, smart factories, space stations, dreams, and realities~~ **right now _in one line of code!_**
