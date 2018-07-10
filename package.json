@@ -11,9 +11,9 @@
   },
   "jest": {
     "collectCoverage": true,
-    "setupFiles": [
-      "jest-canvas-mock"
-    ]
+    "setupFiles": ["jest-canvas-mock"],
+    "coveragePathIgnorePatterns": ["/node_modules/", "mock/"],
+    "testPathIgnorePatterns": ["/node_modules/", "mock/"]
   },
   "repository": {
     "type": "git",

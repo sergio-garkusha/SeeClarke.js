@@ -1,0 +1,4 @@
+language: node_js
+nodej_js:
+  - "iojs"
+  - "8"
