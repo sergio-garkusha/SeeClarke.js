@@ -1,7 +1,7 @@
 const PoseNet = require('@tensorflow-models/posenet')
 const util = require('./util')
 
-module.exports = function (SeeClark) {
+module.exports = function (SeeClarke) {
   /**
    * @TODO # PRIVATE METHOD
    *
@@ -12,10 +12,10 @@ module.exports = function (SeeClark) {
    *
    * @param {Object} opts The options passed into the constructor
    */
-  SeeClark.setDefaults = function (opts) {
+  SeeClarke.setDefaults = function (opts) {
     // Fallback for default target
     if (!opts.target) {
-      opts.target = document.getElementById('seeclark-debug')
+      opts.target = document.getElementById('seeclarke-debug')
 
       if (!opts.target) {
         opts.target = document.createElement('p')
@@ -56,7 +56,7 @@ module.exports = function (SeeClark) {
    * Applies aliases to common options. Feel free to add your own in here
    * [] Creates a shorthand to options
    */
-  SeeClark.setAliases = function () {
+  SeeClarke.setAliases = function () {
     this.video = this.options.video
     this.canvas = this.options.canvas
     this.debug = this.options.debug
@@ -71,7 +71,7 @@ module.exports = function (SeeClark) {
    *    simultaneously)
    * [-] Recreates the video feed to reassign srcObject once it's been stopped
    */
-  SeeClark.setupFeed = async function () {
+  SeeClarke.setupFeed = async function () {
     // Set webcam dimensions
     this.canvas.width = this.video.width = 600
     this.canvas.height = this.video.height = 500
@@ -96,7 +96,7 @@ module.exports = function (SeeClark) {
    *    modifier
    * [] The webcam feed won't actually be visible until this method is resolved
    */
-  SeeClark.initPoseNet = async function () {
+  SeeClarke.initPoseNet = async function () {
     if (!this.posenet) this.posenet = await PoseNet.load(this.options.posenet.multiplier)
   }
 
@@ -105,12 +105,12 @@ module.exports = function (SeeClark) {
    *
    * Recursive method for tracking poses on each animationFrame:
    * [] This method is recursive, once called it continues until after
-   *    seeclark.stop() is called or until this._isTracking is false
+   *    seeclarke.stop() is called or until this._isTracking is false
    *
-   * @param {SeeClark} context The this context, since we're in the
+   * @param {SeeClarke} context The this context, since we're in the
    *    constructor scope now
    */
-  SeeClark.trackPosesLoop = function (context) {
+  SeeClarke.trackPosesLoop = function (context) {
     context.posenet && context.trackPoses()
     context._isTracking && requestAnimationFrame(() => this.trackPosesLoop(context))
   }

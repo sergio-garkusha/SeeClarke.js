@@ -1,5 +1,5 @@
 /**
- * # SeeClark.js
+ * # SeeClarke.js
  *
  * This file contains all the "onboarding methods"; a glance at these methods
  * should give you a general understanding for how the app works!
@@ -13,7 +13,7 @@ require('./polyfills')
 const PoseNet = require('@tensorflow-models/posenet')
 const util = require('./util')
 
-class SeeClark {
+class SeeClarke {
   /**
    * Our main constructor
    * - Fails if getUserMedia is not supported
@@ -39,7 +39,7 @@ class SeeClark {
 
     // Error out when webcams are not supported
     // @TODO Is there a better way handle this error?
-    // @SEE https://github.com/LabOfOz/SeeClark/issues/15
+    // @SEE https://github.com/LabOfOz/SeeClarke/issues/15
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !util.isWebGLSupported()) {
       throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
     } else {
@@ -140,11 +140,11 @@ class SeeClark {
 
 /**
  * That's it! You should have enough of an understanding to start picking off
- * issues on GitHub: https://github.com/LabOfOz/seeclark.js/issues
+ * issues on GitHub: https://github.com/LabOfOz/seeclarke.js/issues
  *
  * Here are some more methods:
  */
-require('./mixins')(SeeClark)
+require('./mixins')(SeeClarke)
 
 // Remember: to kick things off you'll want to instantiate this with `new`
-module.exports = SeeClark
+module.exports = SeeClarke

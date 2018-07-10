@@ -11,7 +11,7 @@ require('../assets/styles/index.scss')
  *
  * Please note: The alternative syntax would be:
  * let options = {}
- * const SeeClark = require('../src/SeeClark.js')
- * const seeclark = new SeeClark(options)
+ * const SeeClarke = require('../src/SeeClarke.js')
+ * const seeclarke = new SeeClarke(options)
  */
-window.seeclark = new (require('../src/SeeClark.js'))({autostart: false, debug: true})
+window.seeclarke = new (require('../src/SeeClarke.js'))({autostart: false, debug: true})

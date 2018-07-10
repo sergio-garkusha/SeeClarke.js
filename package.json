@@ -1,9 +1,9 @@
 {
-  "name": "seeclark",
+  "name": "seeclarke",
   "version": "0.0.1",
   "author": "Oz Ramos <labofoz@gmail.com> (https://labofoz.com)",
   "description": "Add client side, face-tracked mouse cursors to your projects in one line of JavaScript!",
-  "main": "SeeClark.js",
+  "main": "SeeClarke.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --progress --mode development --config webpack.config.dev.js",
     "build": "webpack -p --progress --mode production --config webpack.config.build.js",
@@ -18,13 +18,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LabOfOz/seeclark.js.git"
+    "url": "git+https://github.com/LabOfOz/seeclarke.js.git"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LabOfOz/seeclark.js/issues"
+    "url": "https://github.com/LabOfOz/seeclarke.js/issues"
   },
-  "homepage": "http://github.com/LabOfOz/seeclark.js#readme",
+  "homepage": "http://github.com/LabOfOz/seeclarke.js#readme",
   "dependencies": {
     "@tensorflow-models/posenet": "^0.1.2",
     "@tensorflow/tfjs": "^0.11.7"

@@ -1,5 +1,5 @@
 /**
- * # SeeClark.test.js
+ * # SeeClarke.test.js
   # IMPORTANT TESTING NOTES
   =========================
   - Take care to properly test async methods with awaits, otherwise you may be
@@ -9,58 +9,58 @@
   depends on that!
 */
 const STUBS = require('../mock/jest-polyfills')
-const SeeClark = require('./SeeClark')
-let seeclark = null
+const SeeClarke = require('./SeeClarke')
+let seeclarke = null
 
 /**
  * constructor
  */
 it('Fails if getUserMedia is not supported', () => {
   STUBS.mediaDevices.unsupport()
-  try {seeclark = new SeeClark()} catch (e) {}
-  expect(seeclark).toBeFalsy()
+  try {seeclarke = new SeeClarke()} catch (e) {}
+  expect(seeclarke).toBeFalsy()
 
   // Set mediaDevices and try again
   STUBS.mediaDevices.support()
   STUBS.WebGL.support()
-  seeclark = new SeeClark()
-  expect(seeclark).toBeTruthy()
+  seeclarke = new SeeClarke()
+  expect(seeclarke).toBeTruthy()
 })
 
 it('Sanitizes options and sets sane defaults', () => {
-  seeclark = new SeeClark()
-  expect(seeclark.options.posenet).toBeTruthy()
+  seeclarke = new SeeClarke()
+  expect(seeclarke.options.posenet).toBeTruthy()
 })
 
 it('Autostarts if options.autostart', () => {
-  seeclark = new SeeClark({autostart: false})
-  expect(seeclark._isTracking).toEqual(false)
+  seeclarke = new SeeClarke({autostart: false})
+  expect(seeclarke._isTracking).toEqual(false)
 
-  seeclark = new SeeClark({autostart: true})
-  expect(seeclark._isTracking).toEqual(true)
+  seeclarke = new SeeClarke({autostart: true})
+  expect(seeclarke._isTracking).toEqual(true)
 })
 
 /**
- * SeeClark.trackPoses
+ * SeeClarke.trackPoses
  */
 it('If debug is on, displays the points and skeletons overlays on the webcam', () => {
-  seeclark = new SeeClark({autostart: false, debug: false})
+  seeclarke = new SeeClarke({autostart: false, debug: false})
   // Mock debugPoses; we're testing individual draw methods in other tests
-  seeclark.debugPoses = jest.fn()
-  seeclark.trackPoses([])
-  expect(seeclark.debugPoses).not.toHaveBeenCalled()
+  seeclarke.debugPoses = jest.fn()
+  seeclarke.trackPoses([])
+  expect(seeclarke.debugPoses).not.toHaveBeenCalled()
 
-  seeclark.debug = true
-  seeclark.trackPoses([])
-  expect(seeclark.debugPoses).toHaveBeenCalled()
+  seeclarke.debug = true
+  seeclarke.trackPoses([])
+  expect(seeclarke.debugPoses).toHaveBeenCalled()
 })
 
 // it('Automatically adjusts algorithm to match "single" or "multiple mode"', () => {
-//   seeclark = new SeeClark({autostart: false, debug: true, posenet: {maxUsers: 1}})
-//   seeclark.debugPoses = jest.fn()
-//   seeclark.posenet = {
+//   seeclarke = new SeeClarke({autostart: false, debug: true, posenet: {maxUsers: 1}})
+//   seeclarke.debugPoses = jest.fn()
+//   seeclarke.posenet = {
 //   }
 //   expect(true).toBeTruthy()
-//   // seeclark.trackPoses()
-//   // expect(seeclark.debugPoses).toHaveBeenCalled()
+//   // seeclarke.trackPoses()
+//   // expect(seeclarke.debugPoses).toHaveBeenCalled()
 // })

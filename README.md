@@ -2,7 +2,7 @@
 <h1>✋ THIS ISN'T 100% READY YET ✋</h1>
 
 <p>I'm super close though!
-<br>For now, follow me on <a href="https://twitter.com/labofoz">Twitter @Labofoz</a> or Star the repo on <a href="https://github.com/labofoz/seeclark">GitHub</a>.
+<br>For now, follow me on <a href="https://twitter.com/labofoz">Twitter @Labofoz</a> or Star the repo on <a href="https://github.com/labofoz/seeclarke">GitHub</a>.
 <br> -- 🧙
 
 <br>
@@ -27,11 +27,11 @@
 
 <br>
 <div align="center">
-  <p><img src="wiki/readme-title.png" alt="SeeClark.js" height=266>
+  <p><img src="wiki/readme-title.png" alt="SeeClarke.js" height=266>
   <br>
   <br>
-  <p><a href="https://travis-ci.com/LabOfOz/SeeClark"><img src="https://travis-ci.com/LabOfOz/SeeClark.svg?branch=master" alt="build"></a><a href="https://codecov.io/gh/LabOfOz/SeeClark">
-  <img src="https://codecov.io/gh/LabOfOz/SeeClark/branch/master/graph/badge.svg" />
+  <p><a href="https://travis-ci.com/LabOfOz/SeeClarke"><img src="https://travis-ci.com/LabOfOz/SeeClarke.svg?branch=master" alt="build"></a><a href="https://codecov.io/gh/LabOfOz/SeeClarke">
+  <img src="https://codecov.io/gh/LabOfOz/SeeClarke/branch/master/graph/badge.svg" />
 </a>
 <br>
 <br>
@@ -44,21 +44,21 @@
 #### One Line Drop-in
 ```html
 <!-- One Line Drop-In: Adds page scrolling, emits events -->
-<!-- @TODO Add our library to unpkg. @SEE https://github.com/LabOfOz/seeclark/issues/12 -->
-<script src="//unpkg.com/seeclark/dist/seeclark.min.js?autostart"></script>
+<!-- @TODO Add our library to unpkg. @SEE https://github.com/LabOfOz/seeclarke/issues/12 -->
+<script src="//unpkg.com/seeclarke/dist/seeclarke.min.js?autostart"></script>
 ```
 
 #### Manual Start
 ```html
-<script src="//unpkg.com/seeclark/dist/seeclark.min.js"></script>
+<script src="//unpkg.com/seeclarke/dist/seeclarke.min.js"></script>
 <script>
   // In multilines
   var config = {}
-  var seeclark = new SeeClark(config)
-  seeclark.start()
+  var seeclarke = new SeeClarke(config)
+  seeclarke.start()
 
   // or in one
-  (new SeeClark()).start()
+  (new SeeClarke()).start()
 </script>
 ```
 
@@ -177,7 +177,7 @@
             (' )(_,) . ), ) _) _,')  (, ) '. )  ,. (' )('  (_ , , .
          _^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_
       /                                o  *                           \
-     |    _@TODO: https://github.com/LabOfOz/seeclark/issues/11 ___    |
+     |    _@TODO: https://github.com/LabOfOz/seeclarke/issues/11 ___    |
      |   |                                                         |   |
      |   |  > npm i 🧙                                            |   |
      |   |  > cd 🧙; yarn                                         |   |
@@ -236,12 +236,12 @@ _.-'       .-'    .'   .'    /
 ### As a Drop-In
 
 ```html
-<script src="//unpkg.com/seeclark/dist/seeclark.min.js?autostart"></script>
+<script src="//unpkg.com/seeclarke/dist/seeclarke.min.js?autostart"></script>
 ```
 
-[@TODO #12](https://github.com/LabOfOz/seeclark/issues/12) **seeclark.js** will be usable as a drop-in library that adds face-tracked cursors and pointers to any existing HTML5 project with, and is fully configurable via the querystring. It can track one to dozens of people at once on a mobile device from pretty far away. **seeclark.js** is made possible by [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) and [Tensorflow.js](https://js.tensorflow.org/).
+[@TODO #12](https://github.com/LabOfOz/seeclarke/issues/12) **seeclarke.js** will be usable as a drop-in library that adds face-tracked cursors and pointers to any existing HTML5 project with, and is fully configurable via the querystring. It can track one to dozens of people at once on a mobile device from pretty far away. **seeclarke.js** is made possible by [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) and [Tensorflow.js](https://js.tensorflow.org/).
 
-> 🧚 Notice the `?autostart` flag; you can pass any [config](wiki/Options) to the script's `src` querystring for [@TODO #12 out-of-the-box configs](https://github.com/LabOfOz/seeclark/issues/9). And because **seeclark.js** emits native events, it'll probably work with your framework running on their platforms just...like...✨...that!
+> 🧚 Notice the `?autostart` flag; you can pass any [config](wiki/Options) to the script's `src` querystring for [@TODO #12 out-of-the-box configs](https://github.com/LabOfOz/seeclarke/issues/9). And because **seeclarke.js** emits native events, it'll probably work with your framework running on their platforms just...like...✨...that!
 
 By default, dropping the above tag into any page will add the ability to:
 
@@ -263,55 +263,55 @@ This will also start [emitting several events](wiki/Events) which you can use to
 
 #### Accessing Methods
 
-A global `window.SeeClark` class is made available for further [`new` instantiations](wiki/Instantiations) (in case you want to track from both the front and back cameras), and the instance object created when autostarted can be accessed via the globally created `window.seeclark`. For most drop-in applications, you'll only care about the lowercased version.
+A global `window.SeeClarke` class is made available for further [`new` instantiations](wiki/Instantiations) (in case you want to track from both the front and back cameras), and the instance object created when autostarted can be accessed via the globally created `window.seeclarke`. For most drop-in applications, you'll only care about the lowercased version.
 
-> 🧚 For example, to create a new instance you would do `new SeeClark(config)`, and to stop the autostarted one you'd use `seeclark.stop()`.
+> 🧚 For example, to create a new instance you would do `new SeeClarke(config)`, and to stop the autostarted one you'd use `seeclarke.stop()`.
 
 #### Updating Config
 
-[@TODO](https://github.com/LabOfOz/seeclark/issues/13) You can update any of the initial configs at runtime with [`seeclark.update()`](wiki/Updating-Config). When some of the configs that require external resources are changed (for example, changing `this.options.posenet.multiplier`), the current PoseNet model will continue running until the new one is ready. This allows your users to automatically update settings without needing to wait or restart the browser.
+[@TODO](https://github.com/LabOfOz/seeclarke/issues/13) You can update any of the initial configs at runtime with [`seeclarke.update()`](wiki/Updating-Config). When some of the configs that require external resources are changed (for example, changing `this.options.posenet.multiplier`), the current PoseNet model will continue running until the new one is ready. This allows your users to automatically update settings without needing to wait or restart the browser.
 
 ---
 
 ### Manual Start
 
 ```html
-<script src="//unpkg.com/seeclark/dist/seeclark.min.js"></script>
+<script src="//unpkg.com/seeclarke/dist/seeclarke.min.js"></script>
 ```
 
-If you want to manually configure and start **seeclark** (for example, to delay tracking until after the user clicks a button) you can do so by excluding the `?autostart` querystring parameter, like above.
+If you want to manually configure and start **seeclarke** (for example, to delay tracking until after the user clicks a button) you can do so by excluding the `?autostart` querystring parameter, like above.
 
-> 🧚 You can still include other query strings, but doing so just sets the [`SeeClark.prototype.defaults`](wiki/Options]).
+> 🧚 You can still include other query strings, but doing so just sets the [`SeeClarke.prototype.defaults`](wiki/Options]).
 
 The process is then to:
 
 ```js
-// Instantiate a new SeeClark
+// Instantiate a new SeeClarke
 // 🧙 We're just going with the defaults here but for 3 users since we still
 // have that issue with the dragon!
-let seeclark = new SeeClark({posenet: {maxUsers: 3}})
+let seeclarke = new SeeClarke({posenet: {maxUsers: 3}})
 
 // Use the toggle() method to turn the webcam/tracker on/off
-$('.toggle-webcam').click(() => seeclark.toggle()) // tracking is on
-$('.toggle-webcam').click(() => seeclark.toggle()) // tracking is off
-$('.toggle-webcam').click(() => seeclark.toggle()) // tracking is on again
-$('.toggle-webcam').click(() => seeclark.toggle()) // tracking is off again
+$('.toggle-webcam').click(() => seeclarke.toggle()) // tracking is on
+$('.toggle-webcam').click(() => seeclarke.toggle()) // tracking is off
+$('.toggle-webcam').click(() => seeclarke.toggle()) // tracking is on again
+$('.toggle-webcam').click(() => seeclarke.toggle()) // tracking is off again
 
 // Pass true or false to explicitly turn the webcam on (true) or off (false)
-$('.turn-webcam-on').click(() => seeclark.toggle(true)) // tracking is on
-$('.turn-webcam-on').click(() => seeclark.toggle(true)) // tracking is still on
-$('.turn-webcam-off').click(() => seeclark.toggle(false)) // tracking is off
-$('.turn-webcam-off').click(() => seeclark.toggle(false)) // tracking is still off
+$('.turn-webcam-on').click(() => seeclarke.toggle(true)) // tracking is on
+$('.turn-webcam-on').click(() => seeclarke.toggle(true)) // tracking is still on
+$('.turn-webcam-off').click(() => seeclarke.toggle(false)) // tracking is off
+$('.turn-webcam-off').click(() => seeclarke.toggle(false)) // tracking is still off
 ```
 
 ### Try the Bookmarklet
 
-You can preview **seeclark.js** on any site right now by [@TODO](https://github.com/LabOfOz/seeclark/issues/14) <a href="javascript:(function()%7Bfunction%20callback()%7B%7Dvar%20s%3Ddocument.createElement(%22script%22)%3Bs.src%3D%22%2F%2Funpkg.com%2Fseeclark%2Fdist%2Fseeclark.min.js%22%3Bif(s.addEventListener)%7Bs.addEventListener(%22load%22%2Ccallback%2Cfalse)%7Delse%20if(s.readyState)%7Bs.onreadystatechange%3Dcallback%7Ddocument.body.appendChild(s)%3B%7D)()">dragging this link to your bookmarks bar</a> or by [creating a bookmarklet](https://mrcoles.com/bookmarklet/) with the following code (then, visit any page and click the bookmarklet):
+You can preview **seeclarke.js** on any site right now by [@TODO](https://github.com/LabOfOz/seeclarke/issues/14) <a href="javascript:(function()%7Bfunction%20callback()%7B%7Dvar%20s%3Ddocument.createElement(%22script%22)%3Bs.src%3D%22%2F%2Funpkg.com%2Fseeclarke%2Fdist%2Fseeclarke.min.js%22%3Bif(s.addEventListener)%7Bs.addEventListener(%22load%22%2Ccallback%2Cfalse)%7Delse%20if(s.readyState)%7Bs.onreadystatechange%3Dcallback%7Ddocument.body.appendChild(s)%3B%7D)()">dragging this link to your bookmarks bar</a> or by [creating a bookmarklet](https://mrcoles.com/bookmarklet/) with the following code (then, visit any page and click the bookmarklet):
 
 ```
 (function () {
   var $script = document.createElement('script')
-  $script.src = '//unpkg.com/seeclark/dist/seeclark.min.js'
+  $script.src = '//unpkg.com/seeclarke/dist/seeclarke.min.js'
   document.body.appendChild($script)
 })()
 ```

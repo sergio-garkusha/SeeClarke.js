@@ -11,7 +11,7 @@ const dirSrc = path.join(__dirname, 'src')
 
 // Settings
 const IS_DEV = (process.env.NODE_ENV === 'dev')
-const appHtmlTitle = 'seeclark.js boilerplates'
+const appHtmlTitle = 'seeclarke.js boilerplates'
 
 /**
  * Webpack Configuration

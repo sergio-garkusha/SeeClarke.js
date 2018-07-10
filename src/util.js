@@ -2,8 +2,8 @@
  * @TODO # util.js
  *
  * A collection of utility methods which may be helpful in your app outside
- * the context of SeeClark:
- * [-] To import this utility, use `let SomeVariable = require('seeclark/src/util.js')`
+ * the context of SeeClarke:
+ * [-] To import this utility, use `let SomeVariable = require('seeclarke/src/util.js')`
  */
 const PoseNet = require('@tensorflow-models/posenet')
 
@@ -19,7 +19,7 @@ module.exports = {
   createDefaultVideo ($wrap) {
     const $video = document.createElement('video')
 
-    $wrap.classList.add('seeclark-debug-wrap')
+    $wrap.classList.add('seeclarke-debug-wrap')
 
     $video.setAttribute('playsinline', true)
     $video.style.transform = 'scale(-1, 1)'
