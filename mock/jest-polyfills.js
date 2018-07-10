@@ -37,7 +37,7 @@ module.exports = {
   },
 
   posenet: {
-    estimateSinglePose () { return MOCK.posenet.pose.single },
-    estimateMultiplePoses: () => MOCK.posenet.pose.multiple
+    estimateSinglePose: jest.fn(() => MOCK.posenet.pose.single),
+    estimateMultiplePoses: jest.fn(() => MOCK.posenet.pose.multiple)
   }
 }

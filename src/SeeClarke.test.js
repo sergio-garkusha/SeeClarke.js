@@ -55,12 +55,14 @@ it('If debug is on, displays the points and skeletons overlays on the webcam', (
   expect(seeclarke.debugPoses).toHaveBeenCalled()
 })
 
-// it('Automatically adjusts algorithm to match "single" or "multiple mode"', () => {
-//   seeclarke = new SeeClarke({autostart: false, debug: true, posenet: {maxUsers: 1}})
-//   seeclarke.debugPoses = jest.fn()
-//   seeclarke.posenet = {
-//   }
-//   expect(true).toBeTruthy()
-//   // seeclarke.trackPoses()
-//   // expect(seeclarke.debugPoses).toHaveBeenCalled()
-// })
+it('Automatically adjusts algorithm to match "single" or "multiple mode"', () => {
+  seeclarke = new SeeClarke({autostart: false, debug: true, posenet: {maxUsers: 1}})
+  seeclarke.debugPoses = jest.fn()
+  seeclarke.posenet = STUBS.posenet
+  seeclarke.trackPoses()
+  expect(seeclarke.posenet.estimateSinglePose).toHaveBeenCalled()
+
+  seeclark.update({posenet: {maxUsers: 2}})
+  seeclarke.trackPoses()
+  expect(seeclarke.posenet.estimateMultiplePoses).toHaveBeenCalled()
+})

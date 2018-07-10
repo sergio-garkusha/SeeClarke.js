@@ -47,8 +47,7 @@ class SeeClarke {
       this._isSupported = true
 
       // "Sanitize" constructor input
-      this.constructor.setDefaults.call(this, opts)
-      this.constructor.setAliases.call(this)
+      this.update(opts)
 
       // Possibly autostart
       this.options.autostart && this.start()
@@ -135,6 +134,17 @@ class SeeClarke {
       this._isTracking = false
       this.video.srcObject.getTracks().forEach(track => track.stop())
     }
+  }
+
+  /**
+   * @TODO Updates this.options with new ones
+   * [] Can update settings
+   *
+   * @param  {Object} opts The options set to update
+   */
+  update (opts = {}) {
+    this.constructor.setDefaults.call(this, opts)
+    this.constructor.setAliases.call(this)
   }
 }
 
