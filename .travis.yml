@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - "8"
 install:
-  - npm install -g codecov jest
+  - npm install -g codecov jest babel-preset-env
 script:
   - jest --coverage --detectOpenHandles && codecov
