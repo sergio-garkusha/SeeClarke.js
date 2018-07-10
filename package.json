@@ -12,7 +12,7 @@
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "coverage",
-    "setupFiles": ["jest-canvas-mock"],
+    "setupFiles": ["./mock/jest-canvas.js"],
     "coveragePathIgnorePatterns": ["/node_modules/", "mock/"],
     "testPathIgnorePatterns": ["/node_modules/", "mock/"]
   },
