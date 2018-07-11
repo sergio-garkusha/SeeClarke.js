@@ -150,8 +150,8 @@ class SeeClarke {
  *
  * Here are some more methods:
  */
-require('./mixins')(SeeClarke)
-require('./helpers')(SeeClarke)
+require('./Mixins')(SeeClarke)
+require('./Helpers')(SeeClarke)
 
 // Remember: to kick things off you'll want to instantiate this with `new`
 module.exports = SeeClarke

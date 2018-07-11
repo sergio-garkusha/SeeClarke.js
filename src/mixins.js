@@ -7,16 +7,14 @@ const PoseNet = require('@tensorflow-models/posenet')
 
 module.exports = function (SeeClarke) {
   /**
-   * @TODO # PRIVATE METHOD
-   *
    * Sets defaults to the missing constructor options:
-   * [-] Creates a default debug container
-   * [-] Creates a default video and canvas
-   * [-] Sets defaults
+   * - Sets defaults
+   * - Creates a default debug container
+   * - Creates a default video and canvas
    *
-   * @param {Object} opts The options passed into the constructor
+   * @param {Object} opts The options passed into the constructor. Pass null to use all defaults
    */
-  SeeClarke.setDefaults = function (opts) {
+  SeeClarke.setDefaults = function (opts = {}) {
     // Fallback for default target
     if (!opts.target) {
       opts.target = document.getElementById('seeclarke-debug')
@@ -55,10 +53,8 @@ module.exports = function (SeeClarke) {
   }
 
   /**
-   * @TODO # PRIVATE METHOD
-   *
    * Applies aliases to common options. Feel free to add your own in here
-   * [] Creates a shorthand to options
+   * - Creates a shorthand to options
    */
   SeeClarke.setAliases = function () {
     this.video = this.options.video
