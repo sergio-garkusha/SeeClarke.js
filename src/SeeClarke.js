@@ -130,8 +130,8 @@ class SeeClarke {
   }
 
   /**
-   * @TODO Updates this.options with new ones
-   * [] Can update settings
+   * Updates this.options with new ones
+   * - Can update settings
    *
    * @param  {Object} opts The options set to update
    */
@@ -144,8 +144,9 @@ class SeeClarke {
 }
 
 /**
- * That's it! You should have enough of an understanding to start picking off
- * issues on GitHub: https://github.com/LabOfOz/seeclarke.js/issues
+ * That's it! You should have enough of an understanding to either fork the
+ * project and make it yours or start picking off issues on GitHub:
+ * https://github.com/LabOfOz/seeclarke.js/issues
  *
  * Here are some more methods:
  */
