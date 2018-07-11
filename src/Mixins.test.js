@@ -1,6 +1,7 @@
 /**
  * Mixins.test.js
  */
+const PoseNet = jest.mock('@tensorflow-models/posenet')
 const STUBS = require('../mock/jest-polyfills')
 const SeeClarke = require('./SeeClarke')
 let seeclarke = null
@@ -11,7 +12,15 @@ let seeclarke = null
 it('Sets defaults to the missing constructor options', () => {
   STUBS.mediaDevices.support()
   STUBS.WebGL.support()
-  seeclarke = new SeeClarke()
+  seeclarke = new SeeClarke({target: false})
+
+  seeclarke.constructor.setDefaults.call(seeclarke)
+  expect(seeclarke.canvas && seeclarke.video).toBeTruthy()
+
+  const $wrap = document.createElement('div')
+  $wrap.setAttribute('id', 'seeclarke-debug')
+  document.body.appendChild($wrap)
+  seeclarke.update({target: $wrap})
 
   seeclarke.constructor.setDefaults.call(seeclarke)
   expect(seeclarke.canvas && seeclarke.video).toBeTruthy()
@@ -45,4 +54,33 @@ it('Sets up the webcam and stream', async () => {
 
   expect(seeclarke.video.play).toHaveBeenCalled()
   expect(seeclarke.video.srcObject).toBeTruthy()
+})
+
+/**
+ * SeeClarke.initPoseNet
+ */
+it('Initializes PoseNet and starts the tracking loop', async () => {
+  PoseNet.load = () => true
+  seeclarke = new SeeClarke()
+
+  seeclarke.posenet = false
+  await seeclarke.constructor.initPoseNet.call(seeclarke)
+  expect(seeclarke.posenet).toBeUndefined()
+
+  seeclarke.posenet = true
+  await seeclarke.constructor.initPoseNet.call(seeclarke)
+  expect(typeof seeclarke.posenet === 'boolean').toBeTruthy()
+})
+
+/**
+ * SeeClarke.trackPosesLoop
+ */
+it('This method is recursive, once called it continues until after !_isTracking', () => {
+  seeclarke = new SeeClarke()
+  seeclarke.trackPoses = jest.fn()
+
+  seeclarke.posenet = {}
+  seeclarke.constructor.trackPosesLoop.call(SeeClarke, seeclarke)
+  expect(seeclarke.trackPoses).toHaveBeenCalled()
+  seeclarke.stop()
 })

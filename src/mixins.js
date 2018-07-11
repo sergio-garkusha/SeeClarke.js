@@ -18,6 +18,7 @@ module.exports = function (SeeClarke) {
   SeeClarke.setDefaults = function (opts = {}) {
     // Fallback for default target
     if (!opts.target) {
+      // @TODO Let's document this
       opts.target = document.getElementById('seeclarke-debug')
 
       if (!opts.target) {
@@ -88,17 +89,14 @@ module.exports = function (SeeClarke) {
 
   /**
    * @TODO Initializes PoseNet and starts the tracking loop:
-   * [] This loads a model from Google's servers based on the chosen PoseNet
-   *    modifier
+   * [-] Loads a model from Google's servers based on the chosen PoseNet modifier
    */
   SeeClarke.initPoseNet = async function () {
     if (!this.posenet) this.posenet = await PoseNet.load(this.options.posenet.multiplier)
   }
 
   /**
-   * @TODO # PRIVATE METHOD
-   *
-   * Recursive method for tracking poses on each animationFrame:
+   * @TODO Recursive method for tracking poses on each animationFrame:
    * [] This method is recursive, once called it continues until after
    *    seeclarke.stop() is called or until this._isTracking is false
    *
