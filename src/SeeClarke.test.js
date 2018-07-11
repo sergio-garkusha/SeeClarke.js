@@ -117,3 +117,14 @@ it('Stops tracking poses', () => {
   seeclarke.stop()
   expect(seeclarke._isTracking).toBeFalsy()
 })
+
+/**
+ * SeeClarke.update
+ */
+it('Can update settings', () => {
+  seeclarke = new SeeClarke()
+
+  expect(seeclarke.debug).toBeFalsy()
+  seeclarke.update({debug: true})
+  expect(seeclarke.debug).toBeTruthy()
+})
