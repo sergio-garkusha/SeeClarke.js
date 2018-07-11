@@ -80,7 +80,7 @@
 ```
 
 ```
-
+🗺️ ROADMAP: UP NEXT, TERMINAL/CLI DROP-IN
 
 
 
@@ -205,7 +205,7 @@
      |   |  ...                                                    |   |
      |   |  🧙 - Point head or arm at tile to highlight it        |   |
      |   |     - Flip tile by "reaching" for it with head or arm   |   |
-     |   |     - Flip all tiles to continue                        |   |
+     |   |     - Flip all tiles to access techno-spellbook         |   |
      |   |                                                         |   |
      |   |  |---------------------------------------------------|  |   |
      |   |  |            |            |            |            |  |   |
@@ -248,6 +248,7 @@ _.-'       .-'    .'   .'    /
        _.-'    .-'   .'    .'
     .-'            .'
 
+  COMING SOON
 ```
 
 ### As a Drop-In
