@@ -12,7 +12,6 @@
 require('./polyfills')
 const merge = require('lodash/merge')
 const PoseNet = require('@tensorflow-models/posenet')
-const util = require('./util')
 
 class SeeClarke {
   /**
@@ -41,7 +40,7 @@ class SeeClarke {
     // Error out when webcams are not supported
     // @TODO Is there a better way handle this error?
     // @SEE https://github.com/LabOfOz/SeeClarke/issues/15
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !util.isWebGLSupported()) {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !this.isWebGLSupported()) {
       throw new Error('ERROR: This browser does not support webcams, please try another browser...like Google Chrome!')
     } else {
       // We know the browser has full support now
@@ -85,8 +84,7 @@ class SeeClarke {
 
   /**
    * @TODO Loops through each pose and draws their keypoints/skeletons
-   * [-] Draws skeletons
-   * [-] Draws keypoints
+   * [-] Draws skeletons and keypoints
    */
   debugPoses () {
     const context = this.canvas.getContext('2d')
@@ -96,8 +94,8 @@ class SeeClarke {
         const adjacentKeypoints = PoseNet.getAdjacentKeyPoints(keypoints, this.options.posenet.minPartConfidence, context)
 
         context.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        util.drawSkeleton(adjacentKeypoints, context)
-        util.drawKeypoints(keypoints, this.options.posenet.minPartConfidence, context)
+        this.drawSkeleton(adjacentKeypoints, context)
+        this.drawKeypoints(keypoints, this.options.posenet.minPartConfidence, context)
       }
     })
   }
@@ -157,6 +155,7 @@ class SeeClarke {
  * Here are some more methods:
  */
 require('./mixins')(SeeClarke)
+require('./helpers')(SeeClarke)
 
 // Remember: to kick things off you'll want to instantiate this with `new`
 module.exports = SeeClarke

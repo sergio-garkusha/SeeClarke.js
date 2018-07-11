@@ -69,3 +69,13 @@ it('Automatically adjusts algorithm to match "single" or "multiple mode"', () =>
   seeclarke.trackPoses()
   expect(seeclarke.posenet.estimateMultiplePoses).toHaveBeenCalled()
 })
+
+/**
+ * SeeClarke.debugPoses
+ */
+// it('Draws skeletons and keypoints', () => {
+//   seeclarke = new SeeClarke({autostart: false, debug: true, posenet: {maxUsers: 1}})
+//
+//   seeclark.drawSkeleton = jest.fn()
+//   seeclark.drawKeypoints = jest.fn()
+// })

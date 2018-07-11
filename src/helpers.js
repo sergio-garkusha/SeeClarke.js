@@ -1,13 +1,12 @@
 /**
- * @TODO # util.js
+ * @TODO # helpers.js
  *
- * A collection of utility methods which may be helpful in your app outside
- * the context of SeeClarke:
- * [-] To import this utility, use `let SomeVariable = require('seeclarke/src/util.js')`
+ * A collection of helpers methods which may be helpful in your app outside
+ * the context of SeeClarke
  */
 const PoseNet = require('@tensorflow-models/posenet')
 
-module.exports = {
+module.exports = function (SeeClarke) {
   /**
    * @TODO Creates a default (flipped) video and adds it to the DOM:
    * [-] The video is absolutely positioned within the $wrap
@@ -16,7 +15,7 @@ module.exports = {
    *
    * @return {HTMLVideoElement} A hidden video used for inference with PoseNet
    */
-  createDefaultVideo ($wrap) {
+  SeeClarke.prototype.createDefaultVideo = function ($wrap) {
     const $video = document.createElement('video')
 
     $wrap.classList.add('seeclarke-debug-wrap')
@@ -27,7 +26,7 @@ module.exports = {
     $wrap.appendChild($video)
 
     return $video
-  },
+  }
 
   /**
    * @TODO Creates a default (flipped) canvas and adds it to the DOM
@@ -37,7 +36,7 @@ module.exports = {
    *
    * @return {HTMLCanvasElement} A hidden canvas used for debugging with PoseNet
    */
-  createDefaultCanvas ($wrap) {
+  SeeClarke.prototype.createDefaultCanvas = function ($wrap) {
     const $canvas = document.createElement('canvas')
     $canvas.style.transform = 'scale(-1, 1)'
     $canvas.style.position = 'relative'
@@ -47,7 +46,7 @@ module.exports = {
     $wrap.appendChild($canvas)
 
     return $canvas
-  },
+  }
 
   /**
    * @TODO Helpers for checking if we're on mobile
@@ -55,9 +54,9 @@ module.exports = {
    * [-] Checks if we're on android
    * [-] Checks if we're on iOS
    */
-  isMobile () { return this.isAndroid() || this.isiOS() },
-  isAndroid () { return /Android/i.test(navigator.userAgent) },
-  isiOS () { return /iPhone|iPad|iPod/i.test(navigator.userAgent) },
+  SeeClarke.prototype.isMobile = function () { return this.isAndroid() || this.isiOS() }
+  SeeClarke.prototype.isAndroid = function () { return /Android/i.test(navigator.userAgent) }
+  SeeClarke.prototype.isiOS = function () { return /iPhone|iPad|iPod/i.test(navigator.userAgent) }
 
   /**
    * @TODO Checks if WebGL is supported. Depending on your deployment needs,
@@ -71,7 +70,7 @@ module.exports = {
    *
    * @return {Boolean} Is WebGL supported?
    */
-  isWebGLSupported () {
+  SeeClarke.prototype.isWebGLSupported = function () {
     try {
       let canvas = document.createElement('canvas')
       let isSupported = !!window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
@@ -82,7 +81,7 @@ module.exports = {
       console.error('WebGL is not supported in this browser')
       return false
     }
-  },
+  }
 
   /**
    * @TODO Draw each tracked keypoint
@@ -95,7 +94,7 @@ module.exports = {
    * @param {NUM} minConfidence The minimum keypoint score needed to track
    * @param {OBJ} context The canvas context to draw into
    */
-  drawKeypoints (keypoints, minConfidence, context) {
+  SeeClarke.prototype.drawKeypoints = function (keypoints, minConfidence, context) {
     keypoints.forEach(({position, score}) => {
       if (score > minConfidence) {
         context.beginPath()
@@ -104,7 +103,7 @@ module.exports = {
         context.fill()
       }
     })
-  },
+  }
 
   /**
    * @TODO Draw each tracked skeleton
@@ -115,11 +114,11 @@ module.exports = {
    * @param {ARR} adjacentPoints The list of all keypoints and their relationships
    * @param {OBJ} context The canvas context to draw into
    */
-  drawSkeleton (adjacentPoints, context) {
+  SeeClarke.prototype.drawSkeleton = function (adjacentPoints, context) {
     adjacentPoints.forEach(keypoints => {
       this.drawSegment(this.toTuple(keypoints[0].position), this.toTuple(keypoints[1].position), context)
     })
-  },
+  }
 
   /**
    * @TODO Converts a position to a tuple
@@ -127,7 +126,7 @@ module.exports = {
    *
    * @param {OBJ} position {x, y}
    */
-  toTuple ({x, y}) { return [y, x] },
+  SeeClarke.prototype.toTuple = function ({x, y}) { return [y, x] }
 
   /**
    * @TODO Draws the skeleton segment
@@ -139,7 +138,7 @@ module.exports = {
    * @param {HEX} color The color to draw in
    * @param {OBJ} context The canvas context to draw in
    */
-  drawSegment ([ay, ax], [by, bx], context) {
+  SeeClarke.prototype.drawSegment = function ([ay, ax], [by, bx], context) {
     const scale = 1
 
     context.beginPath()

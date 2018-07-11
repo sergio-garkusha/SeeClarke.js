@@ -1,5 +1,9 @@
+/**
+ * @TODO # mixins.js
+ *
+ * A collection of additional, lower-priority methods
+ */
 const PoseNet = require('@tensorflow-models/posenet')
-const util = require('./util')
 
 module.exports = function (SeeClarke) {
   /**
@@ -26,14 +30,14 @@ module.exports = function (SeeClarke) {
     opts.target.style.display = 'none'
 
     // Setup the video element
-    const video = opts.video || util.createDefaultVideo(opts.target)
+    const video = opts.video || this.createDefaultVideo(opts.target)
     this.initOptions = opts
 
     // Setup defaults
     // @FIXME This could use some refactoring, probably with Object.assign
     this.options = {
       autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : true,
-      canvas: opts.canvas || util.createDefaultCanvas(opts.target),
+      canvas: opts.canvas || this.createDefaultCanvas(opts.target),
       debug: opts.debug || false,
       facingMode: opts.facingMode || 'user',
       posenet: {
@@ -77,7 +81,7 @@ module.exports = function (SeeClarke) {
     this.canvas.height = this.video.height = 500
 
     // Start the stream based on the device
-    const isMobile = util.isMobile()
+    const isMobile = this.isMobile()
     this.video.srcObject = await navigator.mediaDevices.getUserMedia({
       // We only care about the camera
       audio: false,
