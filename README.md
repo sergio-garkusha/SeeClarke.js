@@ -11,7 +11,6 @@
 <br>
 </div>
 
-
 ```
 
                  .-"""-.
@@ -27,7 +26,7 @@
 
 <br>
 <div align="center">
-  <p><img src="wiki/readme-title.png" alt="SeeClarke.js" height=266>
+  <p><img src="https://i.imgur.com/4nfh4tG.png" alt="SeeClarke.js" height=266>
   <br>
   <br>
   <p><a href="https://travis-ci.com/LabOfOz/SeeClarke"><img src="https://travis-ci.com/LabOfOz/SeeClarke.svg?branch=master" alt="build"></a><a href="https://codecov.io/gh/LabOfOz/SeeClarke">
@@ -41,15 +40,16 @@
 
 ## HTML5 SITES
 
-#### One Line Drop-in
+#### One Line, Autostart Drop-in
 ```html
-<!-- One Line Drop-In: Adds page scrolling, emits events -->
+<!-- Autostarts and adds page scrolling and emits events -->
 <!-- @TODO Add our library to unpkg. @SEE https://github.com/LabOfOz/seeclarke/issues/12 -->
 <script src="//unpkg.com/seeclarke/dist/seeclarke.min.js?autostart"></script>
 ```
 
 #### Manual Start
 ```html
+<!-- @TODO Add our library to unpkg. @SEE https://github.com/LabOfOz/seeclarke/issues/12 -->
 <script src="//unpkg.com/seeclarke/dist/seeclarke.min.js"></script>
 <script>
   // In multilines
@@ -177,7 +177,7 @@
             (' )(_,) . ), ) _) _,')  (, ) '. )  ,. (' )('  (_ , , .
          _^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_
       /                                o  *                           \
-     |    _@TODO: https://github.com/LabOfOz/seeclarke/issues/11 ___    |
+     |    _@TODO: https://github.com/LabOfOz/seeclarke/issues/11 ___   |
      |   |                                                         |   |
      |   |  > npm i 🧙                                            |   |
      |   |  > cd 🧙; yarn                                         |   |
@@ -239,7 +239,7 @@ _.-'       .-'    .'   .'    /
 <script src="//unpkg.com/seeclarke/dist/seeclarke.min.js?autostart"></script>
 ```
 
-[@TODO #12](https://github.com/LabOfOz/seeclarke/issues/12) **seeclarke.js** will be usable as a drop-in library that adds face-tracked cursors and pointers to any existing HTML5 project with, and is fully configurable via the querystring. It can track one to dozens of people at once on a mobile device from pretty far away. **seeclarke.js** is made possible by [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) and [Tensorflow.js](https://js.tensorflow.org/).
+[@TODO #12](https://github.com/LabOfOz/seeclarke/issues/12) **seeclarke.js** will be usable as a drop-in library that adds face-tracked cursors and pointers to any existing HTML5 project and is fully configurable via the `src` querystring. It can track one to dozens of people at once on a mobile device from pretty far away. **seeclarke.js** is made possible by [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) and [Tensorflow.js](https://js.tensorflow.org/).
 
 > 🧚 Notice the `?autostart` flag; you can pass any [config](wiki/Options) to the script's `src` querystring for [@TODO #12 out-of-the-box configs](https://github.com/LabOfOz/seeclarke/issues/9). And because **seeclarke.js** emits native events, it'll probably work with your framework running on their platforms just...like...✨...that!
 

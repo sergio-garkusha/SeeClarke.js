@@ -10,6 +10,7 @@
  * - Describes what this method does (passes unit/e2e)
  */
 require('./polyfills')
+const merge = require('lodash/merge')
 const PoseNet = require('@tensorflow-models/posenet')
 const util = require('./util')
 
@@ -62,7 +63,6 @@ class SeeClarke {
    * @param {Null|Array} poses Either null to estimate poses, or an array of poses to track
    */
   async trackPoses (poses = null) {
-
     if (!poses) {
       // Get single pose
       if (this.options.posenet.maxUsers === 1) {
@@ -72,7 +72,7 @@ class SeeClarke {
       } else {
         poses = await this.posenet.estimateMultiplePoses(
           this.video, this.options.posenet.imageScaleFactor, false, this.options.posenet.outputStride,
-          this.options.posenet.maxUsers, this.settings.posenet.scoreThreshold, this.options.posenet.nmsRadius)
+          this.options.posenet.maxUsers, this.options.posenet.scoreThreshold, this.options.posenet.nmsRadius)
       }
     }
 
@@ -143,6 +143,8 @@ class SeeClarke {
    * @param  {Object} opts The options set to update
    */
   update (opts = {}) {
+    if (this.options) this.options = merge(this.options, opts)
+
     this.constructor.setDefaults.call(this, opts)
     this.constructor.setAliases.call(this)
   }
