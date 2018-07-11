@@ -80,22 +80,24 @@ it('Draws skeletons and keypoints', () => {
   seeclarke.drawKeypoints = jest.fn()
 
   seeclarke.trackPoses(STUBS.data.posenet.pose.single)
-  expect(seeclarke.drawSkeleton).toHaveBeenCalled()
-  expect(seeclarke.drawKeypoints).toHaveBeenCalled()
+  expect(seeclarke.drawSkeleton).toHaveBeenCalledTimes(1)
+  expect(seeclarke.drawKeypoints).toHaveBeenCalledTimes(1)
+
+  seeclarke.options.posenet.minPoseConfidence = 1
+  seeclarke.trackPoses(STUBS.data.posenet.pose.single)
+  expect(seeclarke.drawSkeleton).toHaveBeenCalledTimes(1)
+  expect(seeclarke.drawKeypoints).toHaveBeenCalledTimes(1)
 })
 
 /**
  * SeeClarke.start
  */
 it('Starts tracking poses', () => {
-  seeclarke = new SeeClarke()
+  seeclarke = new SeeClarke({debug: true})
 
   seeclarke.constructor.setupFeed = jest.fn()
   seeclarke.constructor.initPoseNet = jest.fn()
   seeclarke.constructor.trackPosesLoop = jest.fn()
-
-  seeclarke.start()
-  expect(seeclarke.constructor.trackPosesLoop).toHaveBeenCalled()
 
   seeclarke.start()
   seeclarke.start()
@@ -113,6 +115,8 @@ it('Stops tracking poses', () => {
   seeclarke.constructor.initPoseNet = jest.fn()
   seeclarke.constructor.trackPosesLoop = jest.fn()
 
+  seeclarke.stop()
+  expect(seeclarke._isTracking).toBeFalsy()
   seeclarke._isTracking = true
   seeclarke.stop()
   expect(seeclarke._isTracking).toBeFalsy()
@@ -124,7 +128,10 @@ it('Stops tracking poses', () => {
 it('Can update settings', () => {
   seeclarke = new SeeClarke()
 
-  expect(seeclarke.debug).toBeFalsy()
+  seeclarke.options = null
+  seeclarke.update()
+  expect(seeclarke.options).toBeTruthy()
+
   seeclarke.update({debug: true})
   expect(seeclarke.debug).toBeTruthy()
 })
