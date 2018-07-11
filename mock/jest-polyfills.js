@@ -18,6 +18,8 @@ console.warn = function (message, ...args) {
 }
 
 module.exports = {
+  data: MOCK,
+
   mediaDevices: {
     support () {
       window.HTMLMediaElement.prototype.load = () => {}
@@ -31,13 +33,13 @@ module.exports = {
     unsupport () {navigator.mediaDevices = null}
   },
 
-  WebGL: {
-    support () {window.WebGLRenderingContext = true},
-    unupport () {window.WebGLRenderingContext = false}
-  },
-
   posenet: {
     estimateSinglePose: jest.fn(() => MOCK.posenet.pose.single),
     estimateMultiplePoses: jest.fn(() => MOCK.posenet.pose.multiple)
+  },
+
+  WebGL: {
+    support () {window.WebGLRenderingContext = true},
+    unupport () {window.WebGLRenderingContext = false}
   }
 }

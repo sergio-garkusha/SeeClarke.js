@@ -83,8 +83,8 @@ class SeeClarke {
   }
 
   /**
-   * @TODO Loops through each pose and draws their keypoints/skeletons
-   * [-] Draws skeletons and keypoints
+   * Loops through each pose and draws their keypoints/skeletons
+   * - Draws skeletons and keypoints
    */
   debugPoses () {
     const context = this.canvas.getContext('2d')
@@ -101,9 +101,7 @@ class SeeClarke {
   }
 
   /**
-   * @TODO # PUBLIC METHOD
-   *
-   * Start tracking poses:
+   * @TODO Start tracking poses:
    * [-] If this.options.autostart is false, then you can manually start it
    *    later with this
    * [-] If the process has started this will restart that process
@@ -120,9 +118,7 @@ class SeeClarke {
   }
 
   /**
-   * @TODO # PUBLIC METHOD
-   *
-   * Stop tracking poses:
+   * @TODO Stop tracking poses:
    * [-] A process can be stopped to free up memory for other expensive processes
    *    or to save on power when idling with this
    */

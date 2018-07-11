@@ -7,7 +7,9 @@
 </head>
 <body>
   <section>
-    <h1>seeclarke.js</h1>
+    <h1 style="text-align: center">
+      <img src="/assets/img/readme-title.png" alt="SeeClarke.js" width=350>
+    </h1>
     <p>
       <label for="demo-selector">Demo Selector:</label>
       <select id="demo-selector" name="demo-selector">
@@ -15,11 +17,10 @@
       </select>
     <p id="seeclarke-debug" style="position: relative"></p>
     <p>
-      <label>HTML:</label>
-      <pre>&lt;script src="./seeclarke.js"&gt;&lt;/script&gt;
-&lt;script&gt;new SeeClarke({autostart: true})&lt;/script&gt;</pre>
+      <label><small>in</small> HTML:</label>
+      <pre>&lt;script src="./seeclarke.js?autostart=true"&gt;&lt;/script&gt;</pre>
     <p>
-      <label><small>or</small> Node:</label>
+      <label><small>or in</small> Node:</label>
       <pre>new (require('seeclarke'))({autostart: true})</pre>
   </section>
 </body>

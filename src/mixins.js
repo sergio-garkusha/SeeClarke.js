@@ -36,7 +36,7 @@ module.exports = function (SeeClarke) {
     // Setup defaults
     // @FIXME This could use some refactoring, probably with Object.assign
     this.options = {
-      autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : true,
+      autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : false,
       canvas: opts.canvas || this.createDefaultCanvas(opts.target),
       debug: opts.debug || false,
       facingMode: opts.facingMode || 'user',

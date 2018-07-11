@@ -33,7 +33,7 @@ it('Sanitizes options and sets sane defaults', () => {
 })
 
 it('Autostarts if options.autostart', () => {
-  seeclarke = new SeeClarke({autostart: false})
+  seeclarke = new SeeClarke()
   expect(seeclarke._isTracking).toEqual(false)
 
   seeclarke = new SeeClarke({autostart: true})
@@ -44,7 +44,7 @@ it('Autostarts if options.autostart', () => {
  * SeeClarke.trackPoses
  */
 it('If debug is on, displays the points and skeletons overlays on the webcam', () => {
-  seeclarke = new SeeClarke({autostart: false, debug: false})
+  seeclarke = new SeeClarke({debug: false})
   // Mock debugPoses; we're testing individual draw methods in other tests
   seeclarke.debugPoses = jest.fn()
   seeclarke.trackPoses([])
@@ -56,7 +56,7 @@ it('If debug is on, displays the points and skeletons overlays on the webcam', (
 })
 
 it('Automatically adjusts algorithm to match "single" or "multiple mode"', () => {
-  seeclarke = new SeeClarke({autostart: false, debug: true, posenet: {maxUsers: 1}})
+  seeclarke = new SeeClarke({debug: true, posenet: {maxUsers: 1}})
   seeclarke.debugPoses = jest.fn()
   seeclarke.posenet = {
     estimateSinglePose: STUBS.posenet.estimateSinglePose,
@@ -73,9 +73,13 @@ it('Automatically adjusts algorithm to match "single" or "multiple mode"', () =>
 /**
  * SeeClarke.debugPoses
  */
-// it('Draws skeletons and keypoints', () => {
-//   seeclarke = new SeeClarke({autostart: false, debug: true, posenet: {maxUsers: 1}})
-//
-//   seeclark.drawSkeleton = jest.fn()
-//   seeclark.drawKeypoints = jest.fn()
-// })
+it('Draws skeletons and keypoints', () => {
+  seeclarke = new SeeClarke({debug: true})
+
+  seeclarke.drawSkeleton = jest.fn()
+  seeclarke.drawKeypoints = jest.fn()
+
+  seeclarke.trackPoses(STUBS.data.posenet.pose.single)
+  expect(seeclarke.drawSkeleton).toHaveBeenCalled()
+  expect(seeclarke.drawKeypoints).toHaveBeenCalled()
+})
