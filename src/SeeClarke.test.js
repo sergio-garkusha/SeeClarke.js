@@ -83,3 +83,37 @@ it('Draws skeletons and keypoints', () => {
   expect(seeclarke.drawSkeleton).toHaveBeenCalled()
   expect(seeclarke.drawKeypoints).toHaveBeenCalled()
 })
+
+/**
+ * SeeClarke.start
+ */
+it('Starts tracking poses', () => {
+  seeclarke = new SeeClarke()
+
+  seeclarke.constructor.setupFeed = jest.fn()
+  seeclarke.constructor.initPoseNet = jest.fn()
+  seeclarke.constructor.trackPosesLoop = jest.fn()
+
+  seeclarke.start()
+  expect(seeclarke.constructor.trackPosesLoop).toHaveBeenCalled()
+
+  seeclarke.start()
+  seeclarke.start()
+  seeclarke.start()
+  expect(seeclarke.constructor.trackPosesLoop).toHaveBeenCalledTimes(1)
+})
+
+/**
+ * SeeClarke.stop
+ */
+it('Stops tracking poses', () => {
+  seeclarke = new SeeClarke()
+
+  seeclarke.constructor.setupFeed = jest.fn()
+  seeclarke.constructor.initPoseNet = jest.fn()
+  seeclarke.constructor.trackPosesLoop = jest.fn()
+
+  seeclarke._isTracking = true
+  seeclarke.stop()
+  expect(seeclarke._isTracking).toBeFalsy()
+})

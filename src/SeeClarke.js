@@ -101,11 +101,10 @@ class SeeClarke {
   }
 
   /**
-   * @TODO Start tracking poses:
-   * [-] If this.options.autostart is false, then you can manually start it
+   * Start tracking poses:
+   * - If this.options.autostart is false, then you can manually start it
    *    later with this
-   * [-] If the process has started this will restart that process
-   * [-] A check is made internally so that only one process is ever running
+   * - A check is made internally so that only one process is ever running
    */
   start () {
     if (!this._isTracking) {
@@ -118,8 +117,8 @@ class SeeClarke {
   }
 
   /**
-   * @TODO Stop tracking poses:
-   * [-] A process can be stopped to free up memory for other expensive processes
+   * Stop tracking poses:
+   * - A process can be stopped to free up memory for other expensive processes
    *    or to save on power when idling with this
    */
   stop () {
