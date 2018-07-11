@@ -4,6 +4,7 @@
  * A collection of additional, lower-priority methods
  */
 const PoseNet = require('@tensorflow-models/posenet')
+const merge = require('lodash/merge')
 
 module.exports = function (SeeClarke) {
   /**
@@ -32,24 +33,23 @@ module.exports = function (SeeClarke) {
     this.initOptions = opts
 
     // Setup defaults
-    // @FIXME This could use some refactoring, probably with Object.assign
-    this.options = {
-      autostart: typeof opts.autostart !== 'undefined' ? opts.autostart : false,
-      canvas: opts.canvas || this.createDefaultCanvas(opts.target),
-      debug: opts.debug || false,
-      facingMode: opts.facingMode || 'user',
+    this.options = merge({
+      autostart: false,
+      canvas: this.createDefaultCanvas(opts.target),
+      debug: false,
+      facingMode: 'user',
       posenet: {
-        multiplier: opts.posenet && opts.posenet.multiplier ? opts.posenet.multiplier : 0.75,
-        maxUsers: opts.posenet && opts.posenet.maxUsers ? opts.posenet.maxUsers : 1,
-        minPoseConfidence: opts.posenet && opts.posenet.minPoseConfidence ? opts.posenet.minPoseConfidence : 0.1,
-        minPartConfidence: opts.posenet && opts.posenet.minPartConfidence ? opts.posenet.minPartConfidence : 0.5,
-        outputStride: opts.posenet && opts.posenet.outputStride ? opts.posenet.outputStride : 16,
-        nmsRadius: opts.posenet && opts.posenet.nmsRadius ? opts.posenet.nmsRadius : 20,
-        scoreThreshold: opts.posenet && opts.posenet.scoreThreshold ? opts.posenet.scoreThreshold : 0.5
+        multiplier: 0.75,
+        maxUsers: 1,
+        minPoseConfidence: 0.1,
+        minPartConfidence: 0.5,
+        outputStride: 16,
+        nmsRadius: 20,
+        scoreThreshold: 0.5
       },
       target: opts.target,
       video
-    }
+    }, opts)
   }
 
   /**
@@ -63,13 +63,11 @@ module.exports = function (SeeClarke) {
   }
 
   /**
-   * @TODO # PRIVATE METHOD
-   *
    * Sets up the webcam and stream:
-   * [-] This creates its own video/canvas elements, allowing you to have
+   * - This creates its own video/canvas elements, allowing you to have
    *    multiple instances going (for example, to use front/back cameras
    *    simultaneously)
-   * [-] Recreates the video feed to reassign srcObject once it's been stopped
+   * - Recreates the video feed to reassign srcObject once it's been stopped
    */
   SeeClarke.setupFeed = async function () {
     // Set webcam dimensions
@@ -89,12 +87,9 @@ module.exports = function (SeeClarke) {
   }
 
   /**
-   * @TODO # PRIVATE METHOD
-   *
-   * Initializes PoseNet and starts the tracking loop:
+   * @TODO Initializes PoseNet and starts the tracking loop:
    * [] This loads a model from Google's servers based on the chosen PoseNet
    *    modifier
-   * [] The webcam feed won't actually be visible until this method is resolved
    */
   SeeClarke.initPoseNet = async function () {
     if (!this.posenet) this.posenet = await PoseNet.load(this.options.posenet.multiplier)

@@ -31,3 +31,18 @@ it('Applies aliases to common options. Feel free to add your own in here', () =>
   expect(seeclarke.canvas).toBe(seeclarke.options.canvas)
   expect(seeclarke.debug).toBe(seeclarke.options.debug)
 })
+
+/**
+ * SeeClarke.setupFeed
+ */
+it('Sets up the webcam and stream', async () => {
+  seeclarke = new SeeClarke()
+  seeclarke.isMobile = jest.fn(() => true)
+
+  seeclarke.video.play = jest.fn()
+  seeclarke.video.srcObject = null
+  await seeclarke.constructor.setupFeed.call(seeclarke)
+
+  expect(seeclarke.video.play).toHaveBeenCalled()
+  expect(seeclarke.video.srcObject).toBeTruthy()
+})
