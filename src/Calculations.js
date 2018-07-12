@@ -28,16 +28,18 @@ module.exports = function (SeeClarke) {
    * @TODO Entry point for our hacky calculations. This'll be overwritten eventually,
    * but we'll still want to unit test until then.
    *
-   * @see
+   * [] Calculates "pointedAt" for each pose
    */
   SeeClarke.prototype.runHackyCalculations = function () {
     this.poses.forEach((pose, index) => {
       const nose = pose.keypoints[0]
+      const envWidth = window.outerWidth
+      const envHeight = window.outerHeight
 
-      // Helps map a point on the canvas to a point on the window
+      // Helps map a point on the.canvas to a point on the window
       const ratio = {
-        width: window.outerWidth / this.canvas.width,
-        height: window.outerHeight / this.canvas.height
+        width: envWidth / this.canvas.width,
+        height: envHeight / this.canvas.height
       }
 
       // The canvas is mirrored, so left needs to be flipped

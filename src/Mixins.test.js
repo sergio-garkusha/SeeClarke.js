@@ -12,7 +12,7 @@ let seeclarke = null
 it('Sets defaults to the missing constructor options', () => {
   STUBS.mediaDevices.support()
   STUBS.WebGL.support()
-  seeclarke = new SeeClarke({target: false})
+  seeclarke = new SeeClarke()
 
   seeclarke.constructor.setDefaults.call(seeclarke)
   expect(seeclarke.canvas && seeclarke.video).toBeTruthy()
