@@ -77,10 +77,26 @@ it('Initializes PoseNet and starts the tracking loop', async () => {
  */
 it('This method is recursive, once called it continues until after !_isTracking', () => {
   seeclarke = new SeeClarke()
-  seeclarke.trackPoses = jest.fn()
+  seeclarke.trackPoses = jest.fn(() => { return true })
+  seeclarke.runCalculations = jest.fn(() => { return true })
+  seeclarke.emitEvents = jest.fn()
 
   seeclarke.posenet = {}
   seeclarke.constructor.trackPosesLoop.call(SeeClarke, seeclarke)
   expect(seeclarke.trackPoses).toHaveBeenCalled()
+  expect(seeclarke.runCalculations).toHaveBeenCalled()
+  expect(seeclarke.emitEvents).toHaveBeenCalled()
   seeclarke.stop()
+})
+
+/**
+ * SeeClarke.emitEvents
+ */
+it('Emits onSeeClarkePoseUpdates with (this.poses, seeclarke)', () => {
+  let callback = jest.fn()
+  window.addEventListener('onSeeClarkePoseUpdates', callback)
+
+  seeclarke = new SeeClarke()
+  seeclarke.emitEvents()
+  expect(callback).toHaveBeenCalled()
 })

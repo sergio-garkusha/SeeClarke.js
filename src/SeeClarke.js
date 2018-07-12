@@ -86,6 +86,9 @@ class SeeClarke {
 
     // Only draw when debug is on
     this.debug && poses && this.debugPoses()
+
+    // Return true to continue to event chain in @see Mixins.js:trackPosesLoop
+    return true
   }
 
   /**
@@ -149,16 +152,22 @@ class SeeClarke {
   }
 
   /**
-   * Our calculation entry point. If you'd like to run your own calculations
+   * @TODO Our calculation entry point. If you'd like to run your own calculations
    * (either to make improvements or test with non-euclidean geometries) you can
    * overwrite this method (@FIXME let's provide an API for this).
    *
    * All you have to do is set: this.poses[index].lookingAt = {x, y}
+   *
+   * [-] Runs hacky calculations (for now)
+   * [-] Emmits events
    */
   runCalculations () {
     // @SEE ./Calculations.js
     this.runHackyCalculations()
     this.emitEvents()
+
+    // Return true to continue to event chain in @see Mixins.js:trackPosesLoop
+    return true
   }
 }
 

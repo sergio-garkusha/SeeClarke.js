@@ -135,3 +135,16 @@ it('Can update settings', () => {
   seeclarke.update({debug: true})
   expect(seeclarke.debug).toBeTruthy()
 })
+
+/**
+ * SeeClarke.runCalculations
+ */
+it('Can run calculations and emmit events', () => {
+  seeclarke = new SeeClarke()
+  seeclarke.runHackyCalculations = jest.fn()
+  seeclarke.emitEvents = jest.fn()
+
+  seeclarke.runCalculations()
+  expect(seeclarke.runHackyCalculations).toHaveBeenCalled()
+  expect(seeclarke.emitEvents).toHaveBeenCalled()
+})

@@ -105,18 +105,18 @@ module.exports = function (SeeClarke) {
    *    constructor scope now
    */
   SeeClarke.trackPosesLoop = function (context) {
-    context.posenet
-    && context.trackPoses()
-    && context.poses
-    && context.runCalculations()
-    && context.emitEvents()
+    if (context.posenet) {
+      context.trackPoses()
+      context.runCalculations()
+      context.emitEvents()
+    }
 
     context._isTracking && requestAnimationFrame(() => this.trackPosesLoop(context))
   }
 
   /**
    * @TODO Emits events
-   * [] Emits onSeeClarkePoseUpdates with (this.poses, seeclarke)
+   * [-] Emits onSeeClarkePoseUpdates with (this.poses, seeclarke)
    */
   SeeClarke.prototype.emitEvents = function () {
     window.dispatchEvent(this.onSeeClarkePoseUpdates, this.poses, this)
