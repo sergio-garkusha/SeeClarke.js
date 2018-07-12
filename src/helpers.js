@@ -8,8 +8,8 @@ const PoseNet = require('@tensorflow-models/posenet')
 
 module.exports = function (SeeClarke) {
   /**
-   * @TODO Creates a default (flipped) video and adds it to the DOM:
-   * [-] The video is absolutely positioned within the $wrap
+   * Creates a default (flipped) video and adds it to the DOM:
+   * - The video is absolutely positioned within the $wrap
    *
    * @param {HTMLElement} $wrap A container to embed the video into
    *
@@ -29,8 +29,8 @@ module.exports = function (SeeClarke) {
   }
 
   /**
-   * @TODO Creates a default (flipped) canvas and adds it to the DOM
-   * [-] The canvas is added to the $wrap (along with the video) relatively
+   * Creates a default (flipped) canvas and adds it to the DOM
+   * - The canvas is added to the $wrap (along with the video) relatively
    *
    * @param {Element} $wrap The wrapping element to inject the canvas into
    *
@@ -49,22 +49,22 @@ module.exports = function (SeeClarke) {
   }
 
   /**
-   * @TODO Helpers for checking if we're on mobile
-   * [-] Checks if we're on mobile
-   * [-] Checks if we're on android
-   * [-] Checks if we're on iOS
+   * Helpers for checking if we're on mobile
+   * - Checks if we're on mobile
+   * - Checks if we're on android
+   * - Checks if we're on iOS
    */
   SeeClarke.prototype.isMobile = function () { return this.isAndroid() || this.isiOS() }
   SeeClarke.prototype.isAndroid = function () { return /Android/i.test(navigator.userAgent) }
   SeeClarke.prototype.isiOS = function () { return /iPhone|iPad|iPod/i.test(navigator.userAgent) }
 
   /**
-   * @TODO Checks if WebGL is supported. Depending on your deployment needs,
+   * Checks if WebGL is supported. Depending on your deployment needs,
    * you can first check if WebGL is supported with this method, and then either
    * display a message or start the tracker.
    *
-   * [-] This will automatically fail if canvas is not supported!
-   * [-] Checks for webgl and experimental-webgl
+   * - This will automatically fail if canvas is not supported!
+   * - Checks for webgl and experimental-webgl
    *
    * @see https://stackoverflow.com/a/22953053
    *
@@ -75,8 +75,7 @@ module.exports = function (SeeClarke) {
       let canvas = document.createElement('canvas')
       let isSupported = !!window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
       canvas.remove()
-      !isSupported && console.error('WebGL is not supported in this browser')
-      return isSupported
+      return !!isSupported
     } catch (e) {
       console.error('WebGL is not supported in this browser')
       return false
@@ -84,9 +83,8 @@ module.exports = function (SeeClarke) {
   }
 
   /**
-   * @TODO Draw each tracked keypoint
-   * [-] Draws keypoints only when they are "visible"
-   * [] You can optionally set the keypoint styles
+   * Draw each tracked keypoint
+   * - Draws keypoints only when they are "visible"
    *
    * @see https://github.com/tensorflow/tfjs-models/tree/master/posenet
    *
@@ -106,10 +104,10 @@ module.exports = function (SeeClarke) {
   }
 
   /**
-   * @TODO Draw each tracked skeleton
+   * Draw each tracked skeleton
    * @see https://github.com/tensorflow/tfjs-models/tree/master/posenet
    *
-   * [-] Draws all visible segments captured with PoseNet.getAdjacentKeyPoints
+   * - Draws all visible segments captured with PoseNet.getAdjacentKeyPoints
    *
    * @param {ARR} adjacentPoints The list of all keypoints and their relationships
    * @param {OBJ} context The canvas context to draw into
@@ -121,8 +119,8 @@ module.exports = function (SeeClarke) {
   }
 
   /**
-   * @TODO Converts a position to a tuple
-   * [-] Essentially converts an {x, y} object into a [y, x] array
+   * Converts a position to a tuple
+   * - Essentially converts an {x, y} object into a [y, x] array
    *
    * @param {OBJ} position {x, y}
    */

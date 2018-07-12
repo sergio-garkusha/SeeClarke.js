@@ -43,6 +43,6 @@ module.exports = {
 
   WebGL: {
     support () {window.WebGLRenderingContext = true},
-    unupport () {window.WebGLRenderingContext = false}
+    unsupport () {window.WebGLRenderingContext = false}
   }
 }
