@@ -1,7 +1,8 @@
 /**
- * @TODO # mixins.js
+ * Mixins.js
  *
- * A collection of additional, lower-priority methods
+ * A collection of additional, lower-priority methods.
+ * @FIXME We should assign these to the prototype
  */
 const PoseNet = require('@tensorflow-models/posenet')
 const merge = require('lodash/merge')
@@ -96,15 +97,28 @@ module.exports = function (SeeClarke) {
   }
 
   /**
-   * @TODO Recursive method for tracking poses on each animationFrame:
-   * [] This method is recursive, once called it continues until after
+   * Recursive method for tracking poses on each animationFrame:
+   * - This method is recursive, once called it continues until after
    *    seeclarke.stop() is called or until this._isTracking is false
    *
    * @param {SeeClarke} context The this context, since we're in the
    *    constructor scope now
    */
   SeeClarke.trackPosesLoop = function (context) {
-    context.posenet && context.trackPoses()
+    context.posenet
+    && context.trackPoses()
+    && context.poses
+    && context.runCalculations()
+    && context.emitEvents()
+
     context._isTracking && requestAnimationFrame(() => this.trackPosesLoop(context))
+  }
+
+  /**
+   * @TODO Emits events
+   * [] Emits onSeeClarkePoseUpdates with (this.poses, seeclarke)
+   */
+  SeeClarke.prototype.emitEvents = function () {
+    window.dispatchEvent(this.onSeeClarkePoseUpdates, this.poses, this)
   }
 }

@@ -1,5 +1,5 @@
 /**
- * @TODO # helpers.js
+ * Helpers.js
  *
  * A collection of helpers methods which may be helpful in your app outside
  * the context of SeeClarke

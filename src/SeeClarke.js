@@ -1,13 +1,13 @@
 /**
- * # SeeClarke.js
+ * SeeClarke.js
  *
  * This file contains all the "onboarding methods"; a glance at these methods
  * should give you a general understanding for how the app works!
  *
- * @NOTE: My personal convention for bullet points in docblockr comments is:
- * [] Describes what this method *will do* (to do's)
- * [-] Describes what this method *should be doing* (needs unit/e2e testing)
- * - Describes what this method does (passes unit/e2e)
+ * @NOTE: My personal convention for bullet points is:
+ * [] Describes what this method *will do* 🤔 (todo's)
+ * [-] Describes what this method *should be doing* 🤷 (needs testing)
+ * - Describes what this method *does* 🏆 (tested)
  */
 require('./polyfills')
 const merge = require('lodash/merge')
@@ -15,10 +15,11 @@ const PoseNet = require('@tensorflow-models/posenet')
 
 class SeeClarke {
   /**
-   * Our main constructor
+   * 🏆 Our main constructor
    * - Fails if getUserMedia is not supported
    * - Sanitizes options and sets sane defaults
    * - Autostarts if options.autostart
+   * [] Creates the custom window event
    *
    * @param {Object} [opts={}] Constructor options, @see /wiki/Options.md
    */
@@ -52,6 +53,11 @@ class SeeClarke {
       // Possibly autostart
       this.options.autostart && this.start()
     }
+
+    /**
+     * Create our custom event
+     */
+    this.onSeeClarkePoseUpdates = new CustomEvent('onSeeClarkePoseUpdates')
   }
 
   /**
@@ -141,6 +147,19 @@ class SeeClarke {
     this.constructor.setDefaults.call(this, opts)
     this.constructor.setAliases.call(this)
   }
+
+  /**
+   * Our calculation entry point. If you'd like to run your own calculations
+   * (either to make improvements or test with non-euclidean geometries) you can
+   * overwrite this method (@FIXME let's provide an API for this).
+   *
+   * All you have to do is set: this.poses[index].lookingAt = {x, y}
+   */
+  runCalculations () {
+    // @SEE ./Calculations.js
+    this.runHackyCalculations()
+    this.emitEvents()
+  }
 }
 
 /**
@@ -150,6 +169,7 @@ class SeeClarke {
  *
  * Here are some more methods:
  */
+require('./Calculations')(SeeClarke)
 require('./Mixins')(SeeClarke)
 require('./Helpers')(SeeClarke)
 

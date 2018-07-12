@@ -12,6 +12,7 @@
  * [] Opera Mini - Does not work due to dependency on getUserMedia (@see https://caniuse.com/#feat=stream )
  * [] MS Edge - Does not work as it crashes with "Extension WEBGL_lose_context not supported on this browser." This might be shimmable with a Uint8ClampedArray polyfill.
  */
+require('custom-event-polyfill')
 
  /**
   * @TODO @POLYFILL Unifies vendor prefixes for getUserMedia:

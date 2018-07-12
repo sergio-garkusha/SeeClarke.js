@@ -45,13 +45,14 @@
 ---
 
 ## Table of Contents:
-- [HTML5 Sites](#html5-sites)
-  - [As a Drop-In](#as-a-drop-in)
-  - [Manual Start](#manual-start)
 - [Wiki](wiki/)
-  - [Methods](wiki/Methods)
-  - [Options](wiki/Options)
-  - [Properties](wiki/Properties)
+  - 🧙 [Methods](wiki/Methods)
+  - 🧚 [Properties](wiki/Properties)
+  - 🧞 [Options](wiki/Options)
+- Platforms
+  - [HTML5 Sites](#html5-sites)
+    - [As a Drop-In](#as-a-drop-in)
+    - [Manual Start](#manual-start)
 
 ---
 
@@ -194,7 +195,7 @@
             (' )(_,) . ), ) _) _,')  (, ) '. )  ,. (' )('  (_ , , .
          _^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_
       /                                o  *                           \
-     |    _@TODO: https://github.com/LabOfOz/seeclarke/issues/11 ___   |
+     |    _ @TODO: https://github.com/LabOfOz/xn--jv9h ____________    |
      |   |                                                         |   |
      |   |  > npm i 🧙                                            |   |
      |   |  > cd 🧙; yarn                                         |   |
@@ -299,7 +300,7 @@ A global `window.SeeClarke` class is made available for further [`new` instantia
 
 If you want to manually configure and start **seeclarke** (for example, to delay tracking until after the user clicks a button) you can do so by excluding the `?autostart` querystring parameter, like above.
 
-> 🧚 You can still include other query strings, but doing so just sets the [`SeeClarke.prototype.defaults`](wiki/Options]).
+> 🧞 You can still include other query strings, but doing so just sets the [`SeeClarke.prototype.defaults`](wiki/Options]).
 
 The process is then to:
 
@@ -351,3 +352,4 @@ The following polyfills are providing support for older browsers:
 | Polyfill | Affected Browsers | Fix | Notes |
 |----------|-------------------|-----|-------|
 | getUserMedia | Chrome <= 49 <br> iOS <= 10.3  | /src/polyfills.js | We're basically only supporting the API change from `navigator.getUserMedia` to `navigator.mediaDevices.getUserMedia`
+| CustomEvent | IE, Safari Nightly Builds | `custom-event-polyfill` | &nbsp; |
