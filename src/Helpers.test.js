@@ -36,6 +36,7 @@ it('Checks if we\'re on Mobile/Android/iOS', () => {
 
 it('Checks if WebGL is supported', () => {
   seeclarke = new SeeClarke()
+  const oldContext = HTMLCanvasElement.prototype.getContext
 
   STUBS.mediaDevices.support()
   STUBS.WebGL.support()
@@ -43,7 +44,7 @@ it('Checks if WebGL is supported', () => {
 
   STUBS.mediaDevices.unsupport()
   STUBS.WebGL.unsupport()
-  expect(seeclarke.isWebGLSupported()).toBe(false)
+  expect(seeclarke.isWebGLSupported('IGNORE THIS ERROR')).toBe(false)
 })
 
 /**
@@ -68,7 +69,7 @@ it('Draw each tracked keypoint', () => {
   const context = $canvas.getContext('2d')
   context.fill = jest.fn()
 
-  seeclarke.drawKeypoints(STUBS.data.posenet.pose.single[0].keypoints, 0, context)
+  seeclarke.drawKeypoints(STUBS.data.posenet.pose.single[0].keypoints, 0.9, context)
   expect(context.fill).toHaveBeenCalled()
 })
 
@@ -86,13 +87,13 @@ it('Draw each tracked skeleton', () => {
 /**
  * SeeClarke.drawSegment
  */
- it('Draw each tracked keypoint', () => {
+ it('Draws the skeleton segment', () => {
    seeclarke = new SeeClarke()
 
    const $canvas = document.createElement('canvas')
    const context = $canvas.getContext('2d')
-   context.fill = jest.fn()
+   context.stroke = jest.fn()
 
-   seeclarke.drawKeypoints(STUBS.data.posenet.pose.single[0].keypoints, 0, context)
-   expect(context.fill).toHaveBeenCalled()
+   seeclarke.drawSegment([1, 2], [3, 4], context)
+   expect(context.stroke).toHaveBeenCalled()
  })

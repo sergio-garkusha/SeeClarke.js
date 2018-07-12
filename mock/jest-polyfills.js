@@ -13,7 +13,20 @@ console.warn = function (message, ...args) {
     case 'TypeError: gl.getExtension is ':
     break
     default:
-      console.log(message)
+      window.consoleWarn(message, ...args)
+  }
+}
+
+/**
+ * Suppress known error messages
+ */
+window.consoleError = console.error
+console.error = function (message, ...args) {
+  switch (message) {
+    case 'IGNORE THIS ERROR':
+    break
+    default:
+      window.consoleError(message, ...args)
   }
 }
 

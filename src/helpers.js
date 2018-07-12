@@ -68,16 +68,22 @@ module.exports = function (SeeClarke) {
    *
    * @see https://stackoverflow.com/a/22953053
    *
+   * @param {Boolean} forceThrow (Optional) Whether to force throw an error. This is mostly for unit testing to test failures
    * @return {Boolean} Is WebGL supported?
    */
-  SeeClarke.prototype.isWebGLSupported = function () {
+  SeeClarke.prototype.isWebGLSupported = function (forceThrow = false) {
     try {
+      if (forceThrow) throw(forceThrow)
+
       let canvas = document.createElement('canvas')
-      let isSupported = !!window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+      let isSupported = true
+
+      if (!canvas.getContext('webgl') || !canvas.getContext('experimental-webgl')) isSupported = false
       canvas.remove()
+
       return !!isSupported
     } catch (e) {
-      console.error('WebGL is not supported in this browser')
+      console.error(e)
       return false
     }
   }
@@ -127,9 +133,8 @@ module.exports = function (SeeClarke) {
   SeeClarke.prototype.toTuple = function ({x, y}) { return [y, x] }
 
   /**
-   * @TODO Draws the skeleton segment
-   * [-] A segment is a straight line between two tuples
-   * [] You can optionally set the styles
+   * Draws the skeleton segment
+   * - A segment is a straight line between two tuples
    *
    * @param {OBJ} fromTuple [ay, ax] The starting point
    * @param {OBJ} toTuple [by, bx] The ending point
