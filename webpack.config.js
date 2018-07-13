@@ -22,7 +22,7 @@ module.exports = {
     // Needed for async/await
     vendor: ['babel-polyfill'],
     // Bundle it with index.js
-    bundle: path.join(dirDemo, 'index')
+    seeclarke: path.join(dirDemo, 'index')
   },
 
   // Path resolvers
