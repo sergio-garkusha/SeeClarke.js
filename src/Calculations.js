@@ -35,6 +35,7 @@ module.exports = function (SeeClarke) {
       const nose = pose.keypoints[0]
       const envWidth = window.outerWidth
       const envHeight = window.outerHeight
+      let poseAverages = 0
 
       // Helps map a point on the.canvas to a point on the window
       const ratio = {
@@ -49,6 +50,16 @@ module.exports = function (SeeClarke) {
 
       // @FIXME Now let's adjust for rotation
       x += this.calculateHeadYaw(pose) * window.outerWidth / 2
+
+      // Let's add it to the stack
+      this.poseStack[index] = this.poseStack[index] || []
+      this.poseStack[index].push({x, y})
+      if (this.poseStack[index].length > this.options.poseStackSize) this.poseStack[index].shift()
+
+      // Finally let's get the average
+      poseAverages = this.averagePoseStack(this.poseStack[index])
+      x = poseAverages.x
+      y = poseAverages.y
 
       // Assign values
       pose.pointedAt = {x, y}
@@ -101,5 +112,27 @@ module.exports = function (SeeClarke) {
     yaw = ((distanceRatio * 180 * sideLookingAt) * Math.PI / 180)
 
     return yaw
+  }
+
+  /**
+   * @FIXME Averages the pose stacks to reduce "wobble"
+   *
+   * @param {Object} poseStack The posestack to average out
+   *
+   * @return {Object} The averaged {x, y}
+   */
+  SeeClarke.prototype.averagePoseStack = function (poseStack) {
+    let x = 0
+    let y = 0
+
+    poseStack.forEach(pose => {
+      x += pose.x
+      y += pose.y
+    })
+
+    x = x / poseStack.length
+    y = y / poseStack.length
+
+    return {x, y}
   }
 }

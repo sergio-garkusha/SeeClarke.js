@@ -40,6 +40,7 @@ module.exports = function (SeeClarke) {
       canvas: this.createDefaultCanvas(opts.target),
       debug: false,
       facingMode: 'user',
+      poseStackSize: 8,
       posenet: {
         multiplier: 0.75,
         maxUsers: 1,

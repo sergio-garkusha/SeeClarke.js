@@ -33,6 +33,13 @@ class SeeClarke {
     this._isTracking = false
 
     /**
+     * Collection of previously predicted points
+     * - Each root-level index represents a pose
+     * - Each pose is an array of the last X this.poses.[x].pointedAt's
+     */
+    this.poseStack = []
+
+    /**
      * Whether the browser is supported or not
      * - This is mostly a helper property for testing
      */
