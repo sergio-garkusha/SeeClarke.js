@@ -1,6 +1,8 @@
 /**
  * Calculations.js
  *
+ * 🧙 CAUTION HERO, FOR HERE BE 🐉 DRAGONS 🐉
+ *
  * Contains methods for calculating different things.
  *
  * @NOTE The following pose keypoint indexes mean the following: (@SEE https://github.com/tensorflow/tfjs-models/tree/master/posenet#keypoints)
@@ -49,7 +51,10 @@ module.exports = function (SeeClarke) {
       let y = nose.position.y * ratio.height
 
       // @FIXME Now let's adjust for rotation
-      x += this.calculateHeadYaw(pose) * window.outerWidth / 2
+      let yaw = this.calculateHeadYaw(pose)
+      let pitch = this.calculateHeadPitch(pose)
+      x += yaw * window.outerWidth / 2
+      y += pitch * window.outerHeight / 2
 
       // Let's add it to the stack
       this.poseStack[index] = this.poseStack[index] || []
@@ -63,6 +68,7 @@ module.exports = function (SeeClarke) {
 
       // Assign values
       pose.pointedAt = {x, y}
+      pose.angles = {pitch, yaw}
       this.poses[index] = pose
     })
   }
@@ -82,8 +88,8 @@ module.exports = function (SeeClarke) {
    *  2. The difference between these distances determines the angle
    *    - For this algorithm, angles are between -90 and 90 (looking left and right)
    *
-   * Issues with this aglorithm:
-   * - One eye moves slightly closer to the screen than the other when yaw'ing
+   * Problems with this aglorithm:
+   * - All of it
    */
   SeeClarke.prototype.calculateHeadYaw = function (pose) {
     const points = pose.keypoints
@@ -109,9 +115,49 @@ module.exports = function (SeeClarke) {
     }
 
     // Try to tame this beast into a radian
-    yaw = ((distanceRatio * 180 * sideLookingAt) * Math.PI / 180)
+    yaw = ((distanceRatio * 90 * sideLookingAt) * Math.PI / 180)
 
     return yaw
+  }
+
+  /**
+   * @FIXME Get the head's Pitch (looking up/down)
+   * 👻 Let's unit test this AFTER we agree on a solid algorithm
+   * 🧙 CAUTION HERO, FOR HERE BE 🐉 DRAGONS 🐉
+   *
+   * - 0* is you looking straight ahead
+   * - 90* would be your head turned upwards
+   * - -90* would be you head turned downwards
+   *
+   * My basic algorithm is:
+   *  1. Calculate the average Y's for both ears (or whichever is visible)
+   *  2. Calculate the distance the eyes are apart
+   *  3. Calculate the distance between the nose and the averaged ear Y
+   */
+  SeeClarke.prototype.calculateHeadPitch = function (pose) {
+    let yEarAverage = 0
+    let numEarsFound = 0
+    let eyeDistance = 0
+    let distanceRatio = 0
+    let points = pose.keypoints
+
+    // 1. Calculate the average Y's for both ears (or whichever is visible)
+    if (points[3].score >= this.options.posenet.minPartConfidence) {
+      numEarsFound++
+      yEarAverage += points[3].position.y
+    }
+    if (points[4].score >= this.options.posenet.minPartConfidence) {
+      numEarsFound++
+      yEarAverage += points[4].position.y
+    }
+    yEarAverage = yEarAverage / numEarsFound
+
+    // 2. Calculate the distance the eyes are apart
+    // - I am literally making this up as I go
+    eyeDistance = points[1].position.x - points[2].position.x
+    distanceRatio = (points[0].position.y - yEarAverage) / eyeDistance
+
+    return (90 * distanceRatio) * Math.PI / 180
   }
 
   /**
