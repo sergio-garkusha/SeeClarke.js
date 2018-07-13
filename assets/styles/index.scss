@@ -55,3 +55,13 @@ select {
   margin: $marginMain 0;
   color: $colorMain;
 }
+
+#pointer {
+  position: fixed;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  background: red;
+  display: none;
+  z-index: 999999;
+}

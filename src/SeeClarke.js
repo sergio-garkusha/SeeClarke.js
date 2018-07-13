@@ -53,11 +53,6 @@ class SeeClarke {
       // Possibly autostart
       this.options.autostart && this.start()
     }
-
-    /**
-     * Create our custom event
-     */
-    this.onSeeClarkePoseUpdates = new CustomEvent('onSeeClarkePoseUpdates')
   }
 
   /**
@@ -86,9 +81,6 @@ class SeeClarke {
 
     // Only draw when debug is on
     this.debug && poses && this.debugPoses()
-
-    // Return true to continue to event chain in @see Mixins.js:trackPosesLoop
-    return true
   }
 
   /**
@@ -165,9 +157,6 @@ class SeeClarke {
     // @SEE ./Calculations.js
     this.runHackyCalculations()
     this.emitEvents()
-
-    // Return true to continue to event chain in @see Mixins.js:trackPosesLoop
-    return true
   }
 }
 

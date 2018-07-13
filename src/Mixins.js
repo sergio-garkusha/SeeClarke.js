@@ -105,8 +105,8 @@ module.exports = function (SeeClarke) {
    *    constructor scope now
    */
   SeeClarke.trackPosesLoop = function (context) {
-    if (context.posenet) {
-      context.trackPoses()
+    context.posenet && context.trackPoses()
+    if (context.poses) {
       context.runCalculations()
       context.emitEvents()
     }
@@ -119,6 +119,10 @@ module.exports = function (SeeClarke) {
    * [-] Emits onSeeClarkePoseUpdates with (this.poses, seeclarke)
    */
   SeeClarke.prototype.emitEvents = function () {
-    window.dispatchEvent(this.onSeeClarkePoseUpdates, this.poses, this)
+    window.dispatchEvent(new CustomEvent('onSeeClarkePoseUpdates', {
+      detail: {
+        context: this
+      }
+    }))
   }
 }

@@ -14,4 +14,12 @@ require('../assets/styles/index.scss')
  * const SeeClarke = require('../src/SeeClarke.js')
  * const seeclarke = new SeeClarke(options)
  */
-window.seeclarke = new (require('../src/SeeClarke.js'))({autostart: false, debug: true})
+window.seeclarke = new (require('../src/SeeClarke.js'))({autostart: true, debug: true})
+
+let $pointer = document.getElementById('pointer')
+window.addEventListener('onSeeClarkePoseUpdates', (ev) => {
+  let context = ev.detail.context
+  $pointer.style.display = 'block'
+  $pointer.style.left = context.poses[0].pointedAt.x + 'px'
+  $pointer.style.top = context.poses[0].pointedAt.y + 'px'
+}, true)
