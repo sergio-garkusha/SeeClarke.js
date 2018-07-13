@@ -82,7 +82,9 @@ it('This method is recursive, once called it continues until after !_isTracking'
   seeclarke.emitEvents = jest.fn()
 
   seeclarke.posenet = {}
+  seeclarke.poses = STUBS.data.posenet.pose.single
   seeclarke.constructor.trackPosesLoop.call(SeeClarke, seeclarke)
+
   expect(seeclarke.trackPoses).toHaveBeenCalled()
   expect(seeclarke.runCalculations).toHaveBeenCalled()
   expect(seeclarke.emitEvents).toHaveBeenCalled()
