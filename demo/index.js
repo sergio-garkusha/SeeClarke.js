@@ -14,7 +14,8 @@ require('../assets/styles/index.scss')
  * const SeeClarke = require('../src/SeeClarke.js')
  * const seeclarke = new SeeClarke(options)
  */
-window.seeclarke = new (require('../src/SeeClarke.js'))({autostart: true, debug: true})
+window.SeeClarke = require('../src/SeeClarke.js')
+window.seeclarke = new (window.SeeClarke)({autostart: true, debug: true})
 
 let $pointer = document.getElementById('pointer')
 window.addEventListener('onSeeClarkePoseUpdates', (ev) => {
