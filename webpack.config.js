@@ -19,8 +19,7 @@ const appHtmlTitle = 'SeeClarke.js Boilerplates'
 module.exports = {
   // Entry scripts
   entry: {
-    // Bundle it with index.js
-    seeclarke: ['babel-polyfill', path.join(dirSrc, 'SeeClarke')]
+    seeclarke: ['babel-polyfill', path.join(dirSrc, 'SeeClarke.js')]
   },
 
   // Path resolvers
@@ -51,7 +50,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /(node_modules)/,
-        options: {compact: true}
+        options: {compact: 'auto'}
       },
 
       /**
@@ -64,7 +63,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {sourceMap: IS_DEV}
-          },
+          }
         ]
       },
 
