@@ -19,7 +19,8 @@ const appHtmlTitle = 'SeeClarke.js Boilerplates'
 module.exports = {
   // Entry scripts
   entry: {
-    seeclarke: ['babel-polyfill', path.join(dirSrc, 'SeeClarke.js')]
+    // Bundle it with index.js
+    seeclarke: path.join(dirDemo, 'index')
   },
 
   // Path resolvers
