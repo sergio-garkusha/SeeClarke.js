@@ -20,7 +20,7 @@ module.exports = {
   // Entry scripts
   entry: {
     // Bundle it with index.js
-    seeclarke: ['babel-polyfill', path.join(dirDemo, 'index')]
+    seeclarke: ['babel-polyfill', path.join(dirSrc, 'SeeClarke')]
   },
 
   // Path resolvers
