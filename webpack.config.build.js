@@ -9,7 +9,7 @@ module.exports = merge(webpackConfig, {
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: `[name]-${package.version}.js`
+    filename: `[name].js`
   },
 
   plugins: [
