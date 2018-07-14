@@ -19,8 +19,6 @@ const appHtmlTitle = 'SeeClarke.js Boilerplates'
 module.exports = {
   // Entry scripts
   entry: {
-    // Needed for async/await
-    vendor: ['babel-polyfill'],
     // Bundle it with index.js
     seeclarke: path.join(dirDemo, 'index')
   },
