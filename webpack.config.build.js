@@ -5,10 +5,6 @@ const webpackConfig = require('./webpack.config');
 const package = require('./package.json')
 
 module.exports = merge(webpackConfig, {
-  optimization: {
-    minimize: false
-  },
-
   output: {
     path: path.join(__dirname, 'dist'),
     filename: `[name].js`

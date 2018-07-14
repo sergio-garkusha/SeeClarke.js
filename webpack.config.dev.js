@@ -7,7 +7,8 @@ module.exports = merge(webpackConfig, {
   output: {
     pathinfo: true,
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].js',
+    library: 'SeeClarke'
   },
 
   devServer: {

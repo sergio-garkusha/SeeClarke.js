@@ -2,6 +2,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 // Directories
 const dirNode = 'node_modules'
@@ -19,8 +20,8 @@ const appHtmlTitle = 'SeeClarke.js Boilerplates'
 module.exports = {
   // Entry scripts
   entry: {
-    // Bundle it with index.js
-    seeclarke: ['babel-polyfill', path.join(dirDemo, 'index')]
+    seeclarke: ['babel-polyfill', './src/SeeClarke.js'],
+    demo: './demo/index.js'
   },
 
   // Path resolvers
@@ -39,7 +40,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'index.ejs'),
       title: appHtmlTitle
-    })
+    }),
+
+    new CopyWebpackPlugin([
+      {from: 'assets', to: 'assets'}
+    ])
   ],
 
   module: {
