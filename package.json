@@ -1,6 +1,6 @@
 {
   "name": "seeclarke",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "author": "Oz Ramos <labofoz@gmail.com> (https://labofoz.com)",
   "description": "Add client side, face-tracked mouse cursors to your projects in one line of JavaScript!",
   "main": "src/SeeClarke.js",
