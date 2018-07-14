@@ -49,9 +49,9 @@ You can see the visual evolution of this project in this [Twitter thread](https:
 
 ### Demos
 
-| Basic Cursor Positioning |
-| :------------- |
-|        |
+| Basic Cursor Positioning | Drawing
+| :------------- | :-------------
+| [![https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif](https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif)](https://codepen.io/labofoz/pen/RBWvBp?editors=0010)|
 
 ---
 
