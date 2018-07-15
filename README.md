@@ -29,11 +29,11 @@
     - [Installing via script tag](#installing-via-script-tag)
     - [Installing via NPM](#installing-via-npm)
 - [Legend](#legend):
-  - 🧙 **Clarke** tells you about [Methods](wiki/Methods)
+  - 🧙 **Clarke** tells you about [Methods](https://github.com/LabOfOz/SeeClarke/wiki/Methods) and [Events](https://github.com/LabOfOz/SeeClarke/wiki/Events)
 
-  - 🧚🏽 **Curie** advises you on [Properties](wiki/Properties)
+  - 🧚🏽 **Curie** advises you on [Properties](https://github.com/LabOfOz/SeeClarke/wiki/Properties)
 
-  - 🧞‍ **Al** catches you up on [Options](wiki/Options)
+  - 🧞‍ **Al** catches you up on [Options](https://github.com/LabOfOz/SeeClarke/wiki/Options)
 
   - 👻 **Obi** points out features that are deprecated or not yet implemented
 
@@ -49,9 +49,9 @@ You can see the visual evolution of this project in this [Twitter thread](https:
 
 ### Demos
 
-| Basic Cursor Positioning | Drawing
+| Basic Cursor Positioning | Page Scrolling
 | :------------- | :-------------
-| [![https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif](https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif)](https://codepen.io/labofoz/pen/RBWvBp?editors=0010)|
+| [![https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif](https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif)](https://codepen.io/labofoz/pen/RBWvBp?editors=0010)| [![https://media.giphy.com/media/5b9d1dQlV7CzRJ5ueC/giphy.gif](https://media.giphy.com/media/5b9d1dQlV7CzRJ5ueC/giphy.gif)](https://codepen.io/labofoz/pen/WKrrVj)
 
 ---
 
