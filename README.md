@@ -49,9 +49,9 @@ You can see the visual evolution of this project in this [Twitter thread](https:
 
 ### Demos
 
-| [Basic Cursor Positioning](https://codepen.io/labofoz/full/RBWvBp?editors=0010) | [Page Scrolling](https://codepen.io/labofoz/full/WKrrVj)
+| [Basic Cursor Positioning](https://codepen.io/labofoz/full/RBKKvW/) | [Page Scrolling](https://codepen.io/labofoz/full/XBpMVv/)
 | :------------- | :-------------
-| [![https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif](https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif)](https://codepen.io/labofoz/full/RBWvBp?editors=0010)| [![https://media.giphy.com/media/5b9d1dQlV7CzRJ5ueC/giphy.gif](https://media.giphy.com/media/5b9d1dQlV7CzRJ5ueC/giphy.gif)](https://codepen.io/labofoz/full/WKrrVj)|
+| [![https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif](https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif)](https://codepen.io/labofoz/full/RBKKvW/)| [![https://media.giphy.com/media/5b9d1dQlV7CzRJ5ueC/giphy.gif](https://media.giphy.com/media/5b9d1dQlV7CzRJ5ueC/giphy.gif)](https://codepen.io/labofoz/full/XBpMVv/)|
 | [**Focusing Elements**](https://codepen.io/labofoz/full/LBGZbx) | [**Panning Google Maps**](https://codepen.io/labofoz/full/ajdBzP) |
 | [![https://media.giphy.com/media/3mJS1rtNDmSSh1dUKy/giphy.gif](https://media.giphy.com/media/3mJS1rtNDmSSh1dUKy/giphy.gif)](https://codepen.io/labofoz/full/LBGZbx) | [![Panning Google Maps](https://media.giphy.com/media/5UqLVqYo5BCy0zN7RQ/giphy.gif)](https://codepen.io/labofoz/full/ajdBzP) |
 | [**Looking around Street Views**](https://codepen.io/labofoz/pen/GBovbJ) | [**Looking around YouTube 360**](https://codepen.io/labofoz/full/BPjJOo) |
