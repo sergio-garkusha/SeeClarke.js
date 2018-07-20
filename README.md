@@ -4,8 +4,8 @@
   <p><small>"Any sufficiently advanced technology is indistinguishable from magic."
   <br>- <a href="https://en.wikipedia.org/wiki/Arthur_C._Clarke">Arthur C. Clarke</a></small>
   <br>
-  <p><a href="https://travis-ci.com/LabOfOz/SeeClarke"><img src="https://travis-ci.com/LabOfOz/SeeClarke.svg?branch=master" alt="build"></a><a href="https://codecov.io/gh/LabOfOz/SeeClarke">
-  <img src="https://codecov.io/gh/LabOfOz/SeeClarke/branch/master/graph/badge.svg" />
+  <p><a href="https://travis-ci.com/labofoz/SeeClarke"><img src="https://travis-ci.com/labofoz/SeeClarke.svg?branch=master" alt="build"></a><a href="https://codecov.io/gh/labofoz/SeeClarke">
+  <img src="https://codecov.io/gh/labofoz/SeeClarke.js/branch/master/graph/badge.svg" />
 </a>
 <br>
 <br>
@@ -29,11 +29,11 @@
     - [Installing via script tag](#installing-via-script-tag)
     - [Installing via NPM](#installing-via-npm)
 - [Legend](#legend):
-  - 🧙 **Clarke** tells you about [Methods](https://github.com/LabOfOz/SeeClarke/wiki/Methods) and [Events](https://github.com/LabOfOz/SeeClarke/wiki/Events)
+  - 🧙 **Clarke** tells you about [Methods](https://github.com/labofoz/SeeClarke.js/wiki/Methods) and [Events](https://github.com/labofoz/SeeClarke.js/wiki/Events)
 
-  - 🧚🏽 **Curie** advises you on [Properties](https://github.com/LabOfOz/SeeClarke/wiki/Properties)
+  - 🧚🏽 **Curie** advises you on [Properties](https://github.com/labofoz/SeeClarke.js/wiki/Properties)
 
-  - 🧞‍ **Al** catches you up on [Options](https://github.com/LabOfOz/SeeClarke/wiki/Options)
+  - 🧞‍ **Al** catches you up on [Options](https://github.com/labofoz/SeeClarke.js/wiki/Options)
 
   - 👻 **Obi** points out features that are deprecated or not yet implemented
 
@@ -45,7 +45,7 @@
 
 SeeClarke.js is a thin wrapper around [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet) and [TensorFlow.js](https://js.tensorflow.org/) that calculates head-tracked cursor positions for a variable number of users at once, and is fast enough to work on mid-ranged mobile devices. Currently, SeeClarke only handles the calculations and it's up to you to decide what to do with it, for instance <small><small><small>(click links to play with demos)</small></small></small>:
 
-You can see the visual evolution of this project in this [Twitter thread](https://twitter.com/LabOfOz/status/996603306540548096).
+You can see the visual evolution of this project in this [Twitter thread](https://twitter.com/labofoz/status/996603306540548096).
 
 ### Demos
 
