@@ -52,10 +52,10 @@ You can see the visual evolution of this project in this [Twitter thread](https:
 | [Basic Cursor Positioning](https://codepen.io/labofoz/full/RBKKvW/) | [Page Scrolling](https://codepen.io/labofoz/full/XBpMVv/)
 | :------------- | :-------------
 | [![https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif](https://media.giphy.com/media/55vsITBRKRlaosFK7I/giphy.gif)](https://codepen.io/labofoz/full/RBKKvW/)| [![https://media.giphy.com/media/5b9d1dQlV7CzRJ5ueC/giphy.gif](https://media.giphy.com/media/5b9d1dQlV7CzRJ5ueC/giphy.gif)](https://codepen.io/labofoz/full/XBpMVv/)|
-| [**Focusing Elements**](https://codepen.io/labofoz/full/LBGZbx) | [**Panning Google Maps**](https://codepen.io/labofoz/full/ajdBzP) |
-| [![https://media.giphy.com/media/3mJS1rtNDmSSh1dUKy/giphy.gif](https://media.giphy.com/media/3mJS1rtNDmSSh1dUKy/giphy.gif)](https://codepen.io/labofoz/full/LBGZbx) | [![Panning Google Maps](https://media.giphy.com/media/5UqLVqYo5BCy0zN7RQ/giphy.gif)](https://codepen.io/labofoz/full/ajdBzP) |
-| [**Looking around Street Views**](https://codepen.io/labofoz/pen/GBovbJ) | [**Looking around YouTube 360**](https://codepen.io/labofoz/full/BPjJOo) |
-| [![https://media.giphy.com/media/pjZpFaxj9jBFqS54vR/giphy.gif](https://media.giphy.com/media/pjZpFaxj9jBFqS54vR/giphy.gif)](https://codepen.io/labofoz/pen/GBovbJ) | [![https://giphy.com/gifs/83fHb6D3QQ7xb1WHBT](https://media.giphy.com/media/83fHb6D3QQ7xb1WHBT/giphy.gif)](https://codepen.io/labofoz/full/BPjJOo)
+| [**Focusing Elements**](https://codepen.io/labofoz/full/ZjLKBb/) | [**Panning Google Maps**](https://codepen.io/labofoz/full/ajpWQL) |
+| [![https://media.giphy.com/media/3mJS1rtNDmSSh1dUKy/giphy.gif](https://media.giphy.com/media/3mJS1rtNDmSSh1dUKy/giphy.gif)](https://codepen.io/labofoz/full/ZjLKBb/) | [![Panning Google Maps](https://media.giphy.com/media/5UqLVqYo5BCy0zN7RQ/giphy.gif)](https://codepen.io/labofoz/full/ajpWQL) |
+| [**Looking Around Street Views**](https://codepen.io/labofoz/full/WKRZZq) | [**Looking Around YouTube 360**](https://codepen.io/labofoz/full/VBPMEd/) |
+| [![https://media.giphy.com/media/pjZpFaxj9jBFqS54vR/giphy.gif](https://media.giphy.com/media/pjZpFaxj9jBFqS54vR/giphy.gif)](https://codepen.io/labofoz/full/WKRZZq) | [![https://giphy.com/gifs/83fHb6D3QQ7xb1WHBT](https://media.giphy.com/media/83fHb6D3QQ7xb1WHBT/giphy.gif)](https://codepen.io/labofoz/full/VBPMEd/)
 
 ---
 
