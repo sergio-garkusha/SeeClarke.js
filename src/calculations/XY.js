@@ -1,9 +1,10 @@
 /**
- * Calculations.js
+ * calculations/XY.js
  *
- * 🧙 CAUTION HERO, FOR HERE BE 🐉 DRAGONS 🐉
+ * 🧙 CAUTION HERO, FOR 🐉 HERE BE DRAGONS 🐉
+ * !!! The following code works by pure coincidence, please help improve it !!!
  *
- * Contains methods for calculating different things.
+ * Contains methods for calculating different the X/Y position on screen
  *
  * @NOTE The following pose keypoint indexes mean the following: (@SEE https://github.com/tensorflow/tfjs-models/tree/master/posenet#keypoints)
  * 0   nose
@@ -27,12 +28,10 @@
  */
 module.exports = function (SeeClarke) {
   /**
-   * @TODO Entry point for our hacky calculations. This'll be overwritten eventually,
-   * but we'll still want to unit test until then.
-   *
-   * [] Calculates "pointedAt" for each pose
+   * Entry point for our hacky calculations
+   * - Calculates "pointedAt" for each pose
    */
-  SeeClarke.prototype.runHackyCalculations = function () {
+  SeeClarke.prototype.calculateXY = function () {
     this.poses && this.poses.forEach((pose, index) => {
       const nose = pose.keypoints[0]
       const envWidth = window.outerWidth

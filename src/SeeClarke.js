@@ -161,8 +161,10 @@ class SeeClarke {
    * [-] Emmits events
    */
   runCalculations () {
-    // @SEE ./Calculations.js
-    this.runHackyCalculations()
+    // @SEE ./calculations/XY.js
+    this.calculateXY()
+    // @SEE ./calculations/Z.js
+    this.calculateZ()
     this.emitEvents()
   }
 }
@@ -174,7 +176,8 @@ class SeeClarke {
  *
  * Here are some more methods:
  */
-require('./Calculations')(SeeClarke)
+require('./calculations/XY')(SeeClarke)
+require('./calculations/Z')(SeeClarke)
 require('./Mixins')(SeeClarke)
 require('./Helpers')(SeeClarke)
 

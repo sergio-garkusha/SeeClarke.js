@@ -53,6 +53,14 @@ module.exports = function (SeeClarke) {
       target: opts.target,
       video
     }, opts)
+
+    // Chache
+    this.cache = {
+      window: {
+        // @SEE this.setupFeed
+        area: 0
+      }
+    }
   }
 
   /**
@@ -86,6 +94,10 @@ module.exports = function (SeeClarke) {
       width: isMobile ? undefined : this.video.width,
       height: isMobile ? undefined : this.video.height
     })
+
+    // Cache the area of the window
+    this.cache.window.area = window.outerWidth * window.outerHeight
+
     this.video.play()
   }
 
