@@ -56,7 +56,7 @@ select {
   color: $colorMain;
 }
 
-#pointer {
+#pointer, #pointer-depth-circle {
   position: fixed;
   border-radius: 20px;
   width: 20px;
@@ -64,4 +64,11 @@ select {
   background: red;
   display: none;
   z-index: 999999;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+#pointer-depth-circle {
+  background: none;
+  border: 5px dashed green;
 }
